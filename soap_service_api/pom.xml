@@ -3,34 +3,38 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>de.ehmkah.projects</groupId>
+        <artifactId>serviceExample</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
     <groupId>de.ehmkah.projects</groupId>
     <artifactId>soap_service_api</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-        </dependency>
-    </dependencies>
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
-                <version>1.12</version>
-                <configuration>
-                    <wsdlDirectory>${basedir}/src/main/resources/wsdl</wsdlDirectory>
-                    <sourceDestDir>${basedir}/target/generated/src/main/java</sourceDestDir>
-                </configuration>
+                <version>2.4.1</version>
                 <executions>
                     <execution>
                         <goals>
                             <goal>wsimport</goal>
                         </goals>
+                        <configuration>
+                            <!--    <bindingFiles>
+                                    <bindingFile>${basedir}/src/remote-xjc/bindings.xjc</bindingFile>
+                                    <bindingFile>bindings-default.xjc</bindingFile>
+                                </bindingFiles>-->
+                            <vmArgs>
+                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                            </vmArgs>
+                            <wsdlDirectory>${basedir}/src/main/resources/wsdl</wsdlDirectory>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

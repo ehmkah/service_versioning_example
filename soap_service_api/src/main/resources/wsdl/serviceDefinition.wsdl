@@ -2,11 +2,11 @@
              xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
              xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
              xmlns:xs="http://www.w3.org/2001/XMLSchema"
-             xmlns:math="http://example.org/math"
-             targetNamespace="http://example.org/math">
+             xmlns:math="http://ehmkah.com/services/gardening"
+             targetNamespace="http://ehmkah.com/services/gardening">
 
     <types>
-        <xs:schema targetNamespace="http://example.org/math" elementFormDefault="qualified">
+        <xs:schema targetNamespace="http://ehmkah.com/services/gardening" elementFormDefault="qualified">
 
             <xs:element name="add">
                 <xs:complexType>
@@ -46,7 +46,7 @@
         <soap:binding style="document"
                       transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="sum">
-            <soap:operation soapAction="http://example.org/math/#sum"/>
+            <soap:operation soapAction="http://ehmkah.com/services/gardening/#sum"/>
             <input>
                 <soap:body use="literal"/>
             </input>
