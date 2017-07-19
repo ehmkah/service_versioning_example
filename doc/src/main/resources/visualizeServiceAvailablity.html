@@ -1,0 +1,92 @@
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages': ['timeline']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            draw1('eins');
+            draw2('zwei');
+            draw3('drei');
+        }
+
+        function draw1(_environment) {
+            var container = document.getElementById(_environment);
+            var chart = new google.visualization.Timeline(container);
+            var dataTable = new google.visualization.DataTable();
+
+            dataTable.addColumn({type: 'string', id: 'release'});
+            dataTable.addColumn({type: 'string', id: 'available_versions'});
+            dataTable.addColumn({type: 'date', id: 'Start'});
+            dataTable.addColumn({type: 'date', id: 'End'});
+
+            dataTable.addRows([
+                ['77', '/, /v5', new Date("2017-01-01"), new Date("2017-01-31")],
+                ['78', '/v5, /v6', new Date("2017-02-01"), new Date("2017-02-28")],
+                ['79', '/v6, /v7', new Date("2017-03-01"), new Date("2017-03-31")],
+                ['80', '/v7, /v8', new Date("2017-04-01"), new Date("2017-04-30")]]);
+
+            chart.draw(dataTable);
+        }
+        function draw2(_environment) {
+            var container = document.getElementById(_environment);
+            var chart = new google.visualization.Timeline(container);
+            var dataTable = new google.visualization.DataTable();
+
+            dataTable.addColumn({type: 'string', id: 'release'});
+            dataTable.addColumn({type: 'string', id: 'available_versions'});
+            dataTable.addColumn({type: 'date', id: 'Start'});
+            dataTable.addColumn({type: 'date', id: 'End'});
+
+            dataTable.addRows([
+                ['/', '', new Date("2017-01-01"), new Date("2017-01-31")],
+                ['/v5', '', new Date("2017-01-01"), new Date("2017-02-28")],
+                ['/v6', '', new Date("2017-02-01"), new Date("2017-03-30")],
+                ['/v7', '', new Date("2017-03-01"), new Date("2017-04-31")],
+                ['/v8', '', new Date("2017-04-01"), new Date("2017-04-31")]
+            ]);
+
+            chart.draw(dataTable);
+        }
+        function draw3(_environment) {
+            var container = document.getElementById(_environment);
+            var chart = new google.visualization.Timeline(container);
+            var dataTable = new google.visualization.DataTable();
+
+            dataTable.addColumn({type: 'string', id: 'release'});
+            dataTable.addColumn({type: 'string', id: 'available_versions'});
+            dataTable.addColumn({type: 'date', id: 'Start'});
+            dataTable.addColumn({type: 'date', id: 'End'});
+
+            dataTable.addRows([
+                ['/', '77', new Date("2017-01-01"), new Date("2017-01-31T23:59:59")],
+                ['/v5', '77', new Date("2017-01-01"), new Date("2017-01-31T23:59:59")],
+                ['/v5', '78', new Date("2017-02-01"), new Date("2017-02-28T23:59:59")],
+                ['/v6', '78', new Date("2017-02-01"), new Date("2017-02-28T23:59:59")],
+                ['/v6', '79', new Date("2017-03-01"), new Date("2017-03-31T23:59:59")],
+                ['/v7', '79', new Date("2017-03-01"), new Date("2017-03-31T23:59:59")],
+                ['/v7', '80', new Date("2017-04-01"), new Date("2017-04-30T23:59:59")],
+                ['/v8', '80', new Date("2017-04-01"), new Date("2017-04-30T23:59:59")]
+            ]);
+
+            var options = {
+                timeline: {rowLabelStyle: {fontName: 'Helvetica'}},
+                avoidOverlappingGridLines: false
+            };
+
+            chart.draw(dataTable, options);
+        }
+    </script>
+</head>
+<body>
+<h1>Visualize availability of service interfaces</h1>
+<p>
+    Page shows some examples how to visualize when a specific version of you API is available.
+    Sometimes it is interesting to know in which software-release it will be shipped.
+</p>
+
+<div id="eins" style="height: 290px;"></div>
+<div id="zwei" style="height: 290px;"></div>
+<div id="drei" style="height: 290px;"></div>
+</body>
+</html>
