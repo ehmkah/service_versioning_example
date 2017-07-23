@@ -9,9 +9,34 @@
     <packaging>pom</packaging>
 
     <modules>
+        <!-- service definitions -->
         <module>soap_service_api_v1</module>
-        <module>soap_service</module>
+        <module>soap_service_api_v2</module>
+
+        <!-- service implementations -->
+        <!-- standalone implementations -->
+        <module>soap_service_impl_v1</module>
+        <module>soap_service_impl_v2</module>
+
+        <!-- documentation -->
         <module>doc</module>
     </modules>
-    
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>de.ehmkah.projects</groupId>
+                <artifactId>soap_service_api_v1</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>de.ehmkah.projects</groupId>
+                <artifactId>soap_service_api_v2</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+        </dependencies>
+
+    </dependencyManagement>
 </project>
