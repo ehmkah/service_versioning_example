@@ -10,7 +10,8 @@
     </parent>
 
     <groupId>de.ehmkah.projects</groupId>
-    <artifactId>soap_service_api</artifactId>
+    <artifactId>soap_service_api_v1</artifactId>
+    <name>soap_service_api_v1</name>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -26,10 +27,6 @@
                             <goal>wsimport</goal>
                         </goals>
                         <configuration>
-                            <!--    <bindingFiles>
-                                    <bindingFile>${basedir}/src/remote-xjc/bindings.xjc</bindingFile>
-                                    <bindingFile>bindings-default.xjc</bindingFile>
-                                </bindingFiles>-->
                             <vmArgs>
                                 <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
                             </vmArgs>
