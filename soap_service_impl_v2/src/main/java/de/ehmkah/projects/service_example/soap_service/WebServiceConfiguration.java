@@ -30,6 +30,10 @@ public class WebServiceConfiguration {
     SimpleWsdl11Definition wsdl11Definition = new SimpleWsdl11Definition();
     wsdl11Definition.setWsdl(new ClassPathResource("/wsdl/serviceDefinition.wsdl"));
 
+
     return wsdl11Definition;
+
+
   }
+
 }

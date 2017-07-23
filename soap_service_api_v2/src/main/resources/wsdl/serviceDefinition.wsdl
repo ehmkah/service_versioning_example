@@ -3,27 +3,13 @@
              xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
              xmlns:xs="http://www.w3.org/2001/XMLSchema"
              xmlns:gardening="http://ehmkah.com/services/gardening"
-             targetNamespace="http://ehmkah.com/services/gardening">
+             targetNamespace="http://ehmkah.com/services/gardening"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://schemas.xmlsoap.org/wsdl/soap/ ">
 
     <types>
-        <xs:schema targetNamespace="http://ehmkah.com/services/gardening" elementFormDefault="qualified">
-            <xs:element name="request">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="speciesOne" type="xs:string"/>
-                        <xs:element name="speciesTwo" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-
-            <xs:element name="response">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="areGoodNeighbours" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-
+        <xs:schema targetNamespace="http://ehmkah.com/services/gardening">
+            <xs:import namespace="http://ehmkah.com/services/gardening" schemaLocation="types.xsd"/>
         </xs:schema>
     </types>
 

@@ -1,0 +1,5 @@
+
+= hinweise für presentation
+
+* maximal screen einschalten (grüner Knopf)
+§ CMD+F drücken, dann verschwindet die Adresszeile

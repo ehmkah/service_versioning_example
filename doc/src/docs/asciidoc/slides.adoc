@@ -1,0 +1,71 @@
+= Explizite Serviceversionierung ist möglich
+Doc Writer <doc.writer@example.org>
+2014-09-09
+:revnumber: {project-version}
+:example-caption!:
+ifndef::imagesdir[:imagesdir: images]
+ifndef::sourcedir[:sourcedir: ../../main/java]
+
+== hello
+
+image::Schiene.jpg[background]
+* huh#
+* hudsa
+* dsahiu
+* dashi
+
+
+== Introduction
+
+[%step]
+* This is a user manual for an example project.
+* This project does something.
+* We just haven't decided what that is yet.
+
+== Welche Begriffe werden in der Presentation verwendet?
+
+== Wie finde ich heraus, ob ich explizite Versionierung brauche?
+
+[%step]
+* Quark
+* This project does something.
+* We just haven't decided what that is yet.
+
+== Wie vermeide ich explizite Versionierung?
+
+[%step]
+* blah
+
+== Welche Pattern kann ich für eine explizite Versionierung verwenden?
+
+[%step]
+* blah
+
+
+== An welche Dinge, muss ich bei der expliziten Versionierung noch denken?
+
+[%step]
+* blah
+
+=== Service lifetime
+
+* link:../../src/main/resources/visualizeServiceAvailablity.html[Blah]
+
+== Zusammenfassung
+
+[%step]
+. Explizite Versionierung ist notwendig
+. Einen einfachen Service auswählen
+. Ein Pattern auswählen und implementieren
+. Ausprobieren
+. dem Hackergarten Bern beitreten
+
+== Vielen Dank
+
+* Material
+** https://github.com/ehmkah/service_versioning_example
+** https://www.meetup.com/de-DE/Hackergarten-Bern/
+
+
+
+

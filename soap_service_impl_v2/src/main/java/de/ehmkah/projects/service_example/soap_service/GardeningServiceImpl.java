@@ -1,8 +1,8 @@
 package de.ehmkah.projects.service_example.soap_service;
 
 
-import com.ehmkah.services.gardening.Request;
-import com.ehmkah.services.gardening.Response;
+import com.ehmkah.services.gardening.RequestType;
+import com.ehmkah.services.gardening.ResponseType;
 import de.ehmkah.projects.service_example.soap_service.domain.NeigbhbourCheckService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,10 +21,10 @@ public class GardeningServiceImpl {
 
   private static final String NAMESPACE_URI = "http://ehmkah.com/services/gardening";
 
-  @PayloadRoot(namespace = NAMESPACE_URI, localPart = "request")
+  @PayloadRoot(namespace = NAMESPACE_URI, localPart = "checkNeighbours")
   @ResponsePayload
-  public Response checkNeighbours(@RequestPayload Request parameters) {
-    Response result = new Response();
+  public ResponseType checkNeighbours(@RequestPayload RequestType parameters) {
+    ResponseType result = new ResponseType();
 
     String checkResult = neigbhbourCheckService.areGood(parameters.getSpeciesOne(), parameters.getSpeciesTwo());
     result.setAreGoodNeighbours(checkResult);
