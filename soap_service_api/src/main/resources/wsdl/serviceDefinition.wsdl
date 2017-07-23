@@ -7,8 +7,7 @@
 
     <types>
         <xs:schema targetNamespace="http://ehmkah.com/services/gardening" elementFormDefault="qualified">
-
-            <xs:element name="add">
+            <xs:element name="request">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element name="speciesOne" type="xs:string"/>
@@ -17,7 +16,7 @@
                 </xs:complexType>
             </xs:element>
 
-            <xs:element name="answer">
+            <xs:element name="response">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element name="areGoodNeighbours" type="xs:string"/>
@@ -28,25 +27,25 @@
         </xs:schema>
     </types>
 
-    <message name="addMessage">
-        <part name="parameters" element="gardening:add"/>
+    <message name="checkNeighboursRequest">
+        <part name="request" element="gardening:request"/>
     </message>
-    <message name="resultMessage">
-        <part name="response" element="gardening:answer"/>
+    <message name="checkNeighboursResponse">
+        <part name="response" element="gardening:response"/>
     </message>
 
     <portType name="Wsgardening">
-        <operation name="sum">
-            <input message="gardening:addMessage"/>
-            <output message="gardening:resultMessage"/>
+        <operation name="checkNeighbours">
+            <input message="gardening:checkNeighboursRequest"/>
+            <output message="gardening:checkNeighboursResponse"/>
         </operation>
     </portType>
 
     <binding name="gardeningSoapHttpBinding" type="gardening:Wsgardening">
         <soap:binding style="document"
                       transport="http://schemas.xmlsoap.org/soap/http"/>
-        <operation name="sum">
-            <soap:operation soapAction="http://ehmkah.com/services/gardening/#sum"/>
+        <operation name="checkNeighbours">
+            <soap:operation soapAction="http://ehmkah.com/services/gardening/#checkNeighbours"/>
             <input>
                 <soap:body use="literal"/>
             </input>
