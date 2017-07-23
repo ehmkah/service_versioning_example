@@ -14,12 +14,6 @@ import org.springframework.stereotype.Controller;
 @ComponentScan
 public class Main {
 
-  //@RequestMapping("/")
-  //@ResponseBody
-  //String home() {
-  //  return"Hello World!";
-//}
-
   public static void main(String[] args) throws Exception {
     SpringApplication.run(Main.class, args);
   }

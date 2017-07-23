@@ -3,6 +3,8 @@ package de.ehmkah.projects.service_example.soap_service;
 
 import com.ehmkah.services.gardening.Add;
 import com.ehmkah.services.gardening.Answer;
+import de.ehmkah.projects.service_example.soap_service.domain.NeigbhbourCheckService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -12,16 +14,20 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 @Endpoint
 @Component
-public class GardeningServiceImpl {//implements WsMath {
+public class GardeningServiceImpl {
 
+  @Autowired
+  private NeigbhbourCheckService neigbhbourCheckService;
 
   private static final String NAMESPACE_URI = "http://ehmkah.com/services/gardening";
 
   @PayloadRoot(namespace = NAMESPACE_URI, localPart = "add")
   @ResponsePayload
-  public Answer sum(@RequestPayload  Add parameters) {
+  public Answer sum(@RequestPayload Add parameters) {
     Answer result = new Answer();
-    result.setResult(100);
+
+    String checkResult = neigbhbourCheckService.areGood(parameters.getSpeciesOne(), parameters.getSpeciesTwo());
+    result.setAreGoodNeighbours(checkResult);
 
     return result;
   }

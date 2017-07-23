@@ -1,8 +1,8 @@
-<definitions name="math" xmlns="http://schemas.xmlsoap.org/wsdl/"
+<definitions name="gardening" xmlns="http://schemas.xmlsoap.org/wsdl/"
              xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
              xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
              xmlns:xs="http://www.w3.org/2001/XMLSchema"
-             xmlns:math="http://ehmkah.com/services/gardening"
+             xmlns:gardening="http://ehmkah.com/services/gardening"
              targetNamespace="http://ehmkah.com/services/gardening">
 
     <types>
@@ -11,8 +11,8 @@
             <xs:element name="add">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="x" type="xs:double"/>
-                        <xs:element name="y" type="xs:double"/>
+                        <xs:element name="speciesOne" type="xs:string"/>
+                        <xs:element name="speciesTwo" type="xs:string"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -20,7 +20,7 @@
             <xs:element name="answer">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="result" type="xs:double"/>
+                        <xs:element name="areGoodNeighbours" type="xs:string"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -29,20 +29,20 @@
     </types>
 
     <message name="addMessage">
-        <part name="parameters" element="math:add"/>
+        <part name="parameters" element="gardening:add"/>
     </message>
     <message name="resultMessage">
-        <part name="response" element="math:answer"/>
+        <part name="response" element="gardening:answer"/>
     </message>
 
-    <portType name="WsMath">
+    <portType name="Wsgardening">
         <operation name="sum">
-            <input message="math:addMessage"/>
-            <output message="math:resultMessage"/>
+            <input message="gardening:addMessage"/>
+            <output message="gardening:resultMessage"/>
         </operation>
     </portType>
 
-    <binding name="MathSoapHttpBinding" type="math:WsMath">
+    <binding name="gardeningSoapHttpBinding" type="gardening:Wsgardening">
         <soap:binding style="document"
                       transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="sum">
@@ -56,9 +56,9 @@
         </operation>
     </binding>
 
-    <service name="MathService">
-        <port name="MathEndpoint" binding="math:MathSoapHttpBinding">
-            <soap:address location="math"/>
+    <service name="gardeningService">
+        <port name="gardeningEndpoint" binding="gardening:gardeningSoapHttpBinding">
+            <soap:address location="gardening"/>
         </port>
     </service>
 
