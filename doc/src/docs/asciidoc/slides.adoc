@@ -1,10 +1,15 @@
 = Explizite Serviceversionierung ist möglich
-Doc Writer <doc.writer@example.org>
-2014-09-09
+Michael Krausse <m@m-krausse.de
+2017-09-07
 :revnumber: {project-version}
 :example-caption!:
 ifndef::imagesdir[:imagesdir: images]
 ifndef::sourcedir[:sourcedir: ../../main/java]
+
+== Tritt dem Hackergarten Bern bei!
+
+image::hackergartenLogo.jpeg[background]
+* dsahgkh
 
 == hello
 
@@ -18,11 +23,34 @@ image::Schiene.jpg[background]
 == Introduction
 
 [%step]
-* This is a user manual for an example project.
-* This project does something.
-* We just haven't decided what that is yet.
+* bl
 
 == Welche Begriffe werden in der Presentation verwendet?
+
+=== Service
+
+image::service.png[background]
+[%step]
+* ein Stück Software, das irgendwo läuft
+
+=== Serviceschnittstelle
+
+image::schnittstelle.png[background]
+[%step]
+* über diese kann mit derm Service kommuniziert werden
+
+=== Konsumenten
+
+image::konsument.png[background]
+[%step]
+* verwenden einen Serviceschnittstelle um etwas sinnvolles mit dem Service zu tun
+
+=== explizite Versionierung
+
+image::expliziteVersionierung.png[background]
+[%step]
+* werden zwei Versionen einer Serviceschnittstelle angebunden, würde ich von expliziter Versionierung sprechen
+* Konsument kann sich aussuchen, mit welcher Version der Serviceschnittstelle er kommuniziert
 
 == Wie finde ich heraus, ob ich explizite Versionierung brauche?
 
