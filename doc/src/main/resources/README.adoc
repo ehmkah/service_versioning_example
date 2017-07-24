@@ -3,3 +3,9 @@
 
 * maximal screen einschalten (grüner Knopf)
 § CMD+F drücken, dann verschwindet die Adresszeile
+
+
+= starten
+
+* http://localhost:8080/ws/service.wsdl => enthaelt Service Definition.
+Siehe WebServiceConfiguration entspricht dort dem Namen der Beans für wsdl und xsd
