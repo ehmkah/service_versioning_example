@@ -1,0 +1,48 @@
+== Wie vermeide ich neue Versionen?
+
+=== Consumer Driven Contract Tests
+
+[%step]
+* Konsumenten stellen Tests zur Verfügung, die ihre Erwartungen an den Service enthalten
+* Tests laufen automatisiert bei ausgewählten Builds mit
+* Tests erlauben Validierung der Struktur und des Inhalts
+* wenn alle Konsumentne solche Tests zur Verfügung stellen, kann Service sich so lange verändern, wie nichts kaputt geht
+
+* DEMO [pact für REST]
+* DEMO [Schematron für SOAP]
+* https://martinfowler.com/articles/consumerDrivenContracts.html
+
+=== Kleine Schnittstellen
+
+[%step]
+* wenn nicht rückwärtskompatible Änderungen auftreten ist die gesamte Schnittstelle betroffen
+* grosse Schnittstellen haben die Tendenz, dass es Bereiche gibt, die sich nicht ändern
+* umso kleiner die Schnittstelle, umso weniger weit kann sich eine nicht kompatible Änderung auswirken
+[NOTE.speaker]
+--
+* Wir haben den Fehler gemacht, dass wir unsere Schnittstellen nicht klein genug gebaut haben
+--
+
+=== Magnificient Writer
+
+* TODO
+* DEMO
+
+=== Tolerant Reader
+
+[%step]
+* ignorieren von Elementen, die Service nicht versteht
+* Validierung gegen das WSDL ausschalten (erlaubt, dass ältere Versionen verwendet werden können)
+
+* DEMO [REST]
+** Zeigen, was passiert, wenn ein XML mit mehr Daten geschickt wird
+
+DEMO [REST]
+** Zeigen was passiert, wenn ein JSON mit mehr Daten geschickt wird
+
+[NOTE.speaker]
+--
+* Wir machen das zum Beispiel, wenn wir unseren Vertriebsservice vnext zur Verfügung stellen
+* Die WSG validiert die Anfragen und Anfragen gegen kein Schema
+--
+=== Extension Points

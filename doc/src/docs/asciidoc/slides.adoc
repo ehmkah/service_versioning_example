@@ -18,7 +18,7 @@ image::hackergartenLogo.jpeg[background]
 [%step]
 * Begrissdefinitionen
 * Benötige ich explizite Versionierung?
-* Wie vermeide ich explizite Serviceversionierung?
+* Wie vermeide ich neue Serviceversionen?
 * Mit welchen Pattern kann ich explizite Servierversionierung umsetzen?
 * Welche nicht technischen Aufgaben muss ich mit der expliziten Servieversionierung lösen?
 
@@ -129,12 +129,19 @@ image::expliziteVersionierung.png[background]
 * Listen statt einzelner Werte
 * enums: weil wenn ich neue Werte schicke, kann ein Client darauf nicht reagieren und Fehler machen (z.B. 3. Klasse)
 * Strings, wenn ich einen String als Basis nehme um daraus etwas abzuleiten, oder nach einem bestimmten Pattern parse
+* in Sequencen plötzlich andere Reihenfolge von Attributen
 --
 
-== Wie vermeide ich explizite Versionierung?
+=== Wie haben wir uns entschieden?
 
 [%step]
-* blah
+* Pririorisierung:
+* 1. Services, die nach aussen gehen müssen versioniert sein
+* 2. Services, die von anderen Teams verwendet werden müssen versioniert sein
+* 3. Services, die teamintern verwendet werden, können versioniert sein (die versionieren wir nicht)
+
+
+include::_vermeiden_neuer_versionen.adoc[]
 
 == Welche Pattern kann ich für eine explizite Versionierung verwenden?
 
@@ -172,6 +179,7 @@ image::expliziteVersionierung.png[background]
 * https://www.troyhunt.com/your-api-versioning-is-wrong-which-is/
 * http://www.oracle.com/technetwork/articles/web-services-versioning-094384.html
 * https://www.ibm.com/developerworks/webservices/library/ws-version/#1
+* Service Design Patterns, robert daigneau
 
 
 
