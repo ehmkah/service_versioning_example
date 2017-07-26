@@ -1,46 +1,199 @@
 = Explizite Serviceversionierung ist möglich
-Doc Writer <doc.writer@example.org>
-2014-09-09
+Michael Krausse <m@m-krausse.de
+2017-09-07
 :revnumber: {project-version}
 :example-caption!:
 ifndef::imagesdir[:imagesdir: images]
 ifndef::sourcedir[:sourcedir: ../../main/java]
 
-== hello
+== Tritt dem Hackergarten Bern bei!
 
-image::Schiene.jpg[background]
-* huh#
-* hudsa
-* dsahiu
-* dashi
-
+image::hackergartenLogo.jpeg[background]
+* Contributing to OpenSource Projekte
+* jeden zweiten Dienstag alle zwei Monate in der SBB Effigerstrasse
+* https://www.meetup.com/de-DE/Hackergarten-Bern/
 
 == Introduction
 
 [%step]
-* This is a user manual for an example project.
-* This project does something.
-* We just haven't decided what that is yet.
+* Begrissdefinitionen
+* Benötige ich explizite Versionierung?
+* Wie vermeide ich neue Serviceversionen?
+* Mit welchen Pattern kann ich explizite Servierversionierung umsetzen?
+* Welche nicht technischen Aufgaben muss ich mit der expliziten Servieversionierung lösen?
 
 == Welche Begriffe werden in der Presentation verwendet?
 
-== Wie finde ich heraus, ob ich explizite Versionierung brauche?
+=== Service
+
+image::service.png[background]
+[%step]
+* ein Stück Software, das irgendwo läuft
+
+=== Serviceschnittstelle
+
+image::schnittstelle.png[background]
+[%step]
+* über diese kann mit derm Service kommuniziert werden
+
+=== Konsumenten
+
+image::konsument.png[background]
+[%step]
+* verwenden einen Serviceschnittstelle um etwas sinnvolles mit dem Service zu tun
+
+=== explizite Versionierung
+
+image::expliziteVersionierung.png[background]
+[%step]
+* werden zwei Versionen einer Serviceschnittstelle angebunden, würde ich von expliziter Versionierung sprechen
+* Konsument kann sich aussuchen, mit welcher Version der Serviceschnittstelle er kommuniziert
+
+== Benötige ich explizite Versionierung?
+
+=== Was spricht für explizite Serviceversionierung?
 
 [%step]
-* Quark
-* This project does something.
-* We just haven't decided what that is yet.
+* Hauptgrund: Konsumenten von Änderungen verschonen
+* Ein nicht rückwärtskompatible Änderung ist nicht vermeidbar
+* Abgeschlossene Verträge mit Konsumenten
+* Unterschiedliche Lifecycle zwischen Service und Konsument
+* Es sind nicht alle Konsumenten bekannt
 
-== Wie vermeide ich explizite Versionierung?
+[NOTE.speaker]
+--
+* nicht vermeidbar: Abbau von Altlasten, Vereinfachungen, entfernen von Redundanzen
+* Konsumenten:
+** Integration eines Servies kann aufwendig sein mit
+** Verträgen können das Risiko reduziert werden, dass Konsument häufig integrieren muss
+** Verträge regeln, wie lange eine Version verfügbar sein muss (z.B. Schnittstelle SNCF: alle halbe Jahre migration notwendig)
+*  Unterschiedliche Lifecycle
+** Konsument und Service können nicht gleichzeitg aktualisiert werden
+** Beispiel Backendsysteme vom neuen Vertriebssystem und die vNext
+** Alte Version müssen unterstützt werden, weil Wechsel zu einem beliebigen Zeitpunkt erfolgen kann
+* Es sind nicht alle Konsumenten bekannt
+** Wenn nicht alle Konsumenten bekannt sind, können unterschiedliche Schnittstellenversionen von alten Konsumenten noch im Einsatz sein
+** Ich weiss nicht, ob ich immer alle erreichen kann
+--
+
+=== Was spricht gegen explizite Serviceversionierung?
 
 [%step]
-* blah
+* Hauptgrund: Erhöht die Komplexität
+* es gibt nur einen Konsumenten, den ich steuern kann
+* Konsumenten sind von einem Service abhängig
+* Lebenszyklus Konsumenten und Service ist gleich
+* Ressourcenmangel
+* Änderungen können immer rückwärtskompatibel durchgeführt werden
+
+[NOTE.speaker]
+--
+* nur ein Konsument : Ich kann mit dem Konsumenten schauen, wie ich die Schnittstelle
+* Abhängig
+** wenn ein Abhängigkeitsverhältnis von Konsumenten zum Service besteht, kann ich das nutzen und nur eine Version anbietem
+** nicht sehr nett
+* lebenszyklus gleich
+** gleicher Lebenszyklus, es gehen beide gleichzeitig in Produktion
+** in unteren Umgebungen Test ist es OK, wenn der Service eine definierte Zeit nicht angebunden ist
+* Resourcenmangel
+** Es fehlen die Ressourcen, um zwei Versionen eines Services zur Verfügung zu stellen
+* rückwärtrskompatibel
+** Wenn Änderungen immer rückwärtskompatibel durchgeführt werden können, dann ist es nicht nötig mehrere Versionen zu haben
+** Beispiel ein sehr einfacher Service
+--
+
+=== Welche Änderungen können nicht rückwärtskompatibl sein (SOAP)?
+
+[%step]
+* entfernen und umbennen von Operationen
+* verändern (Reihenfolge oder Typen) der Parameter in Operationen
+
+[NOTE.speaker]
+--
+* KÖNNEN, weil ich im Moment der Anpassung nicht weiss, ob der Teil den ich ändere tatsächlich von einem Konsumenten genutzt wird
+* wir haben eine SOAP und REST Welt
+--
+
+=== Was sind nicht rückwärtskompatible Änderungen bei SOAP & REST ?
+
+[%step]
+* löschen von Attributen in Datenstrukturen
+* umbennen von Attributen in Datenstrukturen
+* bei Requests Attribute von optional auf mandatory setzen
+* bei Antworten Attribute von mandatory auf optional setzen
+* bei enums hinzufügen/löschen von Werten
+* bei Strings, andere Werte zurückschicken, z.B. "1. Klasse" statt "1. KLASSE"
+
+[NOTE.speaker]
+--
+* Listen statt einzelner Werte
+* enums: weil wenn ich neue Werte schicke, kann ein Client darauf nicht reagieren und Fehler machen (z.B. 3. Klasse)
+* Strings, wenn ich einen String als Basis nehme um daraus etwas abzuleiten, oder nach einem bestimmten Pattern parse
+* in Sequencen plötzlich andere Reihenfolge von Attributen
+--
+
+=== Wie haben wir uns entschieden?
+
+[%step]
+* Pririorisierung:
+* 1. Services, die nach aussen gehen müssen versioniert sein
+* 2. Services, die von anderen Teams verwendet werden müssen versioniert sein
+* 3. Services, die teamintern verwendet werden, können versioniert sein (die versionieren wir nicht)
+
+
+include::_vermeiden_neuer_versionen.adoc[]
 
 == Welche Pattern kann ich für eine explizite Versionierung verwenden?
 
-[%step]
-* blah
+=== Mehrfaches Deployen eines Services
 
+[%step]
+* Wenn ein Service zwei Versionen implementiert, können einfach beide Versionen gestartet werden
+* Vorteile: funktioniert out of the box
+* Nachteile: Kosten und Skalierung des Services
+
+* DEMO
+
+=== Code duplizieren
+
+[%step]
+* Businesscode wird vollständig kopiert
+
+* DEMO
+
+
+=== Adapterpattern zwischen Versionen eines Services (Modelmapper)
+
+[%step]
+* TODO: Abbildung wie COnverter funktioniert
+* konvertiert zwischen einer alten Version zu einer neuen Version
+* Vorteil: für einfache Schnittstellen OK, da schnell aufgesetzt
+* Nachteil: Probleme bei Typhierachien
+* Nachteil: Automatismus des Mappings teilweise nicht durchschaubar
+* Nachteil: Manuelle Anpassungen am Mapping kompliziert
+* Nachteil: Teilweise Performanceprobleme
+* Nachteil: COnvertierung müsste getestet werden
+
+[NOTE.speaker]
+--
+* War unser erster Versuch (mit Modelmapper, dozer)
+--
+
+=== Adapterpattern zwischen Versionen eines Services (händisch)
+
+[%step]
+* TODO: Abbildung wie COnverter funktioniert
+* konvertiert zwischen einer alten Version zu einer neuen Version
+* Vorteil:  
+* Nachteil:
+
+* DEMO
+
+[NOTE.speaker]
+--
+* wir generieren den Mapper mit Javapoet und Java Reflektions
+* passen an, wenn generiertes Mapping nicht passt
+--
 
 == An welche Dinge, muss ich bei der expliziten Versionierung noch denken?
 
@@ -65,7 +218,18 @@ image::Schiene.jpg[background]
 * Material
 ** https://github.com/ehmkah/service_versioning_example
 ** https://www.meetup.com/de-DE/Hackergarten-Bern/
+**  Krausses Law
+** 1 - (0.9^(Anzahl der Operationen) * 0.9^(Anzahl der Types) * 0.9(Anzahl Changes) * 0.9^(Konsumenten mit unterschiedlichem Lifecycle)
+** 1 - (0.9^5 * 0.9^50 * 0.9^30 * 0.9^4) ==> 0.8 Wahrscheinlichkeit für eine breaking änderung)
 
+
+=== Extension material
+
+* http://blog.restcase.com/restful-api-versioning-insights/
+* https://www.troyhunt.com/your-api-versioning-is-wrong-which-is/
+* http://www.oracle.com/technetwork/articles/web-services-versioning-094384.html
+* https://www.ibm.com/developerworks/webservices/library/ws-version/#1
+* Service Design Patterns, robert daigneau
 
 
 
