@@ -117,6 +117,7 @@ image::expliziteVersionierung.png[background]
 === Was sind nicht rückwärtskompatible Änderungen bei SOAP & REST ?
 
 [%step]
+* Verändern des Endpoints (andere URI, anderer HOST)
 * löschen von Attributen in Datenstrukturen
 * umbennen von Attributen in Datenstrukturen
 * bei Requests Attribute von optional auf mandatory setzen
@@ -145,6 +146,23 @@ include::_vermeiden_neuer_versionen.adoc[]
 
 == Welche Pattern kann ich für eine explizite Versionierung verwenden?
 
+=== Anbieten des Services
+
+=== Verfügung stellen eines Services über die URI
+
+[%step]
+* Beispiel http://www.vertrieb.ch/v1/VertriebService
+* Beispiel http://www.vertrieb.ch/v2/VertriebService
+* Vorteile:  verwendebar für SOAP und REST
+* Nachteile: bei R
+
+=== Verschiedene Versionen über Versionsinformation in der Resource (REST)
+
+* TODO Beispiel
+* Beispiel
+
+=== Implementieren des Services
+
 === Mehrfaches Deployen eines Services
 
 [%step]
@@ -160,7 +178,6 @@ include::_vermeiden_neuer_versionen.adoc[]
 * Businesscode wird vollständig kopiert
 
 * DEMO
-
 
 === Adapterpattern zwischen Versionen eines Services (Modelmapper)
 
@@ -198,11 +215,16 @@ include::_vermeiden_neuer_versionen.adoc[]
 == An welche Dinge, muss ich bei der expliziten Versionierung noch denken?
 
 [%step]
-* blah
+* gibt es eine Übersicht welche Version meines Services noch genutzt wird? => bei uns : nein
+* kann während eines Prozesses die Version gewechselt werden? => bei uns : ja (kurzlebig)
+* Lifecycle der Versionen
 
-=== Service lifetime
+=== Service lifecycle
 
+* wenn mehrere Versionen zur Verfügung gestellt werden, mit dem CLienten schauen, ob es passt
+* hat bei uns zum Beispiel dafür geführt, dass wir vier Versionen auf einem Service unterstützen müssen
 * link:../../src/main/resources/visualizeServiceAvailablity.html[Blah]
+** verwenden von google draw
 
 == Zusammenfassung
 
