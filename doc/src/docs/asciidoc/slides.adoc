@@ -9,21 +9,18 @@ ifndef::sourcedir[:sourcedir: ../../main/java]
 == Tritt dem Hackergarten Bern bei!
 
 image::hackergartenLogo.jpeg[background]
-* dsahgkh
-
-== hello
-
-image::Schiene.jpg[background]
-* huh#
-* hudsa
-* dsahiu
-* dashi
-
+* Contributing to OpenSource Projekte
+* jeden zweiten Dienstag alle zwei Monate in der SBB Effigerstrasse
+* https://www.meetup.com/de-DE/Hackergarten-Bern/
 
 == Introduction
 
 [%step]
-* bl
+* Begrissdefinitionen
+* Benötige ich explizite Versionierung?
+* Wie vermeide ich explizite Serviceversionierung?
+* Mit welchen Pattern kann ich explizite Servierversionierung umsetzen?
+* Welche nicht technischen Aufgaben muss ich mit der expliziten Servieversionierung lösen?
 
 == Welche Begriffe werden in der Presentation verwendet?
 
@@ -52,12 +49,12 @@ image::expliziteVersionierung.png[background]
 * werden zwei Versionen einer Serviceschnittstelle angebunden, würde ich von expliziter Versionierung sprechen
 * Konsument kann sich aussuchen, mit welcher Version der Serviceschnittstelle er kommuniziert
 
-== Wie finde ich heraus, ob ich explizite Versionierung brauche?
+== Benötige ich explizite Versionierung?
 
 === Was spricht für explizite Serviceversionierung
 
 [%step]
-* Ziel: Konsumenten von Änderungne verschonen
+* Hauptgrund: Konsumenten von Änderungen verschonen
 * Ein nicht rückwärtskompatible Änderung ist nicht vermeidbar
 * Abgeschlossene Verträge mit Konsumenten
 * Unterschiedliche Lifecycle zwischen Service und Konsument
@@ -79,6 +76,32 @@ image::expliziteVersionierung.png[background]
 ** Ich weiss nicht, ob ich immer alle erreichen kann
 --
 
+=== Was spricht gegen explizite Serviceversionierung
+
+[%step]
+* Hauptgrund: Erhöht die Komplexität
+* es gibt nur einen Konsumenten, den ich steuern kann
+* Konsumenten sind von einem Service abhängig
+* Lebenszyklus Konsumenten und Service ist gleich
+* Ressourcenmangel
+* Änderungen können immer rückwärtskompatibel durchgeführt werden
+
+[NOTE.speaker]
+--
+* nur ein Konsument : Ich kann mit dem Konsumenten schauen, wie ich die Schnittstelle
+* Abhängig
+** wenn ein Abhängigkeitsverhältnis von Konsumenten zum Service besteht, kann ich das nutzen und nur eine Version anbietem
+** nicht sehr nett
+* lebenszyklus gleich
+** gleicher Lebenszyklus, es gehen beide gleichzeitig in Produktion
+** in unteren Umgebungen Test ist es OK, wenn der Service eine definierte Zeit nicht angebunden ist
+* Resourcenmangel
+** Es fehlen die Ressourcen, um zwei Versionen eines Services zur Verfügung zu stellen
+* rückwärtrskompatibel
+** Wenn Änderungen immer rückwärtskompatibel durchgeführt werden können, dann ist es nicht nötig mehrere Versionen zu haben
+** Beispiel ein sehr einfacher Service
+
+--
 
 == Wie vermeide ich explizite Versionierung?
 
