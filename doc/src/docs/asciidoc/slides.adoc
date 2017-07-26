@@ -54,10 +54,31 @@ image::expliziteVersionierung.png[background]
 
 == Wie finde ich heraus, ob ich explizite Versionierung brauche?
 
+=== Was spricht für explizite Serviceversionierung
+
 [%step]
-* Quark
-* This project does something.
-* We just haven't decided what that is yet.
+* Ziel: Konsumenten von Änderungne verschonen
+* Ein nicht rückwärtskompatible Änderung ist nicht vermeidbar
+* Abgeschlossene Verträge mit Konsumenten
+* Unterschiedliche Lifecycle zwischen Service und Konsument
+* Es sind nicht alle Konsumenten bekannt
+
+[NOTE.speaker]
+--
+* nicht vermeidbar: Abbau von Altlasten, Vereinfachungen, entfernen von Redundanzen
+* Konsumenten:
+** Integration eines Servies kann aufwendig sein mit
+** Verträgen können das Risiko reduziert werden, dass Konsument häufig integrieren muss
+** Verträge regeln, wie lange eine Version verfügbar sein muss (z.B. Schnittstelle SNCF: alle halbe Jahre migration notwendig)
+*  Unterschiedliche Lifecycle
+** Konsument und Service können nicht gleichzeitg aktualisiert werden
+** Beispiel Backendsysteme vom neuen Vertriebssystem und die vNext
+** Alte Version müssen unterstützt werden, weil Wechsel zu einem beliebigen Zeitpunkt erfolgen kann
+* Es sind nicht alle Konsumenten bekannt
+** Wenn nicht alle Konsumenten bekannt sind, können unterschiedliche Schnittstellenversionen von alten Konsumenten noch im Einsatz sein
+** Ich weiss nicht, ob ich immer alle erreichen kann
+--
+
 
 == Wie vermeide ich explizite Versionierung?
 
@@ -94,6 +115,11 @@ image::expliziteVersionierung.png[background]
 ** https://github.com/ehmkah/service_versioning_example
 ** https://www.meetup.com/de-DE/Hackergarten-Bern/
 
+=== Extension material
+
+* http://blog.restcase.com/restful-api-versioning-insights/
+* https://www.troyhunt.com/your-api-versioning-is-wrong-which-is/
+* http://www.oracle.com/technetwork/articles/web-services-versioning-094384.html
 
 
 
