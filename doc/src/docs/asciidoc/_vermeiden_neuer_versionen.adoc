@@ -7,7 +7,6 @@
 * Tests laufen automatisiert bei ausgewählten Builds mit
 * Tests erlauben Validierung der Struktur und des Inhalts
 * wenn alle Konsumentne solche Tests zur Verfügung stellen, kann Service sich so lange verändern, wie nichts kaputt geht
-
 * DEMO [pact für REST]
 * DEMO [Schematron für SOAP]
 * https://martinfowler.com/articles/consumerDrivenContracts.html
@@ -18,6 +17,7 @@
 * wenn nicht rückwärtskompatible Änderungen auftreten ist die gesamte Schnittstelle betroffen
 * grosse Schnittstellen haben die Tendenz, dass es Bereiche gibt, die sich nicht ändern
 * umso kleiner die Schnittstelle, umso weniger weit kann sich eine nicht kompatible Änderung auswirken
+
 [NOTE.speaker]
 --
 * Wir haben den Fehler gemacht, dass wir unsere Schnittstellen nicht klein genug gebaut haben

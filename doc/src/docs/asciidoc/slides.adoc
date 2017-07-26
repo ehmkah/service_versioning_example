@@ -145,9 +145,55 @@ include::_vermeiden_neuer_versionen.adoc[]
 
 == Welche Pattern kann ich für eine explizite Versionierung verwenden?
 
-[%step]
-* blah
+=== Mehrfaches Deployen eines Services
 
+[%step]
+* Wenn ein Service zwei Versionen implementiert, können einfach beide Versionen gestartet werden
+* Vorteile: funktioniert out of the box
+* Nachteile: Kosten und Skalierung des Services
+
+* DEMO
+
+=== Code duplizieren
+
+[%step]
+* Businesscode wird vollständig kopiert
+
+* DEMO
+
+
+=== Adapterpattern zwischen Versionen eines Services (Modelmapper)
+
+[%step]
+* TODO: Abbildung wie COnverter funktioniert
+* konvertiert zwischen einer alten Version zu einer neuen Version
+* Vorteil: für einfache Schnittstellen OK, da schnell aufgesetzt
+* Nachteil: Probleme bei Typhierachien
+* Nachteil: Automatismus des Mappings teilweise nicht durchschaubar
+* Nachteil: Manuelle Anpassungen am Mapping kompliziert
+* Nachteil: Teilweise Performanceprobleme
+* Nachteil: COnvertierung müsste getestet werden
+
+[NOTE.speaker]
+--
+* War unser erster Versuch (mit Modelmapper, dozer)
+--
+
+=== Adapterpattern zwischen Versionen eines Services (händisch)
+
+[%step]
+* TODO: Abbildung wie COnverter funktioniert
+* konvertiert zwischen einer alten Version zu einer neuen Version
+* Vorteil:  
+* Nachteil:
+
+* DEMO
+
+[NOTE.speaker]
+--
+* wir generieren den Mapper mit Javapoet und Java Reflektions
+* passen an, wenn generiertes Mapping nicht passt
+--
 
 == An welche Dinge, muss ich bei der expliziten Versionierung noch denken?
 
@@ -172,6 +218,10 @@ include::_vermeiden_neuer_versionen.adoc[]
 * Material
 ** https://github.com/ehmkah/service_versioning_example
 ** https://www.meetup.com/de-DE/Hackergarten-Bern/
+**  Krausses Law
+** 1 - (0.9^(Anzahl der Operationen) * 0.9^(Anzahl der Types) * 0.9(Anzahl Changes) * 0.9^(Konsumenten mit unterschiedlichem Lifecycle)
+** 1 - (0.9^5 * 0.9^50 * 0.9^30 * 0.9^4) ==> 0.8 Wahrscheinlichkeit für eine breaking änderung)
+
 
 === Extension material
 
