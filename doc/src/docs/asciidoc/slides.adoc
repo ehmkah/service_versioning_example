@@ -51,7 +51,7 @@ image::expliziteVersionierung.png[background]
 
 == Benötige ich explizite Versionierung?
 
-=== Was spricht für explizite Serviceversionierung
+=== Was spricht für explizite Serviceversionierung?
 
 [%step]
 * Hauptgrund: Konsumenten von Änderungen verschonen
@@ -76,7 +76,7 @@ image::expliziteVersionierung.png[background]
 ** Ich weiss nicht, ob ich immer alle erreichen kann
 --
 
-=== Was spricht gegen explizite Serviceversionierung
+=== Was spricht gegen explizite Serviceversionierung?
 
 [%step]
 * Hauptgrund: Erhöht die Komplexität
@@ -100,7 +100,35 @@ image::expliziteVersionierung.png[background]
 * rückwärtrskompatibel
 ** Wenn Änderungen immer rückwärtskompatibel durchgeführt werden können, dann ist es nicht nötig mehrere Versionen zu haben
 ** Beispiel ein sehr einfacher Service
+--
 
+=== Welche Änderungen können nicht rückwärtskompatibl sein (SOAP)?
+
+[%step]
+* entfernen und umbennen von Operationen
+* verändern (Reihenfolge oder Typen) der Parameter in Operationen
+
+[NOTE.speaker]
+--
+* KÖNNEN, weil ich im Moment der Anpassung nicht weiss, ob der Teil den ich ändere tatsächlich von einem Konsumenten genutzt wird
+* wir haben eine SOAP und REST Welt
+--
+
+=== Was sind nicht rückwärtskompatible Änderungen bei SOAP & REST ?
+
+[%step]
+* löschen von Attributen in Datenstrukturen
+* umbennen von Attributen in Datenstrukturen
+* bei Requests Attribute von optional auf mandatory setzen
+* bei Antworten Attribute von mandatory auf optional setzen
+* bei enums hinzufügen/löschen von Werten
+* bei Strings, andere Werte zurückschicken, z.B. "1. Klasse" statt "1. KLASSE"
+
+[NOTE.speaker]
+--
+* Listen statt einzelner Werte
+* enums: weil wenn ich neue Werte schicke, kann ein Client darauf nicht reagieren und Fehler machen (z.B. 3. Klasse)
+* Strings, wenn ich einen String als Basis nehme um daraus etwas abzuleiten, oder nach einem bestimmten Pattern parse
 --
 
 == Wie vermeide ich explizite Versionierung?
@@ -143,6 +171,7 @@ image::expliziteVersionierung.png[background]
 * http://blog.restcase.com/restful-api-versioning-insights/
 * https://www.troyhunt.com/your-api-versioning-is-wrong-which-is/
 * http://www.oracle.com/technetwork/articles/web-services-versioning-094384.html
+* https://www.ibm.com/developerworks/webservices/library/ws-version/#1
 
 
 
