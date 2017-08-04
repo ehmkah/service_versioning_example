@@ -10,8 +10,8 @@
     </parent>
 
     <groupId>de.ehmkah.projects</groupId>
-    <artifactId>rest_service_impl_v1</artifactId>
-    <name>rest_service_impl_v1</name>
+    <artifactId>rest_service_impl_media_type_versioning</artifactId>
+    <name>rest_service_impl_media_type_versioning</name>
     <properties>
         <springboot.version>1.5.4.RELEASE</springboot.version>
     </properties>

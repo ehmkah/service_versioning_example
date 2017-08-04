@@ -27,7 +27,7 @@
         <module>soap_service_impl_v2</module>
 
         <!-- rest implementation -->
-        <module>rest_service_impl_v1</module>
+        <module>rest_service_impl_media_type_versioning</module>
 
 
         <!-- documentation -->
