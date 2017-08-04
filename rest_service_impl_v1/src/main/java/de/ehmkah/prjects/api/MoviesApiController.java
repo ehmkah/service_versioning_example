@@ -15,17 +15,7 @@ import java.util.List;
 @RequestMapping("/movies")
 public class MoviesApiController implements MoviesApi {
 
-  public MoviesApiController() {
-    System.out.println("HU");
-  }
-
-  //@RequestMapping(method = RequestMethod.GET)
-  //@ResponseBody
-  //public List<Movie> findAll() {
-  //
-  //}
-
-  @RequestMapping(method = RequestMethod.GET, produces = "application/vnd.company.app-1.0+json")
+  @RequestMapping(method = RequestMethod.GET, produces = "application/vnd.ehmkah.app-1.0+json")
   public ResponseEntity<List<Movie>> findMovies(
           @ApiParam(value = "Tags used to filter the result")
           @RequestParam(value = "tags", required = false) List<String> tags,
@@ -39,7 +29,7 @@ public class MoviesApiController implements MoviesApi {
     return result;
   }
 
-  @RequestMapping(method = RequestMethod.GET, produces = "application/vnd.company.app-2.0+json")
+  @RequestMapping(method = RequestMethod.GET, produces = "application/vnd.ehmkah.app-2.0+json")
   public ResponseEntity<List<Movie>> findMovies2(
           @ApiParam(value = "Tags used to filter the result")
           @RequestParam(value = "tags", required = false) List<String> tags,
