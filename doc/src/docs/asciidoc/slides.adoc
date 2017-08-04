@@ -154,15 +154,21 @@ include::_vermeiden_neuer_versionen.adoc[]
 === Verfügung stellen eines Services über die URI
 
 [%step]
+* URI Versioning –
 * Beispiel http://www.vertrieb.ch/v1/VertriebService
 * Beispiel http://www.vertrieb.ch/v2/VertriebService
 * Vorteile:  verwendebar für SOAP und REST
-* Nachteile: bei R
+* Nachteile: für rest entsteht neuer riseiger Baum an Ressourcen
+* Nachteile: resourcen können sihc nicht separat entwickeln (all or nothing)
+* Nachteil: siehe http://www.baeldung.com/rest-versioning
 
 === Verschiedene Versionen über Versionsinformation in der Resource (REST)
 
+* Media Type Versioning
 * TODO Beispiel
 * Beispiel
+* passt nicht 406 Not Acceptable
+* "Accept": "application/vnd.myname.v2+json"
 
 === Implementieren des Services
 

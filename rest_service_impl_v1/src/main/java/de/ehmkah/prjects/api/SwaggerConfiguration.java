@@ -22,9 +22,11 @@ public class SwaggerConfiguration {
     return new Docket(DocumentationType.SWAGGER_2)
             .apiInfo(apiInfo())
             .select()
-            .apis(RequestHandlerSelectors.any())
-            .paths(PathSelectors.any())
-            .build();
+              .apis(RequestHandlerSelectors.any())
+              .paths(PathSelectors.any())
+              .build()
+            .pathMapping("/");
+    
   }
 
   private ApiInfo apiInfo() {
