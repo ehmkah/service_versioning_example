@@ -49,6 +49,9 @@ image::expliziteVersionierung.png[background]
 * werden zwei Versionen einer Serviceschnittstelle angebunden, würde ich von expliziter Versionierung sprechen
 * Konsument kann sich aussuchen, mit welcher Version der Serviceschnittstelle er kommuniziert
 
+
+== Abgrenzung
+* nicht für Prozessengine, sondern alles selbst gebaut
 == Benötige ich explizite Versionierung?
 
 === Was spricht für explizite Serviceversionierung?
@@ -211,6 +214,9 @@ include::_vermeiden_neuer_versionen.adoc[]
 * wir generieren den Mapper mit Javapoet und Java Reflektions
 * passen an, wenn generiertes Mapping nicht passt
 --
+
+=== Soap Message dispatcher?
+und noch so nen anderes Ding von IBM /ORacle???
 
 == An welche Dinge, muss ich bei der expliziten Versionierung noch denken?
 

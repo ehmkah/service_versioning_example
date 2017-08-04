@@ -13,10 +13,16 @@
         <module>soap_service_api_v1</module>
         <module>soap_service_api_v2</module>
 
+        <module>rest_service_api_v1</module>
+
         <!-- service implementations -->
         <!-- standalone implementations -->
         <module>soap_service_impl_v1</module>
         <module>soap_service_impl_v2</module>
+
+        <!-- rest implementation -->
+        <module>rest_service_impl_v1</module>
+
 
         <!-- documentation -->
         <module>doc</module>
