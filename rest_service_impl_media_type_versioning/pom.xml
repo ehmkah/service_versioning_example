@@ -24,6 +24,11 @@
             <artifactId>rest_service_api_v1</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>de.ehmkah.projects</groupId>
+            <artifactId>rest_service_api_v2</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

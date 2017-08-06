@@ -20,6 +20,7 @@
         <module>soap_service_api_v2</module>
 
         <module>rest_service_api_v1</module>
+        <module>rest_service_api_v2</module>
 
         <!-- service implementations -->
         <!-- standalone implementations -->

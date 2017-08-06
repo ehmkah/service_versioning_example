@@ -1,0 +1,57 @@
+swagger: "2.0"            # Swagger version
+
+info:                     # This object provides metadata about the API.
+  version: 2.0.0
+  title: Movie Store
+  description: A simple Movie Store API
+
+basePath: /api            # Path relative to which all API calls will be made
+
+
+paths:
+  /movies:
+    get:
+      description: Returns all movies from the system
+      operationId: findMovies
+      parameters:
+      - name: tags
+        in: query
+        description: Tags used to filter the result
+        required: false
+        type: array
+        items:
+          type: string
+        collectionFormat: csv
+      - name: limit
+        in: query
+        description: maximum number of results to return
+        required: false
+        type: integer
+        format: int32
+      responses:
+        '200':
+          description: A list of movies
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Movie'
+
+definitions:
+  Movie:
+    type: object
+    properties:
+      movie_id:
+        type: string
+        description: Unique identifier representing a specific Movie.
+      title:
+        type: string
+        description: Title of the movie.
+      description:
+        type: string
+        description: Description of the movie.
+      rating:
+        type: number
+        description: Rating of the movie.
+      image:
+        type: string
+        description: Image URL containing the movie poster.

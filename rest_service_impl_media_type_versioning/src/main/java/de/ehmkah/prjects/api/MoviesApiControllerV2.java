@@ -1,7 +1,7 @@
 package de.ehmkah.prjects.api;
 
+import de.ehmkah.v2.Movie;
 import io.swagger.annotations.ApiParam;
-import io.swagger.model.Movie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
