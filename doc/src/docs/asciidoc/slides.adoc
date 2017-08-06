@@ -6,12 +6,12 @@ Michael Krausse <m@m-krausse.de
 ifndef::imagesdir[:imagesdir: images]
 ifndef::sourcedir[:sourcedir: ../../main/java]
 
-== Tritt dem Hackergarten Bern bei!
-
-image::hackergartenLogo.jpeg[background]
-* Contributing to OpenSource Projekte
-* jeden zweiten Dienstag alle zwei Monate in der SBB Effigerstrasse
-* https://www.meetup.com/de-DE/Hackergarten-Bern/
+//== Tritt dem Hackergarten Bern bei!
+//
+//image::hackergartenLogo.jpeg[background]
+//* Contributing to OpenSource Projekte
+//* jeden zweiten Dienstag alle zwei Monate in der SBB Effigerstrasse
+//* https://www.meetup.com/de-DE/Hackergarten-Bern/
 
 == Introduction
 
@@ -187,6 +187,16 @@ include::_vermeiden_neuer_versionen.adoc[]
 * Businesscode wird vollständig kopiert
 
 * DEMO
+
+=== Adapterpattern zwischen Service Versionen (Klassendiagramm)
+
+image::classDiagramConverter.png[background]
+
+=== Adapterpattern zwischen Service Versionen (Sequenzdiagram)
+
+image::sequenceConverter.png[background]
+
+
 
 === Adapterpattern zwischen Versionen eines Services (Modelmapper)
 
