@@ -22,10 +22,17 @@
         <module>rest_service_api_v1</module>
         <module>rest_service_api_v2</module>
 
+        <!-- contract testing -->
+        <module>rest_service_impl_contract_test</module>
+
+
         <!-- service implementations -->
         <!-- standalone implementations -->
         <module>soap_service_impl_v1</module>
         <module>soap_service_impl_v2</module>
+
+        <!-- adapter implementations -->
+        <module>soap_service_impl_adapter_modelmapper</module>
 
         <!-- rest implementation -->
         <module>rest_service_impl_media_type_versioning</module>

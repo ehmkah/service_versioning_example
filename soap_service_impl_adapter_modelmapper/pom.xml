@@ -10,7 +10,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.ehmkah.projects</groupId>
-    <artifactId>soap_service_impl_v2</artifactId>
+    <artifactId>soap_service_impl_adapter_modelmapper</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
         <springboot.version>1.5.4.RELEASE</springboot.version>
@@ -36,6 +36,10 @@
         <dependency>
             <groupId>de.ehmkah.projects</groupId>
             <artifactId>soap_service_api_v2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.ehmkah.projects</groupId>
+            <artifactId>soap_service_api_v1</artifactId>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>

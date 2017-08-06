@@ -7,9 +7,26 @@
 * Tests laufen automatisiert bei ausgewählten Builds mit
 * Tests erlauben Validierung der Struktur und des Inhalts
 * wenn alle Konsumentne solche Tests zur Verfügung stellen, kann Service sich so lange verändern, wie nichts kaputt geht
-* DEMO [pact für REST]
+
 * DEMO [Schematron für SOAP]
 * https://martinfowler.com/articles/consumerDrivenContracts.html
+
+=== Consumer Driven Contract Tests (PACT)
+
+* Client schreibt, was er erwartet in einen Mockserver
+* Client schreibt Test, dieser generiert eine "pact" Datei
+* Pact Datei wird dem Service zur Verfügung gestellt
+* Service führt die Pact Datei aus
+* TODO : wie kann ich ein kleineres JSON verwenden, als das volle
+
+=== Consumer Driven Contract Tests (PACT, DEMO)
+
+* Schreiben eines Consumenten
+* Starten des Tests
+* Datei kopieren
+* Spring boot starten
+* änderungen an Servicedefinition vornehmen
+* schauen, ob der Test noch läuft
 
 === Kleine Schnittstellen
 

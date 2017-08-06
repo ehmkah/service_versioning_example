@@ -1,0 +1,4 @@
+= Example for consumer driven contract Test with pact
+
+* shows an example how to implement consumer driven contract test with pact
+* pact is used
