@@ -139,7 +139,7 @@ image::expliziteVersionierung.png[background]
 === Wie haben wir uns entschieden?
 
 [%step]
-* Pririorisierung:
+* Priorisierung:
 * 1. Services, die nach aussen gehen müssen versioniert sein
 * 2. Services, die von anderen Teams verwendet werden müssen versioniert sein
 * 3. Services, die teamintern verwendet werden, können versioniert sein (die versionieren wir nicht)
@@ -191,6 +191,13 @@ include::_vermeiden_neuer_versionen.adoc[]
 === Adapterpattern zwischen Service Versionen (Klassendiagramm)
 
 image::classDiagramConverter.png[background]
+
+[%step]
+* empfholen ein reichhaltiges Domainmodel bei grossen Schnittstellen AKA AKM!!), das nicht nach aussen gegeben wird
+* muss vollständig sein (vereinfacht die Unterstüzung verschiedener Version immens)
+* besonders nützlich beim löschen, da bei Konvertierung auf neue Schnittstellenversion Informationen gelöscht werden
+können
+
 
 === Adapterpattern zwischen Service Versionen (Sequenzdiagram)
 
