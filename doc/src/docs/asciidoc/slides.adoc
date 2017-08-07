@@ -1,4 +1,5 @@
 = Explizite Serviceversionierung ist möglich
+
 Michael Krausse <m@m-krausse.de
 2017-09-07
 :revnumber: {project-version}
@@ -13,14 +14,18 @@ ifndef::sourcedir[:sourcedir: ../../main/java]
 //* jeden zweiten Dienstag alle zwei Monate in der SBB Effigerstrasse
 //* https://www.meetup.com/de-DE/Hackergarten-Bern/
 
+== .
+
+image::preview.jpg[background]
+
 == Introduction
 
 [%step]
-* Begrissdefinitionen
+* Welche Begriffe werden in der Presentation verwendet?
 * Benötige ich explizite Versionierung?
 * Wie vermeide ich neue Serviceversionen?
-* Mit welchen Pattern kann ich explizite Servierversionierung umsetzen?
-* Welche nicht technischen Aufgaben muss ich mit der expliziten Servieversionierung lösen?
+* Mit welchen Pattern kann ich explizite Servicerversionierung umsetzen?
+* Welche nicht technischen Aufgaben muss ich mit der expliziten Serviceversionierung lösen?
 
 == Welche Begriffe werden in der Presentation verwendet?
 
@@ -52,6 +57,7 @@ image::expliziteVersionierung.png[background]
 
 == Abgrenzung
 * nicht für Prozessengine, sondern alles selbst gebaut
+
 == Benötige ich explizite Versionierung?
 
 === Was spricht für explizite Serviceversionierung?

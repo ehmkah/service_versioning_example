@@ -3,6 +3,8 @@
 === Consumer Driven Contract Tests
 
 [%step]
+* Geld und Zeit sparen:
+** wenn erstellen einer neuen Version zwei Tage dauert, und ich durch einen Test herausfinden kann, dass ich die Änderung durchführen kann ohne eine neue Version zu erstellen, dann spare ich zweit Tage (dann sollten die Tests), die Kosten für die Clientanpassungen (mindestens Endpoints nicht einberechnet), ausserdem erlecihtert es die Kommunikation, wer was anpassen muss
 * Konsumenten stellen Tests zur Verfügung, die ihre Erwartungen an den Service enthalten
 * Tests laufen automatisiert bei ausgewählten Builds mit
 * Tests erlauben Validierung der Struktur und des Inhalts
@@ -27,6 +29,12 @@
 * Spring boot starten
 * änderungen an Servicedefinition vornehmen
 * schauen, ob der Test noch läuft
+* TODO : Pact Repository???? (da können die Consumenten Ihre Tests hochladen)
+
+=== Consumer Driven Contract Test (Pact Broker)
+
+* Tool erlaubt die einfache Verwaltung der Pacts
+* nicht suprobiert
 
 === Kleine Schnittstellen
 
@@ -34,6 +42,7 @@
 * wenn nicht rückwärtskompatible Änderungen auftreten ist die gesamte Schnittstelle betroffen
 * grosse Schnittstellen haben die Tendenz, dass es Bereiche gibt, die sich nicht ändern
 * umso kleiner die Schnittstelle, umso weniger weit kann sich eine nicht kompatible Änderung auswirken
+
 [NOTE.speaker]
 --
 * Wir haben den Fehler gemacht, dass wir unsere Schnittstellen nicht klein genug gebaut haben
