@@ -7,7 +7,7 @@
 
     <types>
         <xs:schema targetNamespace="http://ehmkah.com/services/gardening" elementFormDefault="qualified">
-            <xs:element name="request">
+            <xs:element name="requestType">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element name="speciesOne" type="xs:string"/>
@@ -16,7 +16,7 @@
                 </xs:complexType>
             </xs:element>
 
-            <xs:element name="response">
+            <xs:element name="responseType">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element name="areGoodNeighbours" type="xs:string"/>
@@ -28,10 +28,10 @@
     </types>
 
     <message name="checkNeighboursRequest">
-        <part name="request" element="gardening:request"/>
+        <part name="request" element="gardening:requestType"/>
     </message>
     <message name="checkNeighboursResponse">
-        <part name="response" element="gardening:response"/>
+        <part name="response" element="gardening:responseType"/>
     </message>
 
     <portType name="Wsgardening">

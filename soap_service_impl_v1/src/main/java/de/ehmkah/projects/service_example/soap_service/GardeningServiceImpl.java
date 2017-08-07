@@ -1,9 +1,9 @@
 package de.ehmkah.projects.service_example.soap_service;
 
 
-import com.ehmkah.services.gardening.Request;
-import com.ehmkah.services.gardening.Response;
 import de.ehmkah.projects.service_example.soap_service.domain.NeigbhbourCheckService;
+import de.ehmkah.projects.service_versioning_example.soap.v1.RequestType;
+import de.ehmkah.projects.service_versioning_example.soap.v1.ResponseType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -23,8 +23,8 @@ public class GardeningServiceImpl {
 
   @PayloadRoot(namespace = NAMESPACE_URI, localPart = "request")
   @ResponsePayload
-  public Response checkNeighbours(@RequestPayload Request parameters) {
-    Response result = new Response();
+  public ResponseType checkNeighbours(@RequestPayload RequestType parameters) {
+    ResponseType result = new ResponseType();
 
     String checkResult = neigbhbourCheckService.areGood(parameters.getSpeciesOne(), parameters.getSpeciesTwo());
     result.setAreGoodNeighbours(checkResult);

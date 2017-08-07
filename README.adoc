@@ -1,8 +1,14 @@
-= README
+== README
 
 * This is an example project for service-versioning.
 
 * See /doc/resources/README.md for further details
+
+
+== TODO
+
+* package de.ehmkah.projects.service_versioning_example
+
 
 
 
