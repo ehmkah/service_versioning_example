@@ -2,7 +2,6 @@ package de.ehmkah.projects.service_example.soap_service;
 
 import com.ehmkah.services.gardening.ResponseType;
 import de.ehmkah.projects.service_versioning_example.soap.v1.RequestType;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,16 +10,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class ConverterV1ToCurrent {
 
-  private ModelMapper modelMapper = new ModelMapper();
 
   public com.ehmkah.services.gardening.RequestType map(RequestType requestV1) {
-    com.ehmkah.services.gardening.RequestType result = modelMapper.map(requestV1, com.ehmkah.services.gardening.RequestType.class);
+    com.ehmkah.services.gardening.RequestType result = new com.ehmkah.services.gardening.RequestType();
+    result.setSpeciesOne(requestV1.getSpeciesOne());
+    result.setSpeciesTwo(requestV1.getSpeciesTwo());
 
     return result;
   }
 
   public de.ehmkah.projects.service_versioning_example.soap.v1.ResponseType map(ResponseType responseTypeCurrent) {
-    de.ehmkah.projects.service_versioning_example.soap.v1.ResponseType result = modelMapper.map(responseTypeCurrent, de.ehmkah.projects.service_versioning_example.soap.v1.ResponseType.class);
+    de.ehmkah.projects.service_versioning_example.soap.v1.ResponseType result = new de.ehmkah.projects.service_versioning_example.soap.v1.ResponseType();
+    result.setAreGoodNeighbours(responseTypeCurrent.getAreGoodNeighbours());
 
     return result;
   }
