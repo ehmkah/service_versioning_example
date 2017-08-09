@@ -5,7 +5,7 @@
 . Einen einfachen Service auswählen
 . Ein Pattern auswählen und implementieren
 . Ausprobieren
-. dem Hackergarten Bern beitreten
+//. dem Hackergarten Bern beitreten
 
 == Vielen Dank
 

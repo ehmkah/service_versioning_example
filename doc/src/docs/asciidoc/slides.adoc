@@ -18,6 +18,9 @@ ifndef::sourcedir[:sourcedir: ../../main/java]
 
 image::preview.jpg[background]
 
+[%steps]
+* keine interactiven Demos (dann in der finalen Version)
+
 include::_introduction.adoc[]
 
 include::_begriffsdefinition.adoc[]

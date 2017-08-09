@@ -25,6 +25,16 @@ image::expliziteVersionierung.png[background]
 * zwei Versionen einer Serviceschnittstelle verfügbar
 * Konsument wählt Version mit der er kommuniziert
 
+=== Projektbeschreibung für Demos
+
+image::projectOverview.png[background]
+
+[NOTE.speaker]
+--
+* Beschreibung, was in den Projekten drin ist
+* ermuntern mit den Sourcen zu arbeiten
+--
+
 
 == Abgrenzung
 
