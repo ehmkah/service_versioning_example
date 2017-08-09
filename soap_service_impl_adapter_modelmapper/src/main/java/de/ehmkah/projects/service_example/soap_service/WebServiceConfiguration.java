@@ -1,5 +1,10 @@
 package de.ehmkah.projects.service_example.soap_service;
 
+import de.ehmkah.projects.service_versioning_example.soap.v1.Wsgardening;
+import org.apache.cxf.bus.spring.SpringBus;
+import org.apache.cxf.jaxws.EndpointImpl;
+import org.apache.cxf.transport.servlet.CXFServlet;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +16,8 @@ import org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition;
 import org.springframework.ws.wsdl.wsdl11.Wsdl11Definition;
 import org.springframework.xml.xsd.SimpleXsdSchema;
 
+import javax.xml.ws.Endpoint;
+
 /**
  * @author Michael Krausse (ehmkah)
  */
@@ -18,38 +25,62 @@ import org.springframework.xml.xsd.SimpleXsdSchema;
 @Configuration
 public class WebServiceConfiguration {
 
-  @Bean
-  public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {
-    MessageDispatcherServlet servlet = new MessageDispatcherServlet();
-    servlet.setApplicationContext(applicationContext);
-    servlet.setTransformWsdlLocations(true);
-    return new ServletRegistrationBean(servlet, "/ws/*");
+  @Autowired
+  private Wsgardening gardeningServiceV1;
+
+  @Bean(name="cxf")
+  public SpringBus springBus() {
+    return new SpringBus();
   }
 
-  @Bean(name = "service")
-  public Wsdl11Definition defaultWsdl11Definition() {
-    SimpleWsdl11Definition wsdl11Definition = new SimpleWsdl11Definition();
-    wsdl11Definition.setWsdl(new ClassPathResource("/wsdl/serviceDefinitionV2.wsdl"));
+//  @Bean
+//  public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {
+//    MessageDispatcherServlet servlet = new MessageDispatcherServlet();
+//    servlet.setApplicationContext(applicationContext);
+//    servlet.setTransformWsdlLocations(true);
+//    return new ServletRegistrationBean(servlet, "/ws/*");
+//  }
+//
+//  @Bean(name = "service")
+//  public Wsdl11Definition defaultWsdl11Definition() {
+//    SimpleWsdl11Definition wsdl11Definition = new SimpleWsdl11Definition();
+//    wsdl11Definition.setWsdl(new ClassPathResource("/wsdl/serviceDefinitionV2.wsdl"));
+//
+//    return wsdl11Definition;
+//  }
+//
+//  @Bean(name = "types")
+//  public SimpleXsdSchema xsdTypes() {
+//    SimpleXsdSchema result = new SimpleXsdSchema(new ClassPathResource("/wsdl/types.xsd"));
+//
+//    return result;
+//  }
 
-    return wsdl11Definition;
-  }
-
-  @Bean(name = "types")
-  public SimpleXsdSchema xsdTypes() {
-    SimpleXsdSchema result = new SimpleXsdSchema(new ClassPathResource("/wsdl/types.xsd"));
-
-    return result;
-  }
-
-  @Bean(name = "serviceV1")
+ /** @Bean(name = "serviceV1")
   public Wsdl11Definition defaultWsdl11DefinitionV1() {
     SimpleWsdl11Definition wsdl11Definition = new SimpleWsdl11Definition();
     wsdl11Definition.setWsdl(new ClassPathResource("/wsdl/serviceDefinitionV1.wsdl"));
 
     return wsdl11Definition;
+  } **/
+
+
+
+  @Bean("endpointServiceV1")
+  public Endpoint serviceV1Endpoint(SpringBus springBus) {
+    EndpointImpl result = new EndpointImpl(springBus, gardeningServiceV1);
+    result.setWsdlLocation("classpath:/wsdl/serviceDefinitionV1.wsdl");
+    result.publish("/v1/service");
+
+    return result;
   }
 
-
-
+  @Bean
+  public ServletRegistrationBean servletRegistrationBean() {
+    String url = "/overview/*";
+    ServletRegistrationBean result = new ServletRegistrationBean(new CXFServlet(), url);
+    result.setLoadOnStartup(1);
+    return result;
+  }
 
 }
