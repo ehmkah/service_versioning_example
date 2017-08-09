@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class ConverterV1ToCurrent {
 
-
   public com.ehmkah.services.gardening.RequestType map(RequestType requestV1) {
     com.ehmkah.services.gardening.RequestType result = new com.ehmkah.services.gardening.RequestType();
     result.setSpeciesOne(requestV1.getSpeciesOne());

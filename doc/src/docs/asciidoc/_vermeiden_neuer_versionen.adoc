@@ -75,7 +75,7 @@ image:grosseSchnittstelle03.png[]
 * DEMO [REST]
 ** Zeigen, was passiert, wenn ein XML mit mehr Daten geschickt wird
 
-DEMO [REST]
+* DEMO [REST]
 ** Zeigen was passiert, wenn ein JSON mit mehr Daten geschickt wird
 
 [NOTE.speaker]
