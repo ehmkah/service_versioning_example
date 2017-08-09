@@ -1,40 +1,95 @@
-== Wie vermeide ich neue Versionen?
+== Wie vermeide ich neue Serviceversionen?
+
+[%step]
+* Ziel: Vermeiden neuer Serviceversionen
+* Grund: Kosten und Komplexität reduzieren
+
+[NOTE.speaker]
+--
+* neue Version nur bei nicht rückwärtskompatiblen Änderungne notwendig
+* eine neue Version unseres wichtigsten Services kostet uns 2 Tage
+* wenn ich Techniken kenne, die verhindern, dass ich neue Version brauche. spare ich Zeit und Geld
+--
+
+=== Postels Law
+
+[quote, Jon Postel]
+Be conservative in what you send, be liberal in what you accept.
+
+=== Postels Law
+
+[%step]
+* Tolerant Reader
+* Manificient Writer
+
+[NOTE.speaker]
+--
+* Magnificient Writer : Kurzform, ich schicke nichts, breakendes, und sichere das technisch ab
+* Tolerant Reader: Ignoreiren von unbekannten Elementen, keine Validierung des WSDLS
+* Wir machen das zum Beispiel, wenn wir unseren Vertriebsservice vnext zur Verfügung stellen
+* Die WSG validiert die Anfragen und Anfragen gegen kein Schema
+* Validierung gegen das WSDL ausschalten (erlaubt, dass ältere Versionen verwendet werden können
+--
 
 === Consumer Driven Contract Tests
 
 [%step]
-* Geld und Zeit sparen:
-** wenn erstellen einer neuen Version zwei Tage dauert, und ich durch einen Test herausfinden kann, dass ich die Änderung durchführen kann ohne eine neue Version zu erstellen, dann spare ich zweit Tage (dann sollten die Tests), die Kosten für die Clientanpassungen (mindestens Endpoints nicht einberechnet), ausserdem erlecihtert es die Kommunikation, wer was anpassen muss
-* Konsumenten stellen Tests zur Verfügung, die ihre Erwartungen an den Service enthalten
-* Tests laufen automatisiert bei ausgewählten Builds mit
-* Tests erlauben Validierung der Struktur und des Inhalts
-* wenn alle Konsumentne solche Tests zur Verfügung stellen, kann Service sich so lange verändern, wie nichts kaputt geht
+* Konsumenten definieren Erwartung in Tests
+* Tests laufen beim Serviceanbieter automatisiert mit
+* Tests validierung Struktur und Inhalts
+* Nach Änderung kein Test kaputt => keine neue Servieversion
+* https://martinfowler.com/articles/consumerDrivenContracts.html[Definition]
 
-* DEMO [Schematron für SOAP]
-* https://martinfowler.com/articles/consumerDrivenContracts.html
+[NOTE.speaker]
+--
+ wenn erstellen einer neuen Version zwei Tage dauert, und ich durch einen Test herausfinden kann, dass ich die Änderung durchführen kann ohne eine neue Version zu erstellen, dann spare ich zweit Tage (dann sollten die Tests), die Kosten für die Clientanpassungen (mindestens Endpoints nicht einberechnet), ausserdem erlecihtert es die Kommunikation, wer was anpassen muss
+--
+
+=== * DEMO [Schematron für SOAP]
+
+*  vielleicht am DevDay fertig, wenn es neue Erkenntnisse liefert
 
 === Consumer Driven Contract Tests (PACT)
 
+image:consumerPact.png[]
+
+[NOTE.speaker]
+--
 * Client schreibt, was er erwartet in einen Mockserver
 * Client schreibt Test, dieser generiert eine "pact" Datei
+* TODO : wie kann ich ein kleineres JSON verwenden, als das volle
+--
+
+=== Consumer Driven Contract Tests (PACT)
+
+image:producerPact.png[]
+
+[NOTE.speaker]
+--
 * Pact Datei wird dem Service zur Verfügung gestellt
 * Service führt die Pact Datei aus
-* TODO : wie kann ich ein kleineres JSON verwenden, als das volle
+--
 
-=== Consumer Driven Contract Tests (PACT, DEMO)
+=== Consumer Driven Contract Tests (PACT)
 
+* DEMO
+
+[NOTE.speaker]
+--
 * Schreiben eines Consumenten
 * Starten des Tests
 * Datei kopieren
 * Spring boot starten
 * änderungen an Servicedefinition vornehmen
 * schauen, ob der Test noch läuft
-* TODO : Pact Repository???? (da können die Consumenten Ihre Tests hochladen)
+--
 
-=== Consumer Driven Contract Test (Pact Broker)
+=== Consumer Driven Contract Test (PACT, Advanced)
 
+[%step]
 * Tool erlaubt die einfache Verwaltung der Pacts
-* nicht suprobiert
+* Konsumenten können Ihre Pacts hochladen
+* es entsteht im Idealfall eine grosse Menge von Beispielen
 
 === Alternativen zu Pact
 
@@ -44,59 +99,50 @@
 
 === Kleine Schnittstellen
 
-[%step]
-* wenn nicht rückwärtskompatible Änderungen auftreten ist die gesamte Schnittstelle betroffen
-* grosse Schnittstellen haben die Tendenz, dass es Bereiche gibt, die sich nicht ändern
-* umso kleiner die Schnittstelle, umso weniger weit kann sich eine nicht kompatible Änderung auswirken
+image:grosseSchnittstelle01.png[]
 
 [NOTE.speaker]
 --
-* Wir haben den Fehler gemacht, dass wir unsere Schnittstellen nicht klein genug gebaut haben
+* das ist eine Version unserer Schnittstelle
 --
-
-=== Kleine Schnittstellen
-
-image:grosseSchnittstelle01.png[]
 
 === Kleine Schnittstellen
 
 image:grosseSchnittstelle02.png[]
 
+[NOTE.speaker]
+--
+* jetzt mache ich eine kleine nicht rückwärtskompatible Änderung an der Schnittstelle
+* der grüne Teil unterscheidet sich nicht zwischen der neuen Verison und der alten
+* grosse Schnittstellen haben die Tendenz, dass es Bereiche gibt, die sich nicht ändern,
+die aber trotzdem permanent nachzeogen werden müssen
+--
+
 === Kleine Schnittstellen
 
 image:grosseSchnittstelle03.png[]
 
-=== Magnificient Writer
-
-* TODO
-* DEMO
-* http://tenderware.blogspot.ch/2011/05/magnanimous-writer.html
-
-=== Tolerant Reader
-
-[%step]
-* ignorieren von Elementen, die Service nicht versteht
-* Validierung gegen das WSDL ausschalten (erlaubt, dass ältere Versionen verwendet werden können)
-
-* DEMO [REST]
-** Zeigen, was passiert, wenn ein XML mit mehr Daten geschickt wird
-
-* DEMO [REST]
-** Zeigen was passiert, wenn ein JSON mit mehr Daten geschickt wird
-
 [NOTE.speaker]
 --
-* Wir machen das zum Beispiel, wenn wir unseren Vertriebsservice vnext zur Verfügung stellen
-* Die WSG validiert die Anfragen und Anfragen gegen kein Schema
+* kleine Änderung hat sich in die gesamte Schnittstelle ausgestrahlt
+* Umso kleiner die Schnittstelle ist, desto 
 --
 
 === Extension Points
 
 * in soap world use of xsd:any element
-* <xs:any namespace="##any"
+[source,xml]
+----
+ <xs:any namespace="##any"
                              processContents="lax"
                              minOccurs="0"
                              maxOccurs="unbounded"/>
+----
+
+[NOTE.speaker]
+--
 * neue Attribute können hinzugefügt werden
 * Nachteile:
 ** bei vielen any Elementen verschwindet der Sinn mit einer mit xsd definierten Schnittstelle
+--
+
