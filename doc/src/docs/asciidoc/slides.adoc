@@ -261,6 +261,11 @@ und noch so nen anderes Ding von IBM /ORacle???
 * link:../../src/main/resources/visualizeServiceAvailablity.html[Blah]
 ** verwenden von google draw
 
+=== Testingstrategie
+
+* wie sieht es mit Tests der verschiedenen angebotenen Versionen aus?
+* bei uns => wir testen aktuell nur die currentVersion :-o
+
 == Zusammenfassung
 
 [%step]
