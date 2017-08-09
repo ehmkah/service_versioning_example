@@ -175,6 +175,11 @@ public com.ehmkah.services.gardening.RequestType map(RequestType requestV1) {
 * passen an, wenn generiertes Mapping nicht passt
 --
 
+=== Unser Entscheidung
+
+* händisch generieren
+* Grund: haben wir die beste Kontrolle und wir haben einen Generator
+
 
 //=== Soap Message dispatcher?
 //
