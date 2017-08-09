@@ -1,0 +1,2 @@
+* serviceV1.wsdl => http://localhost:8080/ws/wsdl/serviceV1.wsdl
+* serviceV2.wsdl => http://localhost:8080/ws/wsdl/serviceV2.wsdl
