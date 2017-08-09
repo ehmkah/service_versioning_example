@@ -83,4 +83,14 @@ DEMO [REST]
 * Wir machen das zum Beispiel, wenn wir unseren Vertriebsservice vnext zur Verfügung stellen
 * Die WSG validiert die Anfragen und Anfragen gegen kein Schema
 --
+
 === Extension Points
+
+* in soap world use of xsd:any element
+* <xs:any namespace="##any"
+                             processContents="lax"
+                             minOccurs="0"
+                             maxOccurs="unbounded"/>
+* neue Attribute können hinzugefügt werden
+* Nachteile:
+** bei vielen any Elementen verschwindet der Sinn mit einer mit xsd definierten Schnittstelle

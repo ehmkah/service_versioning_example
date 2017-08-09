@@ -18,28 +18,38 @@ import org.springframework.xml.xsd.SimpleXsdSchema;
 @Configuration
 public class WebServiceConfiguration {
 
-    @Bean
-    public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {
-        MessageDispatcherServlet servlet = new MessageDispatcherServlet();
-        servlet.setApplicationContext(applicationContext);
-        servlet.setTransformWsdlLocations(true);
-        return new ServletRegistrationBean(servlet, "/ws/*");
-    }
+  @Bean
+  public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {
+    MessageDispatcherServlet servlet = new MessageDispatcherServlet();
+    servlet.setApplicationContext(applicationContext);
+    servlet.setTransformWsdlLocations(true);
+    return new ServletRegistrationBean(servlet, "/ws/*");
+  }
 
-    @Bean(name = "service")
-    public Wsdl11Definition defaultWsdl11Definition() {
-        SimpleWsdl11Definition wsdl11Definition = new SimpleWsdl11Definition();
-        wsdl11Definition.setWsdl(new ClassPathResource("/wsdl/serviceDefinition.wsdl"));
+  @Bean(name = "service")
+  public Wsdl11Definition defaultWsdl11Definition() {
+    SimpleWsdl11Definition wsdl11Definition = new SimpleWsdl11Definition();
+    wsdl11Definition.setWsdl(new ClassPathResource("/wsdl/serviceDefinitionV2.wsdl"));
 
-        return wsdl11Definition;
-    }
+    return wsdl11Definition;
+  }
 
-    @Bean(name = "types")
-    public SimpleXsdSchema xsdTypes() {
-        SimpleXsdSchema result = new SimpleXsdSchema(new ClassPathResource("/wsdl/types.xsd"));
+  @Bean(name = "types")
+  public SimpleXsdSchema xsdTypes() {
+    SimpleXsdSchema result = new SimpleXsdSchema(new ClassPathResource("/wsdl/types.xsd"));
 
-        return result;
-    }
+    return result;
+  }
+
+  @Bean(name = "serviceV1")
+  public Wsdl11Definition defaultWsdl11DefinitionV1() {
+    SimpleWsdl11Definition wsdl11Definition = new SimpleWsdl11Definition();
+    wsdl11Definition.setWsdl(new ClassPathResource("/wsdl/serviceDefinitionV1.wsdl"));
+
+    return wsdl11Definition;
+  }
+
+
 
 
 }
