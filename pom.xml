@@ -33,6 +33,7 @@
 
         <!-- adapter implementations -->
         <module>soap_service_impl_adapter_modelmapper</module>
+        <module>soap_service_impl_adapter_manualmapper</module>
 
         <!-- rest implementation -->
         <module>rest_service_impl_media_type_versioning</module>

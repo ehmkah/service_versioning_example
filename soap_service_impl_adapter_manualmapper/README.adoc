@@ -1,0 +1,9 @@
+== Example for manual mapping
+
+* classes are mapped manually
+* use the generator for generating mappings
+
+* serviceV1.wsdl => http://localhost:8080/overview/v1/service?wsdl
+* serviceV2.wsdl => http://localhost:8080/overview/v2/service?wsdl
+
+
