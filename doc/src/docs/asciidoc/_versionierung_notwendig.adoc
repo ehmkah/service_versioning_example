@@ -3,7 +3,7 @@
 === Was spricht für explizite Serviceversionierung?
 
 [%step]
-* Hauptgrund: Konsumenten von Änderungen verschonen
+* Hauptgrund: Entkopplung zwischen Service und Konsument
 * Nicht rückwärtskompatible Änderung ist unvermeidbar
 * Lebenszyklus Konsument und Service ungleich
 * Verträge mit Konsumenten
@@ -51,41 +51,47 @@
 ** Beispiel ein sehr einfacher Service
 --
 
-=== Welche Änderungen können nicht rückwärtskompatibl sein (SOAP)?
+=== Nicht rückwärtskompatible Änderungen können sein?
 
 [%step]
-* entfernen und umbennen von Operationen
-* verändern (Reihenfolge oder Typen) der Parameter in Operationen
+* Verändern des Endpoints
+* Löschen von Attributen in Datenstrukturen
+* Umbennen von Attributen in Datenstrukturen
+* Attribute in Requests mandatory machen
+* Attribute in Response optional machen
+* Anpassungen an Enumwerten
+* Verändern von Strings
 
 [NOTE.speaker]
 --
 * KÖNNEN, weil ich im Moment der Anpassung nicht weiss, ob der Teil den ich ändere tatsächlich von einem Konsumenten genutzt wird
-* wir haben eine SOAP und REST Welt
---
-
-=== Was sind nicht rückwärtskompatible Änderungen bei SOAP & REST ?
-
-[%step]
-* Verändern des Endpoints (andere URI, anderer HOST)
-* löschen von Attributen in Datenstrukturen
-* umbennen von Attributen in Datenstrukturen
-* bei Requests Attribute von optional auf mandatory setzen
-* bei Antworten Attribute von mandatory auf optional setzen
-* bei enums hinzufügen/löschen von Werten
-* bei Strings, andere Werte zurückschicken, z.B. "1. Klasse" statt "1. KLASSE"
-
-[NOTE.speaker]
---
+* Ändern des Endpoints (andere UIR , anderer HOST)
 * Listen statt einzelner Werte
 * enums: weil wenn ich neue Werte schicke, kann ein Client darauf nicht reagieren und Fehler machen (z.B. 3. Klasse)
-* Strings, wenn ich einen String als Basis nehme um daraus etwas abzuleiten, oder nach einem bestimmten Pattern parse
+* Strings, wenn ich einen String als Basis nehme um daraus etwas abzuleiten, oder nach einem bestimmten Pattern parse, Beispiel z.B. "1. Klasse" statt "1. KLASSE"
 * in Sequencen plötzlich andere Reihenfolge von Attributen
 --
 
-=== Wie haben wir uns entschieden?
+=== Nicht rückwärtskompatible Änderungen können sein? (für SOAP)
 
 [%step]
-* Priorisierung:
-* 1. Services, die nach aussen gehen müssen versioniert sein
-* 2. Services, die von anderen Teams verwendet werden müssen versioniert sein
-* 3. Services, die teamintern verwendet werden, können versioniert sein (die versionieren wir nicht)
+* Entfernen und umbennen von Operationen
+* Verändern Parameterreihenfolge in Operationen
+
+[NOTE.speaker]
+--
+* wir haben eine SOAP und REST Welt
+--
+
+=== Wir brauchen explizite Serviversionierung, weil
+
+[%step]
+* Mobile & Automaten anderen Lebenszyklus haben
+* Parallele Deployen von Services zu kostspielig ist
+
+=== ... aber
+
+* Wir haben nicht alle Serviceschnittstellen versioniert
+* Versionierung nur auf Aussen-Services
+* Versionierung nur auf Teamübergreifenden Services
+* Keine Versionierung auf Teaminternen Services
