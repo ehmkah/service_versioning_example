@@ -1,3 +1,10 @@
+== Was wir gerlernt haben
+
+[%step]
+* kleine Schnittstellen vereinfachen Versionierung
+* Nur Probleme lösen, die wirklich bestehen
+* nicht strenge mit sich sein, als nötig
+
 == Zusammenfassung
 
 [%step]
@@ -11,7 +18,7 @@
 
 * Material
 ** https://github.com/ehmkah/service_versioning_example
-** https://www.meetup.com/de-DE/Hackergarten-Bern/
+//** https://www.meetup.com/de-DE/Hackergarten-Bern/
 //**  Krausses Law
 //** 1 - (0.9^(Anzahl der Operationen) * 0.9^(Anzahl der Types) * 0.9(Anzahl Changes) * 0.9^(Konsumenten mit unterschiedlichem Lifecycle)
 //** 1 - (0.9^5 * 0.9^50 * 0.9^30 * 0.9^4) ==> 0.8 Wahrscheinlichkeit für eine breaking änderung)
