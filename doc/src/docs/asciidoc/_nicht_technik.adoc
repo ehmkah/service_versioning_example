@@ -1,0 +1,18 @@
+== An welche Dinge, muss ich bei der expliziten Versionierung noch denken?
+
+[%step]
+* gibt es eine Übersicht welche Version meines Services noch genutzt wird? => bei uns : nein
+* kann während eines Prozesses die Version gewechselt werden? => bei uns : ja (kurzlebig)
+* Lifecycle der Versionen
+
+=== Service lifecycle
+
+* wenn mehrere Versionen zur Verfügung gestellt werden, mit dem CLienten schauen, ob es passt
+* hat bei uns zum Beispiel dafür geführt, dass wir vier Versionen auf einem Service unterstützen müssen
+* link:../../src/main/resources/visualizeServiceAvailablity.html[Blah]
+** verwenden von google draw
+
+=== Testingstrategie
+
+* wie sieht es mit Tests der verschiedenen angebotenen Versionen aus?
+* bei uns => wir testen aktuell nur die currentVersion :-o

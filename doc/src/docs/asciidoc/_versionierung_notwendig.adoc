@@ -1,0 +1,91 @@
+== Benötige ich explizite Versionierung?
+
+=== Was spricht für explizite Serviceversionierung?
+
+[%step]
+* Hauptgrund: Konsumenten von Änderungen verschonen
+* Nicht rückwärtskompatible Änderung ist unvermeidbar
+* Lebenszyklus Konsument und Service ungleich
+* Verträge mit Konsumenten
+* Nicht alle Konsumenten bekannt
+
+[NOTE.speaker]
+--
+* nicht vermeidbar: Abbau von Altlasten, Vereinfachungen, entfernen von Redundanzen
+* Konsumenten:
+** Integration eines Servies kann aufwendig sein mit
+** Verträgen können das Risiko reduziert werden, dass Konsument häufig integrieren muss
+** Verträge regeln, wie lange eine Version verfügbar sein muss (z.B. Schnittstelle SNCF: alle halbe Jahre migration notwendig)
+*  Unterschiedliche Lifecycle
+** Konsument und Service können nicht gleichzeitg aktualisiert werden
+** Beispiel Backendsysteme vom neuen Vertriebssystem und die vNext
+** Alte Version müssen unterstützt werden, weil Wechsel zu einem beliebigen Zeitpunkt erfolgen kann
+* Es sind nicht alle Konsumenten bekannt
+** Wenn nicht alle Konsumenten bekannt sind, können unterschiedliche Schnittstellenversionen von alten Konsumenten noch im Einsatz sein
+** Ich weiss nicht, ob ich immer alle erreichen kann
+--
+
+=== Was spricht gegen explizite Serviceversionierung?
+
+[%step]
+* Hauptgrund: Erhöht die Komplexität
+* Nur ein Konsument
+* Schnittstellenänderungen immer rückwärtskompatibel
+* Lebenszyklus Konsumenten und Service ist gleich
+* Ressourcenmangel
+* Konsumenten vom Service abhängig
+
+[NOTE.speaker]
+--
+* nur ein Konsument : Ich kann mit dem Konsumenten schauen, wie ich die Schnittstelle
+* Abhängig
+** wenn ein Abhängigkeitsverhältnis von Konsumenten zum Service besteht, kann ich das nutzen und nur eine Version anbietem
+** nicht sehr nett
+* lebenszyklus gleich
+** gleicher Lebenszyklus, es gehen beide gleichzeitig in Produktion
+** in unteren Umgebungen Test ist es OK, wenn der Service eine definierte Zeit nicht angebunden ist
+* Resourcenmangel
+** Es fehlen die Ressourcen, um zwei Versionen eines Services zur Verfügung zu stellen
+* rückwärtrskompatibel
+** Wenn Änderungen immer rückwärtskompatibel durchgeführt werden können, dann ist es nicht nötig mehrere Versionen zu haben
+** Beispiel ein sehr einfacher Service
+--
+
+=== Welche Änderungen können nicht rückwärtskompatibl sein (SOAP)?
+
+[%step]
+* entfernen und umbennen von Operationen
+* verändern (Reihenfolge oder Typen) der Parameter in Operationen
+
+[NOTE.speaker]
+--
+* KÖNNEN, weil ich im Moment der Anpassung nicht weiss, ob der Teil den ich ändere tatsächlich von einem Konsumenten genutzt wird
+* wir haben eine SOAP und REST Welt
+--
+
+=== Was sind nicht rückwärtskompatible Änderungen bei SOAP & REST ?
+
+[%step]
+* Verändern des Endpoints (andere URI, anderer HOST)
+* löschen von Attributen in Datenstrukturen
+* umbennen von Attributen in Datenstrukturen
+* bei Requests Attribute von optional auf mandatory setzen
+* bei Antworten Attribute von mandatory auf optional setzen
+* bei enums hinzufügen/löschen von Werten
+* bei Strings, andere Werte zurückschicken, z.B. "1. Klasse" statt "1. KLASSE"
+
+[NOTE.speaker]
+--
+* Listen statt einzelner Werte
+* enums: weil wenn ich neue Werte schicke, kann ein Client darauf nicht reagieren und Fehler machen (z.B. 3. Klasse)
+* Strings, wenn ich einen String als Basis nehme um daraus etwas abzuleiten, oder nach einem bestimmten Pattern parse
+* in Sequencen plötzlich andere Reihenfolge von Attributen
+--
+
+=== Wie haben wir uns entschieden?
+
+[%step]
+* Priorisierung:
+* 1. Services, die nach aussen gehen müssen versioniert sein
+* 2. Services, die von anderen Teams verwendet werden müssen versioniert sein
+* 3. Services, die teamintern verwendet werden, können versioniert sein (die versionieren wir nicht)

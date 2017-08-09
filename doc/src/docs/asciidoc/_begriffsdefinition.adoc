@@ -1,0 +1,31 @@
+== Begriffsdefinition
+
+=== Service
+
+image::service.png[background]
+[%step]
+* ein Stück Software, das irgendwo läuft
+
+=== Serviceschnittstelle
+
+image::schnittstelle.png[background]
+[%step]
+* über diese kann mit dem Service kommuniziert werden
+
+=== Konsumenten
+
+image::konsument.png[background]
+[%step]
+* verwenden Serviceschnittstelle
+
+=== explizite Versionierung
+
+image::expliziteVersionierung.png[background]
+[%step]
+* zwei Versionen einer Serviceschnittstelle verfügbar
+* Konsument wählt Version mit der er kommuniziert
+
+
+== Abgrenzung
+
+* nicht für Prozessengine, sondern alles selbst gebaut

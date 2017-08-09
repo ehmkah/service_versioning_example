@@ -1,0 +1,128 @@
+== Welche Pattern kann ich für eine explizite Versionierung verwenden?
+
+=== Anbieten des Services
+
+=== Verfügung stellen eines Services über die URI
+
+[%step]
+* URI Versioning –
+* Beispiel http://www.vertrieb.ch/v1/VertriebService
+* Beispiel http://www.vertrieb.ch/v2/VertriebService
+* Vorteile:  verwendebar für SOAP und REST
+* Nachteile: für rest entsteht neuer riseiger Baum an Ressourcen
+* Nachteile: resourcen können sihc nicht separat entwickeln (all or nothing)
+* Nachteil: siehe http://www.baeldung.com/rest-versioning
+
+=== Verschiedene Versionen über Versionsinformation in der Resource (REST)
+
+* Media Type Versioning
+* TODO Beispiel
+* Beispiel
+* passt nicht 406 Not Acceptable
+* "Accept": "application/vnd.myname.v2+json"
+
+=== Implementieren des Services
+
+=== Mehrfaches Deployen eines Services
+
+[%step]
+* Wenn ein Service zwei Versionen implementiert, können einfach beide Versionen gestartet werden
+* Vorteile: funktioniert out of the box
+* Nachteile: Kosten und Skalierung des Services
+
+* DEMO
+
+=== Code duplizieren
+
+[%step]
+* Businesscode wird vollständig kopiert
+
+* DEMO
+
+=== Adapterpattern zwischen Service Versionen (Klassendiagramm)
+
+image::classDiagramConverter.png[background]
+
+[%step]
+* empfholen ein reichhaltiges Domainmodel bei grossen Schnittstellen AKA AKM!!), das nicht nach aussen gegeben wird
+* wir haben keines konvertieren auf neueste Version des Services (langsameres löschen)
+* muss vollständig sein (vereinfacht die Unterstüzung verschiedener Version immens)
+* besonders nützlich beim löschen, da bei Konvertierung auf neue Schnittstellenversion Informationen gelöscht werden
+können
+
+
+=== Adapterpattern zwischen Service Versionen (Sequenzdiagram)
+
+image::sequenceConverter.png[background]
+
+
+
+=== Adapterpattern zwischen Versionen eines Services (Modelmapper)
+
+[%step]
+* konvertiert zwischen einer alten Version zu einer neuen Version
+* Vorteil: für einfache Schnittstellen OK, da schnell aufgesetzt
+* Nachteil: Probleme bei Typhierachien
+* Nachteil: Automatismus des Mappings teilweise nicht durchschaubar
+* Nachteil: Manuelle Anpassungen am Mapping kompliziert
+* Nachteil: Teilweise Performanceprobleme
+* Nachteil: COnvertierung müsste getestet werden
+
+[NOTE.speaker]
+--
+* War unser erster Versuch (mit Modelmapper, dozer)
+--
+
+=== Adapterpattern zwischen Versionen eines Services (Modelmapper)
+
+.Converter.map
+[source,java]
+----
+private ModelMapper modelMapper = new ModelMapper();
+
+    public com.ehmkah.services.gardening.RequestType map(RequestType requestV1) {
+      com.ehmkah.services.gardening.RequestType result =
+      modelMapper.map(requestV1, com.ehmkah.services.gardening.RequestType.class);
+
+      return result;
+    }
+----
+
+
+=== Adapterpattern zwischen Versionen eines Services (händisch)
+
+[%step]
+* TODO: Abbildung wie COnverter funktioniert
+* konvertiert zwischen einer alten Version zu einer neuen Version
+* Vorteil:
+* Nachteil:
+
+[NOTE.speaker]
+--
+* wir generieren den Mapper mit Javapoet und Java Reflektions
+* passen an, wenn generiertes Mapping nicht passt
+--
+
+=== Adapterpattern zwischen Versionen eines Services (händisch)
+
+.Converter.map
+[source,java]
+----
+public com.ehmkah.services.gardening.RequestType map(RequestType requestV1) {
+    com.ehmkah.services.gardening.RequestType result =
+    new com.ehmkah.services.gardening.RequestType();
+    result.setSpeciesOne(requestV1.getSpeciesOne());
+    result.setSpeciesTwo(requestV1.getSpeciesTwo());
+
+    return result;
+  }
+----
+
+=== Adapterpattern zwischen Versionen eines Services (händisch)
+
+* Einsatz eines Generators (und manuelles nachziehen der Änderungen)
+
+
+
+=== Soap Message dispatcher?
+und noch so nen anderes Ding von IBM /ORacle???

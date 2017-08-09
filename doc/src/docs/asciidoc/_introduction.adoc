@@ -1,0 +1,18 @@
+== Introduction
+
+[%step]
+* Begriffsdefinition
+* Benötige ich explizite Serviceversionierung?
+* Wie vermeide ich neue Serviceversionen?
+* Wie implementiere ich explizite Servicerversionierung?
+* Was brauche ich neben der Implementierung noch?
+* Zusammenfassung
+
+[NOTE.speaker]
+--
+* Welche Begriffe werden in der Presentation verwendet?
+* Benötige ich explizite Versionierung?
+* Wie vermeide ich neue Serviceversionen?
+* Mit welchen Pattern kann ich explizite Servicerversionierung umsetzen?
+* Welche nicht technischen Aufgaben muss ich mit der expliziten Serviceversionierung lösen?
+--

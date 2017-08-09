@@ -1,0 +1,28 @@
+== Zusammenfassung
+
+[%step]
+. Explizite Versionierung ist notwendig
+. Einen einfachen Service auswählen
+. Ein Pattern auswählen und implementieren
+. Ausprobieren
+. dem Hackergarten Bern beitreten
+
+== Vielen Dank
+
+* Material
+** https://github.com/ehmkah/service_versioning_example
+** https://www.meetup.com/de-DE/Hackergarten-Bern/
+**  Krausses Law
+** 1 - (0.9^(Anzahl der Operationen) * 0.9^(Anzahl der Types) * 0.9(Anzahl Changes) * 0.9^(Konsumenten mit unterschiedlichem Lifecycle)
+** 1 - (0.9^5 * 0.9^50 * 0.9^30 * 0.9^4) ==> 0.8 Wahrscheinlichkeit für eine breaking änderung)
+
+
+=== Extension material
+
+* http://blog.restcase.com/restful-api-versioning-insights/
+* https://www.troyhunt.com/your-api-versioning-is-wrong-which-is/
+* http://www.oracle.com/technetwork/articles/web-services-versioning-094384.html
+* https://www.ibm.com/developerworks/webservices/library/ws-version/#1
+* Service Design Patterns, robert daigneau
+* https://github.com/DiUS/pact-jvm/tree/master/pact-jvm-provider-junit
+* https://www.innoq.com/en/articles/2016/09/consumer-driven-contracts/
