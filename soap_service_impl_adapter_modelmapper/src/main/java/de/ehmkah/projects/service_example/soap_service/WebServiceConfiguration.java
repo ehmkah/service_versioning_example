@@ -28,49 +28,28 @@ public class WebServiceConfiguration {
   @Autowired
   private Wsgardening gardeningServiceV1;
 
+  @Autowired
+  private com.ehmkah.services.gardening.Wsgardening wsgardeningCurrent;
+
   @Bean(name="cxf")
   public SpringBus springBus() {
     return new SpringBus();
   }
 
-//  @Bean
-//  public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {
-//    MessageDispatcherServlet servlet = new MessageDispatcherServlet();
-//    servlet.setApplicationContext(applicationContext);
-//    servlet.setTransformWsdlLocations(true);
-//    return new ServletRegistrationBean(servlet, "/ws/*");
-//  }
-//
-//  @Bean(name = "service")
-//  public Wsdl11Definition defaultWsdl11Definition() {
-//    SimpleWsdl11Definition wsdl11Definition = new SimpleWsdl11Definition();
-//    wsdl11Definition.setWsdl(new ClassPathResource("/wsdl/serviceDefinitionV2.wsdl"));
-//
-//    return wsdl11Definition;
-//  }
-//
-//  @Bean(name = "types")
-//  public SimpleXsdSchema xsdTypes() {
-//    SimpleXsdSchema result = new SimpleXsdSchema(new ClassPathResource("/wsdl/types.xsd"));
-//
-//    return result;
-//  }
-
- /** @Bean(name = "serviceV1")
-  public Wsdl11Definition defaultWsdl11DefinitionV1() {
-    SimpleWsdl11Definition wsdl11Definition = new SimpleWsdl11Definition();
-    wsdl11Definition.setWsdl(new ClassPathResource("/wsdl/serviceDefinitionV1.wsdl"));
-
-    return wsdl11Definition;
-  } **/
-
-
-
   @Bean("endpointServiceV1")
-  public Endpoint serviceV1Endpoint(SpringBus springBus) {
+  public Endpoint endpointServiceV1(SpringBus springBus) {
     EndpointImpl result = new EndpointImpl(springBus, gardeningServiceV1);
     result.setWsdlLocation("classpath:/wsdl/serviceDefinitionV1.wsdl");
     result.publish("/v1/service");
+
+    return result;
+  }
+
+  @Bean("endpointServiceV2")
+  public Endpoint endpointServiceV2(SpringBus springBus) {
+    EndpointImpl result = new EndpointImpl(springBus, gardeningServiceV1);
+    result.setWsdlLocation("classpath:/wsdl/serviceDefinitionV2.wsdl");
+    result.publish("/v2/service");
 
     return result;
   }
