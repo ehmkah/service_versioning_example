@@ -36,6 +36,12 @@
 * Tool erlaubt die einfache Verwaltung der Pacts
 * nicht suprobiert
 
+=== Alternativen zu Pact
+
+* assertj-swagger (https://github.com/RobWin/assertj-swagger)
+* swagger::diff (https://github.com/civisanalytics/swagger-diff)
+* image:restassured_logo.png[] (http://rest-assured.io/)
+
 === Kleine Schnittstellen
 
 [%step]
