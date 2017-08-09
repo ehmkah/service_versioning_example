@@ -50,17 +50,21 @@
 
 === Unsere Entscheidung
 
+[%step]
 * URI-Versioning
 * Grund: viele SOAP Service, Rest Service sind noch nicht ressourcenorientiert
 
 === Implementieren des Services
 
-=== Mehrfaches Deployen eines Services
+
+=== Jede Serviceversion separat deployed
 
 [%step]
-* Wenn ein Service zwei Versionen implementiert, können einfach beide Versionen gestartet werden
-* Vorteile: funktioniert out of the box
-* Nachteile: Kosten und Skalierung des Services
+* Service wird mit jeder Serviceversion deployed
+* Vorteil: funktioniert out of the box
+* Nachteil: Kosten und Skalierung des Services, Wartungskosten
+
+=== Jede Serviceversion separat deployed
 
 * DEMO
 
@@ -68,6 +72,12 @@
 
 [%step]
 * Businesscode wird vollständig kopiert
+* und einmal deployed
+* Vorteil:  Skalierung einfacher
+* Nachteil: extrem viele Redundanzen, Arbeit macht keinen Spass
+
+
+=== Code duplizieren
 
 * DEMO
 
@@ -76,29 +86,36 @@
 image::classDiagramConverter.png[background]
 
 [%step]
-* empfholen ein reichhaltiges Domainmodel bei grossen Schnittstellen AKA AKM!!), das nicht nach aussen gegeben wird
-* wir haben keines konvertieren auf neueste Version des Services (langsameres löschen)
+* Konvertieren auf internes Model ODER neueste Serviceversion
 * muss vollständig sein (vereinfacht die Unterstüzung verschiedener Version immens)
-* besonders nützlich beim löschen, da bei Konvertierung auf neue Schnittstellenversion Informationen gelöscht werden
 können
 
+[NOTE.speaker]
+--
+* Internes Model besonders beim Löschen nützlich
+* Konvertierung einfacher
+--
 
 === Adapterpattern zwischen Service Versionen (Sequenzdiagram)
 
 image::sequenceConverter.png[background]
 
+=== Adapterpattern zwischen Versionen eines Services (Modelmapper)
+
+[%step]
+* Einsatz einer Bibliothek, die automatisch Klassen in einander konvertiert
+* Beispiel: modelmapper, dozzer,
+* Vorteil: OK für simple Schnittstellen, da schnell aufgesetzt
 
 
 === Adapterpattern zwischen Versionen eines Services (Modelmapper)
 
 [%step]
-* konvertiert zwischen einer alten Version zu einer neuen Version
-* Vorteil: für einfache Schnittstellen OK, da schnell aufgesetzt
 * Nachteil: Probleme bei Typhierachien
-* Nachteil: Automatismus des Mappings teilweise nicht durchschaubar
+* Nachteil: Mappingmechanismus nicht durchschaubar
 * Nachteil: Manuelle Anpassungen am Mapping kompliziert
 * Nachteil: Teilweise Performanceprobleme
-* Nachteil: COnvertierung müsste getestet werden
+* Nachteil: Konvertierung müsste getestet werden
 
 [NOTE.speaker]
 --
@@ -107,6 +124,7 @@ image::sequenceConverter.png[background]
 
 === Adapterpattern zwischen Versionen eines Services (Modelmapper)
 
+* DEMO
 .Converter.map
 [source,java]
 ----
@@ -120,20 +138,18 @@ private ModelMapper modelMapper = new ModelMapper();
     }
 ----
 
+=== Adapterpattern zwischen Versionen eines Services (Modelmapper)
+
+* DEMO die furchtbaren manuellen Anpassungen, für komplizierte Modelle
+
 
 === Adapterpattern zwischen Versionen eines Services (händisch)
 
 [%step]
-* TODO: Abbildung wie COnverter funktioniert
-* konvertiert zwischen einer alten Version zu einer neuen Version
-* Vorteil:
-* Nachteil:
+* Vorteil: verständlich
+* Nachteil: wenn selbst geschrieben aufwending und fehleranfällig
 
-[NOTE.speaker]
---
-* wir generieren den Mapper mit Javapoet und Java Reflektions
-* passen an, wenn generiertes Mapping nicht passt
---
+
 
 === Adapterpattern zwischen Versionen eines Services (händisch)
 
@@ -153,6 +169,14 @@ public com.ehmkah.services.gardening.RequestType map(RequestType requestV1) {
 === Adapterpattern zwischen Versionen eines Services (händisch)
 
 * Einsatz eines Generators (und manuelles nachziehen der Änderungen)
+[NOTE.speaker]
+--
+* wir generieren den Mapper mit Javapoet und Java Reflektions
+* passen an, wenn generiertes Mapping nicht passt
+--
 
-=== Soap Message dispatcher?
-und noch so nen anderes Ding von IBM /ORacle???
+
+//=== Soap Message dispatcher?
+//
+//
+//und noch so nen anderes Ding von IBM /ORacle???
