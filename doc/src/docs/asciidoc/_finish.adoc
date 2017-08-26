@@ -1,11 +1,11 @@
-== Was wir gerlernt haben
+//== Was wir gerlernt haben
+//
+//[%step]
+//* kleine Schnittstellen vereinfachen Versionierung
+//* Nur Probleme lösen, die wirklich bestehen
+//* nicht strenge mit sich sein, als nötig
 
-[%step]
-* kleine Schnittstellen vereinfachen Versionierung
-* Nur Probleme lösen, die wirklich bestehen
-* nicht strenge mit sich sein, als nötig
-
-== Zusammenfassung
+== Zusammenfassung                    ¡
 
 [%step]
 . Explizite Versionierung ist notwendig

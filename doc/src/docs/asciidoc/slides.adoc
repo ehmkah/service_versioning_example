@@ -3,7 +3,6 @@
 Michael Krausse <m@m-krausse.de
 2017-09-07
 :revnumber: {project-version}
-:example-caption!:
 ifndef::imagesdir[:imagesdir: images]
 ifndef::sourcedir[:sourcedir: ../../main/java]
 
