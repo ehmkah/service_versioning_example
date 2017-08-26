@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="aded5db0-c4e8-4bc2-b1c4-3258c8d3dca0" activeEnvironment="Default" name="serviceV1" resourceRoot="" soapui-version="5.3.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="e6c5b95f-a8d3-473a-badb-d6255a2ed8b8" wsaVersion="NONE" name="gardeningSoapHttpBinding" type="wsdl" bindingName="{http://ehmkah.com/services/gardening}gardeningSoapHttpBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/ws/wsdl/serviceV1.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/ws/wsdl/serviceV1.wsdl"><con:part><con:url>http://localhost:8080/ws/wsdl/serviceV1.wsdl</con:url><con:content><![CDATA[<definitions name="gardening" targetNamespace="http://ehmkah.com/services/gardening" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:gardening="http://ehmkah.com/services/gardening" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<con:soapui-project id="aded5db0-c4e8-4bc2-b1c4-3258c8d3dca0" activeEnvironment="Default" name="serviceV1" resourceRoot="" soapui-version="5.3.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="e938e0ca-0fea-4fb3-9e45-bc1fc36114f3" wsaVersion="NONE" name="WsgardeningSoapBinding" type="wsdl" bindingName="{http://ehmkah.com/services/gardening}WsgardeningSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/overview/v1/service?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/overview/v1/service?wsdl"><con:part><con:url>http://localhost:8080/overview/v1/service?wsdl</con:url><con:content><![CDATA[<definitions name="gardening" targetNamespace="http://ehmkah.com/services/gardening" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:gardening="http://ehmkah.com/services/gardening" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
     <xs:schema elementFormDefault="qualified" targetNamespace="http://ehmkah.com/services/gardening">
       <xs:element name="requestType">
@@ -20,15 +20,15 @@
     </xs:schema>
   </types>
   <message name="checkNeighboursRequest">
-    <part element="gardening:requestType" name="request"/>
+    <part element="gardening:requestType" name="request"></part>
   </message>
   <message name="checkNeighboursResponse">
-    <part element="gardening:responseType" name="response"/>
+    <part element="gardening:responseType" name="response"></part>
   </message>
   <portType name="Wsgardening">
     <operation name="checkNeighbours">
-      <input message="gardening:checkNeighboursRequest"/>
-      <output message="gardening:checkNeighboursResponse"/>
+      <input message="gardening:checkNeighboursRequest"></input>
+      <output message="gardening:checkNeighboursResponse"></output>
     </operation>
   </portType>
   <binding name="gardeningSoapHttpBinding" type="gardening:Wsgardening">
@@ -43,17 +43,34 @@
       </output>
     </operation>
   </binding>
+  <binding name="WsgardeningSoapBinding" type="gardening:Wsgardening">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="checkNeighbours">
+      <soap:operation soapAction="" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="WsgardeningService">
+    <port binding="gardening:WsgardeningSoapBinding" name="WsgardeningPort">
+      <soap:address location="http://localhost:8080/overview/v1/service"/>
+    </port>
+  </service>
   <service name="gardeningService">
     <port binding="gardening:gardeningSoapHttpBinding" name="gardeningEndpoint">
       <soap:address location="gardening"/>
     </port>
   </service>
-</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>gardening</con:endpoint></con:endpoints><con:operation id="94d42558-713b-4a34-817a-7e4e1cb117be" isOneWay="false" action="http://ehmkah.com/services/gardening/#checkNeighbours" name="checkNeighbours" bindingOperationName="checkNeighbours" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="fa6db6f3-ea95-49ce-a819-39520fc9d205" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>gardening</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gar="http://ehmkah.com/services/gardening">
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/overview/v1/service</con:endpoint></con:endpoints><con:operation id="f334b08e-72ac-4f46-8088-4691f74a510b" isOneWay="false" action="" name="checkNeighbours" bindingOperationName="checkNeighbours" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="55d75dd4-772f-4d6b-9c59-9564ee14f8ea" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/overview/v1/service</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gar="http://ehmkah.com/services/gardening">
    <soapenv:Header/>
    <soapenv:Body>
       <gar:requestType>
-         <gar:speciesOne>?</gar:speciesOne>
-         <gar:speciesTwo>?</gar:speciesTwo>
+         <gar:speciesOne>TOMATO</gar:speciesOne>
+         <gar:speciesTwo>POTATO</gar:speciesTwo>
       </gar:requestType>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ehmkah.com/services/gardening/#checkNeighbours"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ehmkah.com/services/gardening/Wsgardening/checkNeighboursRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

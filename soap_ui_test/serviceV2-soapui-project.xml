@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="3c6bcb37-c66a-481c-a691-8f86eba6fb9f" activeEnvironment="Default" name="serviceV2" resourceRoot="" soapui-version="5.3.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="286103bd-5b97-4469-af87-21fc621a121c" wsaVersion="NONE" name="gardeningSoapHttpBinding" type="wsdl" bindingName="{http://ehmkah.com/services/gardening}gardeningSoapHttpBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/ws/wsdl/service.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/ws/wsdl/service.wsdl"><con:part><con:url>http://localhost:8080/ws/wsdl/service.wsdl</con:url><con:content><![CDATA[<definitions name="gardening" targetNamespace="http://ehmkah.com/services/gardening" xsi:schemaLocation="http://schemas.xmlsoap.org/wsdl/soap/ " xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:gardening="http://ehmkah.com/services/gardening" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<con:soapui-project id="3c6bcb37-c66a-481c-a691-8f86eba6fb9f" activeEnvironment="Default" name="serviceV2" resourceRoot="" soapui-version="5.3.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="4b5bb3da-989b-47f9-991b-cd0aad7ccf39" wsaVersion="NONE" name="gardeningSoapHttpBinding" type="wsdl" bindingName="{http://ehmkah.com/services/gardening}gardeningSoapHttpBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/overview/v2/service?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>gardening</con:endpoint></con:endpoints><con:operation id="7462453b-4a00-4930-b671-a376398f01af" isOneWay="false" action="http://ehmkah.com/services/gardening/#checkNeighbours" name="checkNeighbours" bindingOperationName="checkNeighbours" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="66923138-b36a-4d8e-a784-3b38547d685a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>gardening</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gar="http://ehmkah.com/services/gardening">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <gar:request>
+         <gar:speciesOne>?</gar:speciesOne>
+         <gar:speciesTwo>?</gar:speciesTwo>
+      </gar:request>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ehmkah.com/services/gardening/#checkNeighbours"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="ec21f03d-1e40-48b5-98db-535e67821844" wsaVersion="NONE" name="WsgardeningSoapBinding" type="wsdl" bindingName="{http://ehmkah.com/services/gardening}WsgardeningSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/overview/v2/service?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/overview/v2/service?wsdl"><con:part><con:url>http://localhost:8080/overview/v2/service?wsdl</con:url><con:content><![CDATA[<definitions name="gardening" targetNamespace="http://ehmkah.com/services/gardening" xsi:schemaLocation="http://schemas.xmlsoap.org/wsdl/soap/ " xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:gardening="http://ehmkah.com/services/gardening" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
     <xs:schema targetNamespace="http://ehmkah.com/services/gardening">
-      <xs:import namespace="http://ehmkah.com/services/gardening" schemaLocation="types.xsd"/>
+      <xs:import namespace="http://ehmkah.com/services/gardening" schemaLocation="http://localhost:8080/overview/v2/service?xsd=types.xsd"/>
     </xs:schema>
   </types>
   <message name="checkNeighboursRequest">
-    <part element="gardening:request" name="request"/>
+    <part element="gardening:request" name="request"></part>
   </message>
   <message name="checkNeighboursResponse">
-    <part element="gardening:response" name="response"/>
+    <part element="gardening:response" name="response"></part>
   </message>
   <portType name="Wsgardening">
     <operation name="checkNeighbours">
-      <input message="gardening:checkNeighboursRequest"/>
-      <output message="gardening:checkNeighboursResponse"/>
+      <input message="gardening:checkNeighboursRequest"></input>
+      <output message="gardening:checkNeighboursResponse"></output>
     </operation>
   </portType>
   <binding name="gardeningSoapHttpBinding" type="gardening:Wsgardening">
@@ -29,12 +37,29 @@
       </output>
     </operation>
   </binding>
+  <binding name="WsgardeningSoapBinding" type="gardening:Wsgardening">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="checkNeighbours">
+      <soap:operation soapAction="" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="WsgardeningService">
+    <port binding="gardening:WsgardeningSoapBinding" name="WsgardeningPort">
+      <soap:address location="http://localhost:8080/overview/v2/service"/>
+    </port>
+  </service>
   <service name="gardeningService">
     <port binding="gardening:gardeningSoapHttpBinding" name="gardeningEndpoint">
       <soap:address location="gardening"/>
     </port>
   </service>
-</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:8080/ws/wsdl/types.xsd</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="http://ehmkah.com/services/gardening" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://ehmkah.com/services/gardening">
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:8080/overview/v2/service?xsd=types.xsd</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="http://ehmkah.com/services/gardening" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://ehmkah.com/services/gardening">
   <xs:element name="request" type="RequestType"/>
   <xs:element name="response" type="ResponseType"/>
   <xs:complexType name="RequestType">
@@ -48,12 +73,12 @@
       <xs:element name="areGoodNeighbours" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
-</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>gardening</con:endpoint></con:endpoints><con:operation id="87195f3e-57c2-459d-8368-89ef3d1641b1" isOneWay="false" action="http://ehmkah.com/services/gardening/#checkNeighbours" name="checkNeighbours" bindingOperationName="checkNeighbours" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c951bb02-8d99-4bed-8141-204d2351e51c" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>gardening</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gar="http://ehmkah.com/services/gardening">
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/overview/v2/service</con:endpoint></con:endpoints><con:operation id="6566298a-7f8d-45fa-bc71-57ae0ebd909c" isOneWay="false" action="" name="checkNeighbours" bindingOperationName="checkNeighbours" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="8ee18573-e34c-4748-bfaf-01c579c46f9b" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/overview/v2/service</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:gar="http://ehmkah.com/services/gardening">
    <soapenv:Header/>
    <soapenv:Body>
       <gar:request>
-         <gar:speciesOne>?</gar:speciesOne>
-         <gar:speciesTwo>?</gar:speciesTwo>
+         <gar:speciesOne>TOMATO</gar:speciesOne>
+         <gar:speciesTwo>POTATO</gar:speciesTwo>
       </gar:request>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ehmkah.com/services/gardening/#checkNeighbours"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ehmkah.com/services/gardening/Wsgardening/checkNeighboursRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

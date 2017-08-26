@@ -1,4 +1,4 @@
-= Explizite Serviceversionierung ist möglich
+= Explizite Serviceschnittstellenversionierung ist möglich
 
 Michael Krausse <m@m-krausse.de
 2017-09-07

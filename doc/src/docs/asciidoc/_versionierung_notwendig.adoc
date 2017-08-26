@@ -29,7 +29,6 @@
 
 [%step]
 * Hauptgrund: Erhöht die Komplexität
-* Nur ein Konsument
 * Schnittstellenänderungen immer rückwärtskompatibel
 * Lebenszyklus Konsumenten und Service ist gleich
 * Ressourcenmangel
@@ -37,7 +36,6 @@
 
 [NOTE.speaker]
 --
-* nur ein Konsument : Ich kann mit dem Konsumenten schauen, wie ich die Schnittstelle
 * Abhängig
 ** wenn ein Abhängigkeitsverhältnis von Konsumenten zum Service besteht, kann ich das nutzen und nur eine Version anbietem
 ** nicht sehr nett
@@ -49,7 +47,21 @@
 * rückwärtrskompatibel
 ** Wenn Änderungen immer rückwärtskompatibel durchgeführt werden können, dann ist es nicht nötig mehrere Versionen zu haben
 ** Beispiel ein sehr einfacher Service
+* generell machen rückwaärtskopatible Serviceschnittststellen die Entwicklungs langsamer und führen zu einem verzögerten Rückbau von Features
 --
+
+=== Nicht rückwärtskompatible Änderungen können sein?
+
+[quote, unbekannt]
+Bei einer nichtrückärtskompatiblen Änderung wird der Konsument gezwungen etwas zu tun.
+
+
+[NOTE.speaker]
+--
+* eine sehr strenge Definition
+* was tun, kann Konfigurativ sein oder es muss eine neue Software gebaut released und deployed werden
+--
+
 
 === Nicht rückwärtskompatible Änderungen können sein?
 
@@ -60,7 +72,7 @@
 * Attribute in Requests mandatory machen
 * Attribute in Response optional machen
 * Anpassungen an Enumwerten
-* Verändern von Strings
+* Verändern von impliziten Annahmen
 
 [NOTE.speaker]
 --
@@ -68,8 +80,9 @@
 * Ändern des Endpoints (andere UIR , anderer HOST)
 * Listen statt einzelner Werte
 * enums: weil wenn ich neue Werte schicke, kann ein Client darauf nicht reagieren und Fehler machen (z.B. 3. Klasse)
-* Strings, wenn ich einen String als Basis nehme um daraus etwas abzuleiten, oder nach einem bestimmten Pattern parse, Beispiel z.B. "1. Klasse" statt "1. KLASSE"
-* in Sequencen plötzlich andere Reihenfolge von Attributen
+* implizite Annahmen
+** andere Repräsentation eines Strings: wenn ich einen String als Basis nehme um daraus etwas abzuleiten, oder nach einem bestimmten Pattern parse, Beispiel z.B. "1. Klasse" statt "1. KLASSE"
+** Reihenfolgen von Sequencen, z.B. zuerst teuere, dann billige Angebote
 --
 
 === Nicht rückwärtskompatible Änderungen können sein? (für SOAP)
