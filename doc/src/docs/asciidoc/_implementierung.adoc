@@ -19,6 +19,7 @@
 === URI Versioning (DEMO)
 
 * DEMO (soap_service_impl_v1)
+
 [source, java]
 ----
 @Bean("endpointServiceV1")
@@ -81,24 +82,27 @@
 
 * DEMO
 
-=== Adapterpattern zwischen Service Versionen (Klassendiagramm)
-
-image::classDiagramConverter.png[background]
+=== SSVA - Service Schnittstellen Versions Adapter
 
 [%step]
-* Konvertieren auf internes Model ODER neueste Serviceversion
-* muss vollständig sein (vereinfacht die Unterstüzung verschiedener Version immens)
-können
+* Konvertieren auf internes Model 
+* muss vollständig sein (vereinfacht die Unterstüzung verschiedener Version immens) können
+
+=== !
+
+image::adapter_pattern_class_diagram.png[]
 
 [NOTE.speaker]
 --
+* Konvertieren auf internes Model ODER neueste Serviceversion
+*  Adapterpattern zwischen Service Versionen
 * Internes Model besonders beim Löschen nützlich
 * Konvertierung einfacher
 --
 
-=== Adapterpattern zwischen Service Versionen (Sequenzdiagram)
+=== !
 
-image::sequenceConverter.png[background]
+image::adapter_pattern_sequence_diagram.png[]
 
 === Adapterpattern zwischen Versionen eines Services (Modelmapper)
 

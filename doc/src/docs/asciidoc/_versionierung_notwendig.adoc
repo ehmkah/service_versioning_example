@@ -77,7 +77,7 @@ Bei einer nichtrückärtskompatiblen Änderung wird der Konsument gezwungen etwa
 [NOTE.speaker]
 --
 * KÖNNEN, weil ich im Moment der Anpassung nicht weiss, ob der Teil den ich ändere tatsächlich von einem Konsumenten genutzt wird
-* Ändern des Endpoints (andere UIR , anderer HOST)
+* Ändern des Endpoints (andere URI , anderer HOST)
 * Listen statt einzelner Werte
 * enums: weil wenn ich neue Werte schicke, kann ein Client darauf nicht reagieren und Fehler machen (z.B. 3. Klasse)
 * implizite Annahmen
