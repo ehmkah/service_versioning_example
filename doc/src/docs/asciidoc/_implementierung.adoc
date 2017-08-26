@@ -129,6 +129,7 @@ image::adapter_pattern_sequence_diagram.png[]
 === Adapterpattern zwischen Versionen eines Services (Modelmapper)
 
 * DEMO
+
 .Converter.map
 [source,java]
 ----

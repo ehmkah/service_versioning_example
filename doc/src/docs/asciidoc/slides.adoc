@@ -14,7 +14,7 @@ ifndef::sourcedir[:sourcedir: ../../main/java]
 //* jeden zweiten Dienstag alle zwei Monate in der SBB Effigerstrasse
 //* https://www.meetup.com/de-DE/Hackergarten-Bern/
 
-== .
+== !
 
 image::preview.jpg[background]
 
