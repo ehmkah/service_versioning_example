@@ -2,32 +2,44 @@
 
 === Service
 
-image::service.png[background]
-[%step]
+image::service.png[width=640,height=480]
+
+[NOTE.speaker]
+--
 * ein Stück Software, das irgendwo läuft
+--
 
 === Serviceschnittstelle
 
-image::schnittstelle.png[background]
-[%step]
+image::schnittstelle.png[width=640,height=480]
+
+[NOTE.speaker]
+--
 * über diese kann mit dem Service kommuniziert werden
+--
 
 === Konsumenten
 
-image::konsument.png[background]
-[%step]
+image::konsument.png[width=640,height=480]
+
+[NOTE.speaker]
+--
 * verwenden Serviceschnittstelle
+--
 
 === explizite Versionierung
 
-image::expliziteVersionierung.png[background]
-[%step]
+image::expliziteVersionierung.png[width=640,height=480]
+
+[NOTE.speaker]
+--
 * zwei Versionen einer Serviceschnittstelle verfügbar
 * Konsument wählt Version mit der er kommuniziert
+--
 
 === Projektbeschreibung für Demos
 
-image::projectOverview.png[background]
+image::projectOverview.png[width=640,height=480]
 
 [NOTE.speaker]
 --
