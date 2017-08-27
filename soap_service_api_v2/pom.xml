@@ -30,6 +30,9 @@
                             <vmArgs>
                                 <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
                             </vmArgs>
+                            <xjcArgs>
+                                <xjcArg>-Xsetters</xjcArg>
+                            </xjcArgs>
                             <wsdlDirectory>${basedir}/src/main/resources/wsdl</wsdlDirectory>
                         </configuration>
                     </execution>

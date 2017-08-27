@@ -25,7 +25,7 @@
 
     <xs:complexType name="GetPriceRequestType">
         <xs:sequence>
-            <xs:element name="transported" type="TransportedObjectType"/>
+            <xs:element name="transported" type="TransportedObjectType" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element name="departure" type="xs:string"/>
             <xs:element name="destination" type="xs:string"/>
         </xs:sequence>
