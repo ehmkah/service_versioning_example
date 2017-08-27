@@ -179,6 +179,10 @@ public com.ehmkah.services.gardening.RequestType map(RequestType requestV1) {
 
 video::adapter_pattern_manual_demo.mp4[options=autoplay]
 
+=== !
+
+image::out.gif[]
+
 === Adapterpattern zwischen Versionen eines Services (händisch)
 
 * Einsatz eines Generators (und manuelles nachziehen der Änderungen)

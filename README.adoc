@@ -8,6 +8,7 @@
 == TODO
 
 * package de.ehmkah.projects.service_versioning_example
+* movs to animated gifs? (with firefox extension they can be stopped and restarted: CTRL+m, SHIFT+m restarts a gif)
 
 
 
