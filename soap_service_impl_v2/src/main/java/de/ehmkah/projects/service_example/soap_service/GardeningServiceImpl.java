@@ -1,10 +1,7 @@
 package de.ehmkah.projects.service_example.soap_service;
 
 
-import com.ehmkah.services.gardening.ObjectFactory;
-import com.ehmkah.services.gardening.RequestType;
-import com.ehmkah.services.gardening.ResponseType;
-import com.ehmkah.services.gardening.Wsgardening;
+import com.ehmkah.services.gardening.*;
 import de.ehmkah.projects.service_example.soap_service.domain.NeigbhbourCheckService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -39,5 +36,10 @@ public class GardeningServiceImpl implements Wsgardening{
     result.setAreGoodNeighbours(checkResult);
 
     return result;
+  }
+
+  @Override
+  public GetPriceResponseType getPrice(GetPriceRequestType request) {
+    return null;
   }
 }

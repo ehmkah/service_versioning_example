@@ -20,10 +20,21 @@
         <part name="response" element="gardening:response"/>
     </message>
 
+    <message name="getPriceRequest">
+        <part name="request" element="gardening:getPriceRequest"/>
+    </message>
+    <message name="getPriceResponse">
+        <part name="response" element="gardening:getPriceResponse"/>
+    </message>
+
     <portType name="Wsgardening">
         <operation name="checkNeighbours">
             <input message="gardening:checkNeighboursRequest"/>
             <output message="gardening:checkNeighboursResponse"/>
+        </operation>
+        <operation name="getPrice">
+            <input message="gardening:getPriceRequest"/>
+            <output message="gardening:getPriceResponse"/>
         </operation>
     </portType>
 
@@ -32,6 +43,15 @@
                       transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="checkNeighbours">
             <soap:operation soapAction="http://ehmkah.com/services/gardening/#checkNeighbours"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="getPrice">
+            <soap:operation soapAction="http://ehmkah.com/services/gardening/#getPrice"/>
             <input>
                 <soap:body use="literal"/>
             </input>
