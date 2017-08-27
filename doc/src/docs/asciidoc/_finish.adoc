@@ -5,7 +5,7 @@
 //* Nur Probleme lösen, die wirklich bestehen
 //* nicht strenge mit sich sein, als nötig
 
-== Zusammenfassung                    ¡
+== Zusammenfassung
 
 [%step]
 . Explizite Versionierung ist notwendig

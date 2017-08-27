@@ -72,7 +72,7 @@ image:producerPact.png[]
 
 === Consumer Driven Contract Tests (PACT)
 
-* DEMO
+video::consumer_driven_contract_tests_demo.mp4[options=autoplay]
 
 [NOTE.speaker]
 --
