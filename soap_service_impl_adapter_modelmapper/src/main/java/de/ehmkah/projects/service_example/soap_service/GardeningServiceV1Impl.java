@@ -1,9 +1,6 @@
 package de.ehmkah.projects.service_example.soap_service;
 
-import de.ehmkah.projects.service_versioning_example.soap.v1.ObjectFactory;
-import de.ehmkah.projects.service_versioning_example.soap.v1.RequestType;
-import de.ehmkah.projects.service_versioning_example.soap.v1.ResponseType;
-import de.ehmkah.projects.service_versioning_example.soap.v1.Wsgardening;
+import de.ehmkah.projects.service_versioning_example.soap.v1.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -42,5 +39,10 @@ public class GardeningServiceV1Impl implements Wsgardening {
     ResponseType result = converterV1ToCurrent.map(responseTypeCurrent);
 
     return result;
+  }
+
+  @Override
+  public GetPriceResponseType getPrice(GetPriceRequestType request) {
+    return null;
   }
 }

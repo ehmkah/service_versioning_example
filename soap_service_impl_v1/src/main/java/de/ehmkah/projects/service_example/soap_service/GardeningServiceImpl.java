@@ -2,10 +2,7 @@ package de.ehmkah.projects.service_example.soap_service;
 
 
 import de.ehmkah.projects.service_example.soap_service.domain.NeigbhbourCheckService;
-import de.ehmkah.projects.service_versioning_example.soap.v1.ObjectFactory;
-import de.ehmkah.projects.service_versioning_example.soap.v1.RequestType;
-import de.ehmkah.projects.service_versioning_example.soap.v1.ResponseType;
-import de.ehmkah.projects.service_versioning_example.soap.v1.Wsgardening;
+import de.ehmkah.projects.service_versioning_example.soap.v1.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +12,7 @@ import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.xml.bind.annotation.XmlSeeAlso;
+import java.math.BigInteger;
 
 
 @Component
@@ -40,6 +38,13 @@ public class GardeningServiceImpl implements Wsgardening {
     String areGoodNeigbours = internalService.areGood(parameters.getSpeciesOne(), parameters.getSpeciesTwo());
     ResponseType result = new ResponseType();
     result.setAreGoodNeighbours(areGoodNeigbours);
+    return result;
+  }
+
+  @Override
+  public GetPriceResponseType getPrice(GetPriceRequestType request) {
+    GetPriceResponseType result = new GetPriceResponseType();
+    result.setPriceInChf(new BigInteger("1000"));
     return result;
   }
 }
