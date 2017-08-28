@@ -1,0 +1,1 @@
+* Example for Version1 of soap service which will be implemented

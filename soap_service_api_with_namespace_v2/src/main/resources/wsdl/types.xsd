@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://ehmkah.com/services/gardening/v2"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified" targetNamespace="http://ehmkah.com/services/gardening/v2">
+
+    <xs:element name="request" type="RequestType"/>
+    <xs:element name="response" type="ResponseType"/>
+
+    <xs:element name="getPriceRequest" type="GetPriceRequestType"/>
+    <xs:element name="getPriceResponse" type="GetPriceResponseType"/>
+
+
+    <xs:complexType name="RequestType">
+        <xs:sequence>
+            <xs:element name="speciesOne" type="xs:string"/>
+            <xs:element name="speciesTwo" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ResponseType">
+        <xs:sequence>
+            <xs:element name="areGoodNeighbours" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="GetPriceRequestType">
+        <xs:sequence>
+            <xs:element name="transported" type="TransportedObjectType" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element name="departure" type="xs:string"/>
+            <xs:element name="destination" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="GetPriceResponseType">
+        <xs:sequence>
+            <xs:element name="priceInChf" type="xs:integer"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TransportedObjectType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PersonType">
+        <xs:complexContent>
+            <xs:extension base="TransportedObjectType">
+                <xs:sequence>
+                    <xs:element name="surname" type="xs:string"/>
+                    <xs:element name="firstname" type="xs:string"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="DogType">
+        <xs:complexContent>
+            <xs:extension base="TransportedObjectType">
+                <xs:sequence>
+                    <xs:element name="owner" type="xs:string"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="BikeType">
+        <xs:complexContent>
+            <xs:extension base="TransportedObjectType">
+                <xs:sequence>
+                    <xs:element name="owner" type="xs:string"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+</xs:schema>

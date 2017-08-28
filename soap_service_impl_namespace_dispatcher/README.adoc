@@ -1,0 +1,9 @@
+== Example for Namespacedispatcher
+
+* only one endpoint available
+* messages are dispatched depending on there namespace
+
+* serviceV1.wsdl => http://localhost:8080/overview/v1/service?wsdl
+* serviceV2.wsdl => http://localhost:8080/overview/v2/service?wsdl
+
+

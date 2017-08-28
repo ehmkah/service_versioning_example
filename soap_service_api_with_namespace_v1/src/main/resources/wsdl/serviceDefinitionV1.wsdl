@@ -1,0 +1,67 @@
+<definitions name="gardening" xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+             xmlns:xs="http://www.w3.org/2001/XMLSchema"
+             xmlns:gardening="http://ehmkah.com/services/gardening/v1"
+             targetNamespace="http://ehmkah.com/services/gardening/v1">
+    <types>
+        <xs:schema targetNamespace="http://ehmkah.com/services/gardening/v1">
+            <xs:import namespace="http://ehmkah.com/services/gardening/v1" schemaLocation="types.xsd"/>
+        </xs:schema>
+    </types>
+
+    <message name="checkNeighboursRequest">
+        <part name="request" element="gardening:request"/>
+    </message>
+    <message name="checkNeighboursResponse">
+        <part name="response" element="gardening:response"/>
+    </message>
+
+    <message name="getPriceRequest">
+        <part name="request" element="gardening:getPriceRequest"/>
+    </message>
+    <message name="getPriceResponse">
+        <part name="response" element="gardening:getPriceResponse"/>
+    </message>
+
+    <portType name="Wsgardening">
+        <operation name="checkNeighbours">
+            <input message="gardening:checkNeighboursRequest"/>
+            <output message="gardening:checkNeighboursResponse"/>
+        </operation>
+        <operation name="getPrice">
+            <input message="gardening:getPriceRequest"/>
+            <output message="gardening:getPriceResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="gardeningSoapHttpBinding" type="gardening:Wsgardening">
+        <soap:binding style="document"
+                      transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="checkNeighbours">
+            <soap:operation soapAction="http://ehmkah.com/services/gardening/#checkNeighbours"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="getPrice">
+            <soap:operation soapAction="http://ehmkah.com/services/gardening/#getPrice"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="gardeningService">
+        <port name="gardeningEndpoint" binding="gardening:gardeningSoapHttpBinding">
+            <soap:address location="gardening"/>
+        </port>
+    </service>
+
+</definitions>

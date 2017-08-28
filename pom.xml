@@ -19,6 +19,10 @@
         <module>soap_service_api_v1</module>
         <module>soap_service_api_v2</module>
 
+        <module>soap_service_api_with_namespace_v1</module>
+        <module>soap_service_api_with_namespace_v2</module>
+
+
         <module>rest_service_api_v1</module>
         <module>rest_service_api_v2</module>
 
@@ -34,6 +38,7 @@
         <!-- adapter implementations -->
         <module>soap_service_impl_adapter_modelmapper</module>
         <module>soap_service_impl_adapter_manualmapper</module>
+        <module>soap_service_impl_namespace_dispatcher</module>
 
         <!-- rest implementation -->
         <module>rest_service_impl_media_type_versioning</module>
