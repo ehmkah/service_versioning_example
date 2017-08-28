@@ -1,4 +1,4 @@
-package de.ehmkah.prjects.api;
+package de.ehmkah.projects.service_versioning_example.rest_service_media_type_versioning;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

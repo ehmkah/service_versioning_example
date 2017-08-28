@@ -1,20 +1,17 @@
-package de.ehmkah.prjects.api;
+package de.ehmkah.projects.service_versioning_example.rest_service_media_type_versioning;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 
-/**
- * @author Michael Krausse (ehmkah)
- */
 
 @Controller
 @EnableAutoConfiguration
 @ComponentScan
-public class ApplicationRestImplV1 {
+public class ApplicationRestImpl {
 
   public static void main(String[] args) throws Exception {
-    SpringApplication.run(ApplicationRestImplV1.class, args);
+    SpringApplication.run(ApplicationRestImpl.class, args);
   }
 }
