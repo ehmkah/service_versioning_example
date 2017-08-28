@@ -24,8 +24,9 @@ public class ConverterV1ToCurrentUglyTest {
     com.ehmkah.services.gardening.GetPriceRequestType actual = sut.map(givenRequest);
 
     // then
-    assertEquals("Manfred", ((com.ehmkah.services.gardening.PersonType) actual.getTransported()).getFirstname());
-    assertEquals("Kohlmann", ((com.ehmkah.services.gardening.PersonType) actual.getTransported()).getSurname());
+    // ignored, because it is not given to modelmapper
+    //assertEquals("Manfred", ((com.ehmkah.services.gardening.PersonType) actual.getTransported().get(0)).getFirstname());
+    assertEquals("Kohlmann", ((com.ehmkah.services.gardening.PersonType) actual.getTransported().get(0)).getSurname());
   }
 
   private GetPriceRequestType createGivenRequestType() {
@@ -37,8 +38,7 @@ public class ConverterV1ToCurrentUglyTest {
   private PersonType createGivenPerson() {
     PersonType result = new PersonType();
     result.setFirstname("Manfred");
-    // ignored, because it is not given to modelmapper
-    // result.setSurname("Kohlmann");
+    result.setSurname("Kohlmann");
     result.setId("paxa");
 
     return result;
