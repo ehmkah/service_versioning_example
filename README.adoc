@@ -4,6 +4,11 @@
 
 * See /doc/resources/README.md for further details
 
+=== Requirements
+
+* you need
+** java and maven for building the examples
+** a REST and SOAP client for testing
 
 == TODO
 
