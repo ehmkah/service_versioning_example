@@ -38,7 +38,6 @@ Be conservative in what you send, be liberal in what you accept.
 * Tests laufen beim Serviceanbieter automatisiert mit
 * Tests validierung Struktur und Inhalts
 * Nach Änderung kein Test kaputt => keine neue Servieversion
-* https://martinfowler.com/articles/consumerDrivenContracts.html[Definition]
 
 [NOTE.speaker]
 --
@@ -91,11 +90,11 @@ video::consumer_driven_contract_tests_demo.mp4[options=autoplay]
 * Konsumenten können Ihre Pacts hochladen
 * es entsteht im Idealfall eine grosse Menge von Beispielen
 
-=== Alternativen zu Pact
-
-* assertj-swagger (https://github.com/RobWin/assertj-swagger)
-* swagger::diff (https://github.com/civisanalytics/swagger-diff)
-* image:restassured_logo.png[] (http://rest-assured.io/)
+//=== Alternativen zu Pact
+//
+//* assertj-swagger (https://github.com/RobWin/assertj-swagger)
+//* swagger::diff (https://github.com/civisanalytics/swagger-diff)
+//* image:restassured_logo.png[] (http://rest-assured.io/)
 
 === Kleine Schnittstellen
 
@@ -146,3 +145,10 @@ image:grosseSchnittstelle03.png[]
 ** bei vielen any Elementen verschwindet der Sinn mit einer mit xsd definierten Schnittstelle
 --
 
+
+=== Unsere Entscheidung
+
+[%step]
+* Conttract Tests => ja, aber noch nicht etabliert
+* Kleine Schnittstellen => ja in Arbeit aber aufwendig hinzubauen
+* Extension points => nein, Typisierung für uns zu wichtig

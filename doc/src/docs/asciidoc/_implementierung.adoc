@@ -1,6 +1,6 @@
 == Welche Pattern kann ich für eine explizite Versionierung verwenden?
 
-=== Anbieten des Services
+=== Anbieten der Serviceschnittstelle
 
 === URI Versioning
 
@@ -38,20 +38,21 @@ video::uri_versioning_demo.mp4[options=autoplay]
 
 === Media Type Versioning
 
+[%step]
 * nur REST
 * Beispiel: Header enthält individuellen Mediatype, "Accept": "application/vnd.ehmkah.app-1.0+json"
 * Fehler, wenn es nicht passt 406 Not Acceptable
 
-=== Media Type Versioning (DEMO)
-
-* DEMO (rest_service_impl_media_type_versioning)
-[source, java]
-----
-@RequestMapping(method = RequestMethod.GET, produces = "application/vnd.ehmkah.app-1.0+json")
-  public ResponseEntity<List<Object>> list(
-          @ApiParam(value = "Tags used to filter the result")
-  ...
-----
+//=== Media Type Versioning (DEMO)
+//
+//* DEMO (rest_service_impl_media_type_versioning)
+//[source, java]
+//----
+//@RequestMapping(method = RequestMethod.GET, produces = "application/vnd.ehmkah.app-1.0+json")
+//  public ResponseEntity<List<Object>> list(
+//          @ApiParam(value = "Tags used to filter the result")
+//  ...
+//----
 
 === !
 

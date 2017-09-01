@@ -1,9 +1,11 @@
-= Explizite Serviceschnittstellenversionierung ist möglich
+// .customcss
+// Use of the customcss attribute to load external CSS
+// :include: //body/script | //div[@class="slides"]
+// :header_footer:
+= https://explizite.service.schnittstellen. versionierung/ist/moeglich
+Michael Krausse m@m-krausse.de, Developer Day 2017, Bern
+:customcss: customcss.css
 
-Michael Krausse <m@m-krausse.de
-2017-09-07
-:revnumber: {project-version}
-:source-highlighter: coderay
 ifndef::imagesdir[:imagesdir: images]
 ifndef::sourcedir[:sourcedir: ../../main/java]
 
