@@ -31,7 +31,7 @@ public class WebServiceConfiguration {
   public Endpoint endpointServiceV1(SpringBus springBus) {
     EndpointImpl result = new EndpointImpl(springBus, gardeningServiceV1);
     result.setWsdlLocation("classpath:/wsdl/serviceDefinitionV2.wsdl");
-    result.publish("/v2/service");
+    result.publish("/service");
 
     return result;
   }
