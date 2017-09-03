@@ -1,4 +1,14 @@
 = Example for consumer driven contract Test with pact
 
 * shows an example how to implement consumer driven contract test with pact
-* pact is used
+
+== Run Consumer Tests
+
+. run `ConsumerTest` it will produce a file called `Service_Consumer-aProvider.json`
+** this file contains everything we test, we are interested
+
+. run `ServiceTest`- this is the producer part
+** test load pact file from resources/pact, starts spring boot application and validates output
+** attention it does not use generated file from `ConsumerTest`because normally you get the pacts from your consumers
+** make some changes to Implementation and see how the report becomes red
+

@@ -14,7 +14,8 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 
 
-public class ConsumerAnnotationTest {
+public class ConsumerTest {
+
   @Rule
   public PactProviderRule mockProvider =
           new PactProviderRule("aProvider", this);
