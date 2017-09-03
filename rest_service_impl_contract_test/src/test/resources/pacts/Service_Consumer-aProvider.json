@@ -17,6 +17,9 @@
       },
       "response": {
         "status": 200,
+        "headers": {
+          "Content-Type": "application/vnd.ehmkah.app-1.0+json"
+        },
         "body": [
           {
             "title": "HUHU, version 1.0"

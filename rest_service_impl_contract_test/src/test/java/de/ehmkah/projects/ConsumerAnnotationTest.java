@@ -8,9 +8,12 @@ import au.com.dius.pact.model.PactFragment;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.Assert.assertEquals;
 
- 
+
 public class ConsumerAnnotationTest {
   @Rule
   public PactProviderRule mockProvider =
@@ -18,6 +21,9 @@ public class ConsumerAnnotationTest {
 
   @Pact(consumer = "Service_Consumer")
   public PactFragment createFragment(PactDslWithProvider builder) {
+    Map<String, String> expectedVersionHeader = new HashMap<>();
+    expectedVersionHeader.put("Content-Type", "application/vnd.ehmkah.app-1.0+json");
+
     return builder
             .uponReceiving("a root request")
             .headers("Accept", "application/vnd.ehmkah.app-1.0+json")
@@ -25,8 +31,7 @@ public class ConsumerAnnotationTest {
             .path("/movies")
             .willRespondWith()
             .status(200)
-
-            .matchHeader("Content-Type", ".", "application/vnd.ehmkah.app-1.0+json")
+            .headers(expectedVersionHeader)
             .body("[{\"movie_id\":null,\"title\":\"HUHU, version 1.0\",\"description\":null,\"rating\":null,\"price\":null,\"image\":null}]")
             .toFragment();
   }
