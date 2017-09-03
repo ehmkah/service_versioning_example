@@ -44,9 +44,9 @@ Be conservative in what you send, be liberal in what you accept.
  wenn erstellen einer neuen Version zwei Tage dauert, und ich durch einen Test herausfinden kann, dass ich die Änderung durchführen kann ohne eine neue Version zu erstellen, dann spare ich zweit Tage (dann sollten die Tests), die Kosten für die Clientanpassungen (mindestens Endpoints nicht einberechnet), ausserdem erlecihtert es die Kommunikation, wer was anpassen muss
 --
 
-=== * DEMO [Schematron für SOAP]
-
-*  vielleicht am DevDay fertig, wenn es neue Erkenntnisse liefert
+//=== * DEMO [Schematron für SOAP]
+//
+//*  vielleicht am DevDay fertig, wenn es neue Erkenntnisse liefert
 
 === Consumer Driven Contract Tests (PACT)
 
