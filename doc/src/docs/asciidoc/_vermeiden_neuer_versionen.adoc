@@ -50,7 +50,7 @@ Be conservative in what you send, be liberal in what you accept.
 
 === Consumer Driven Contract Tests (PACT)
 
-image:consumerPact.png[]
+image:consumer_driven_contract_konsument.png[]
 
 [NOTE.speaker]
 --
@@ -61,7 +61,7 @@ image:consumerPact.png[]
 
 === Consumer Driven Contract Tests (PACT)
 
-image:producerPact.png[]
+image:consumer_driven_contract_service.png[]
 
 [NOTE.speaker]
 --
