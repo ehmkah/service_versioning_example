@@ -75,27 +75,193 @@ Bei einer nichtrückärtskompatiblen Änderung wird der Konsument gezwungen etwa
 --
 * eine sehr strenge Definition
 * was tun, kann Konfigurativ sein oder es muss eine neue Software gebaut released und deployed werden
+* KÖNNEN, weil ich im Moment der Anpassung nicht weiss, ob der Teil den ich ändere tatsächlich von einem Konsumenten genutzt wird
+
 --
 
-=== Nicht rückwärtskompatible Änderungen können sein?
+=== Beispiele für nicht rückwärtskompatible Änderungen?
+//
+//[%step]
+//* Verändern des Endpoints
+//* Löschen von Attributen in Datenstrukturen
+//* Umbennen von Attributen in Datenstrukturen
+//* Attribute in Requests mandatory machen
+//* Attribute in Response optional machen
+//* Anpassungen an Enumwerten
+//* Verändern von impliziten Annahmen
+//
+//[NOTE.speaker]
+//--
+//* KÖNNEN, weil ich im Moment der Anpassung nicht weiss, ob der Teil den ich ändere tatsächlich von einem //Konsumenten genutzt wird
+//* Ändern des Endpoints (andere URI , anderer HOST)
+//* Listen statt einzelner Werte
+//* enums: weil wenn ich neue Werte schicke, kann ein Client darauf nicht reagieren und Fehler machen (z.B. 3. //Klasse)
+//* implizite Annahmen
+//** andere Repräsentation eines Strings: wenn ich einen String als Basis nehme um daraus etwas abzuleiten, oder //nach einem bestimmten Pattern parse, Beispiel z.B. "1. Klasse" statt "1. KLASSE"
+//** Reihenfolgen von Sequencen, z.B. zuerst teuere, dann billige Angebote
+//--
 
-[%step]
-* Verändern des Endpoints
-* Löschen von Attributen in Datenstrukturen
-* Umbennen von Attributen in Datenstrukturen
-* Attribute in Requests mandatory machen
-* Attribute in Response optional machen
-* Anpassungen an Enumwerten
-* Verändern von impliziten Annahmen
+=== Verändern des Endpoints
+
+.alt
+[source]
+----
+htp://www.orange.ch/api/
+----
+
+.neu
+[source]
+----
+htp://www.salt.ch/api
+----
+
+=== Löschen von Attributen in Datenstrukturen
+
+.alt
+[source, java]
+----
+public class Billett {
+ private String klasse;
+}
+----
+
+.neu
+[source, java]
+----
+public class Billett {
+}
+----
+
+=== Umbennen von Attributen in Datenstrukturen
+
+.alt
+[source, java]
+----
+public class Billett {
+ private String klasse;
+}
+----
+
+.neu
+[source, java]
+----
+public class Billett {
+ private String k_l_a_s_s_e;
+}
+----
+
+
+=== Attribute in Requests mandatory machen
+
+.alt
+[source, xml]
+----
+ <xs:complexType name="RequestType">
+    <xs:sequence>
+        <xs:element name="name" type="string" minOccurs="0"/>
+    </xs:sequence>
+ </complexType>
+----
+
+.neu
+[source, xml]
+----
+ <xs:complexType name="RequestType">
+    <xs:sequence>
+        <xs:element name="name" type="string" minOccurs="1"/>
+    </xs:sequence>
+ </complexType>
+----
+
+
+=== Attribute in Response optional machen
+
+.alt
+[source, xml]
+----
+ <xs:complexType name="RequestType">
+    <xs:sequence>
+        <xs:element name="name" type="string" minOccurs="1"/>
+    </xs:sequence>
+ </complexType>
+----
+
+.neu
+[source, xml]
+----
+ <xs:complexType name="RequestType">
+    <xs:sequence>
+        <xs:element name="name" type="string" minOccurs="0"/>
+    </xs:sequence>
+ </complexType>
+----
+
+
+=== Anpassungen an Enumwerten
+
+.alt
+[source, java]
+----
+ public enum Klasse {
+   Klasse_1,
+   Klasse_2
+ }
+
+----
+
+.neu
+[source, java]
+----
+ public enum Klasse {
+   Klasse_1,
+   Klasse_3
+ }
+----
 
 [NOTE.speaker]
 --
-* KÖNNEN, weil ich im Moment der Anpassung nicht weiss, ob der Teil den ich ändere tatsächlich von einem Konsumenten genutzt wird
-* Ändern des Endpoints (andere URI , anderer HOST)
-* Listen statt einzelner Werte
-* enums: weil wenn ich neue Werte schicke, kann ein Client darauf nicht reagieren und Fehler machen (z.B. 3. Klasse)
-* implizite Annahmen
-** andere Repräsentation eines Strings: wenn ich einen String als Basis nehme um daraus etwas abzuleiten, oder nach einem bestimmten Pattern parse, Beispiel z.B. "1. Klasse" statt "1. KLASSE"
+enums: weil wenn ich neue Werte schicke, kann ein Client darauf nicht reagieren und Fehler machen (z.B. 3. //Klasse)
+--
+
+
+=== Verändern von impliziten Annahmen (Repräsentation)
+
+.alt
+[source]
+----
+ "1. Klasse"
+
+----
+
+.neu
+[source]
+----
+ "1.KL"
+----
+
+[NOTE.speaker]
+--
+* andere Repräsentation eines Strings: wenn ich einen String als Basis nehme um daraus etwas abzuleiten, oder //nach einem bestimmten Pattern parse, Beispiel z.B. "1. Klasse" statt "1. KLASSE"
+--
+
+=== Verändern von impliziten Annahmen (Reihenfolge)
+
+.alt
+[source]
+----
+ [{Angebot1, 200 CHF},
+  {Angebot2, 100 CHF}]
+----
+
+.neu
+[source]
+----
+ [{Angebot2, 100 CHF},
+  {Angebot1, 200 CHF}]
+----
+
+[NOTE.speaker]
+--
 ** Reihenfolgen von Sequencen, z.B. zuerst teuere, dann billige Angebote
 --
 
