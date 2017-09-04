@@ -1,10 +1,10 @@
-== Introduction
+== Agenda
 
 [%step]
 * Begriffsdefinition
-* Benötige ich explizite Serviceversionierung?
-* Wie vermeide ich neue Serviceversionen?
-* Wie implementiere ich explizite Servicerversionierung?
+* Benötige ich explizite Serviceschnittstellenversionierung?
+* Wie vermeide ich neue Serviceschnittstellenversionen?
+* Wie implementiere ich explizite Serviceschnittstellenversionierung?
 * Was brauche ich neben der Implementierung noch?
 * Zusammenfassung
 

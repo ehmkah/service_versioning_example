@@ -50,9 +50,24 @@
 * generell machen rückwaärtskopatible Serviceschnittststellen die Entwicklungs langsamer und führen zu einem verzögerten Rückbau von Features
 --
 
-=== Nicht rückwärtskompatible Änderungen können sein?
+=== Unsere Entscheidung
 
-[quote, unbekannt]
+[%step]
+* Explizite Versionierung unsere Serviceschnittstellen, weil
+* Mobile & Automaten anderen Lebenszyklus haben
+* Parallele Deployen von Services zu kostspielig ist
+
+=== ... aber
+
+[%step]
+* Wir haben nicht alle Serviceschnittstellen versioniert
+* Versionierung nur auf Aussen-Services
+* Versionierung nur auf Teamübergreifenden Services
+* Keine Versionierung auf Teaminternen Services
+
+=== Was sind nicht rückwärtskompatible Änderungen?
+
+[%step]
 Bei einer nichtrückärtskompatiblen Änderung wird der Konsument gezwungen etwas zu tun.
 
 
@@ -61,7 +76,6 @@ Bei einer nichtrückärtskompatiblen Änderung wird der Konsument gezwungen etwa
 * eine sehr strenge Definition
 * was tun, kann Konfigurativ sein oder es muss eine neue Software gebaut released und deployed werden
 --
-
 
 === Nicht rückwärtskompatible Änderungen können sein?
 
@@ -96,15 +110,3 @@ Bei einer nichtrückärtskompatiblen Änderung wird der Konsument gezwungen etwa
 * wir haben eine SOAP und REST Welt
 --
 
-=== Wir brauchen explizite Serviversionierung, weil
-
-[%step]
-* Mobile & Automaten anderen Lebenszyklus haben
-* Parallele Deployen von Services zu kostspielig ist
-
-=== ... aber
-
-* Wir haben nicht alle Serviceschnittstellen versioniert
-* Versionierung nur auf Aussen-Services
-* Versionierung nur auf Teamübergreifenden Services
-* Keine Versionierung auf Teaminternen Services
