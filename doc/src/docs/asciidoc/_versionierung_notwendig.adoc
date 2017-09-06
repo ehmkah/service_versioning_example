@@ -265,14 +265,36 @@ enums: weil wenn ich neue Werte schicke, kann ein Client darauf nicht reagieren 
 ** Reihenfolgen von Sequencen, z.B. zuerst teuere, dann billige Angebote
 --
 
-=== Nicht rückwärtskompatible Änderungen können sein? (für SOAP)
+=== Verändern Parameterreihenfolge in Operationen
 
-[%step]
-* Entfernen und umbennen von Operationen
-* Verändern Parameterreihenfolge in Operationen
+.alt
+[source, java]
+----
+ public ResponseType foo(String name, Date birthdate);
+----
 
-[NOTE.speaker]
---
-* wir haben eine SOAP und REST Welt
---
+.neu
+[source, java]
+----
+ public ResponseType foo(Date birthdate, String name);
+----
 
+=== Entfernen umbennen von Operationen
+
+
+.alt
+[source, java]
+----
+ interface Service {
+    ResponseFoo foo(RequestFoo request);
+    ResponseBar foo(RequestBar request);
+ }
+----
+
+.neu
+[source, java]
+----
+ interface Service {
+     ResponseFoo fooFoo(RequestFoo request);
+  }
+----
