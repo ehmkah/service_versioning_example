@@ -82,12 +82,13 @@ image:consumer_driven_contract_service.png[]
 * schauen, ob der Test noch läuft
 --
 
-=== Consumer Driven Contract Test (PACT, Advanced)
+=== Consumer Driven Contract Test (PACT Pact Broker)
 
 [%step]
-* Tool erlaubt die einfache Verwaltung der Pacts
+* PactBroker erlaubt die einfache Verwaltung der Pacts
 * Konsumenten können Ihre Pacts hochladen
-* es entsteht im Idealfall eine grosse Menge von Beispielen
+* es entsteht Beispiele für Servicenutzung
+* https://github.com/pact-foundation/pact_broker
 
 //=== Alternativen zu Pact
 //
@@ -149,5 +150,12 @@ image:grosseSchnittstelle03.png[]
 
 [%step]
 * Contract Tests => ja, aber noch nicht etabliert
-* Kleine Schnittstellen => ja in Arbeit aber aufwendig hinzubauen
+* Kleine Schnittstellen => ja in Arbeit
 * Extension points => nein, Typisierung für uns zu wichtig
+
+[NOTE.speaker]
+--
+* Contract Tests => noch nicht vollstöndig etabliert
+* Kleine Schnittstellen => in Arbeit aber leider sehr aufwendig
+* Extension points => nein, Typisierung ist für uns wichtig
+--
