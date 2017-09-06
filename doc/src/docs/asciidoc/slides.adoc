@@ -1,14 +1,14 @@
+// .image
 // .customcss
-// Use of the customcss attribute to load external CSS
+// Use of the title-slide-background-image feature of reveal.js
+// :include: //div[@class="slides"]
 // :include: //body/script | //div[@class="slides"]
 // :header_footer:
-= https://explizite.service.schnittstellen. versionierung/ist/moeglich
+= https://github.com/ehmkah/service_versioning_example[http://explizite.schnittstelle/version/ist/moeglich]
 Michael Krausse m@m-krausse.de, Developer Day 2017, Bern
 :customcss: customcss.css
-
-ifndef::imagesdir[:imagesdir: images]
-ifndef::sourcedir[:sourcedir: ../../main/java]
-
+:imagesdir: images
+:title-slide-background-image: title.jpg
 
 include::_introduction.adoc[]
 
