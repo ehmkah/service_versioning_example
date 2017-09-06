@@ -1,74 +1,9 @@
 == Benötige ich explizite Versionierung?
 
-=== Was spricht für explizite Serviceversionierung?
-
-[%step]
-* Hauptgrund: Entkopplung zwischen Service und Konsument
-* Nicht rückwärtskompatible Änderung ist unvermeidbar
-* Lebenszyklus Konsument und Service ungleich
-* Verträge mit Konsumenten
-* Nicht alle Konsumenten bekannt
-
-[NOTE.speaker]
---
-* nicht vermeidbar: Abbau von Altlasten, Vereinfachungen, entfernen von Redundanzen
-* Konsumenten:
-** Integration eines Servies kann aufwendig sein mit
-** Verträgen können das Risiko reduziert werden, dass Konsument häufig integrieren muss
-** Verträge regeln, wie lange eine Version verfügbar sein muss (z.B. Schnittstelle SNCF: alle halbe Jahre migration notwendig)
-*  Unterschiedliche Lifecycle
-** Konsument und Service können nicht gleichzeitg aktualisiert werden
-** Beispiel Backendsysteme vom neuen Vertriebssystem und die vNext
-** Alte Version müssen unterstützt werden, weil Wechsel zu einem beliebigen Zeitpunkt erfolgen kann
-* Es sind nicht alle Konsumenten bekannt
-** Wenn nicht alle Konsumenten bekannt sind, können unterschiedliche Schnittstellenversionen von alten Konsumenten noch im Einsatz sein
-** Ich weiss nicht, ob ich immer alle erreichen kann
---
-
-=== Was spricht gegen explizite Serviceversionierung?
-
-[%step]
-* Hauptgrund: Erhöht die Komplexität
-* Schnittstellenänderungen immer rückwärtskompatibel
-* Lebenszyklus Konsumenten und Service ist gleich
-* Ressourcenmangel
-* Konsumenten vom Service abhängig
-
-[NOTE.speaker]
---
-* Abhängig
-** wenn ein Abhängigkeitsverhältnis von Konsumenten zum Service besteht, kann ich das nutzen und nur eine Version anbietem
-** nicht sehr nett
-* lebenszyklus gleich
-** gleicher Lebenszyklus, es gehen beide gleichzeitig in Produktion
-** in unteren Umgebungen Test ist es OK, wenn der Service eine definierte Zeit nicht angebunden ist
-* Resourcenmangel
-** Es fehlen die Ressourcen, um zwei Versionen eines Services zur Verfügung zu stellen
-* rückwärtrskompatibel
-** Wenn Änderungen immer rückwärtskompatibel durchgeführt werden können, dann ist es nicht nötig mehrere Versionen zu haben
-** Beispiel ein sehr einfacher Service
-* generell machen rückwaärtskopatible Serviceschnittststellen die Entwicklungs langsamer und führen zu einem verzögerten Rückbau von Features
---
-
-=== Unsere Entscheidung
-
-[%step]
-* Explizite Versionierung unsere Serviceschnittstellen, weil
-* Mobile & Automaten anderen Lebenszyklus haben
-* Parallele Deployen von Services zu kostspielig ist
-
-=== ... aber
-
-[%step]
-* Wir haben nicht alle Serviceschnittstellen versioniert
-* Versionierung nur auf Aussen-Services
-* Versionierung nur auf Teamübergreifenden Services
-* Keine Versionierung auf Teaminternen Services
-
 === Was sind nicht rückwärtskompatible Änderungen?
 
 [%step]
-Bei einer nichtrückärtskompatiblen Änderung wird der Konsument gezwungen etwas zu tun.
+* Bei einer nichtrückärtskompatiblen Änderung wird der Konsument gezwungen etwas zu tun.
 
 
 [NOTE.speaker]
@@ -298,3 +233,70 @@ enums: weil wenn ich neue Werte schicke, kann ein Client darauf nicht reagieren 
      ResponseFoo fooFoo(RequestFoo request);
   }
 ----
+
+
+=== Was spricht für explizite Serviceversionierung?
+
+[%step]
+* Hauptgrund: Entkopplung zwischen Service und Konsument
+* Nicht rückwärtskompatible Änderung ist unvermeidbar
+* Lebenszyklus Konsument und Service ungleich
+* Verträge mit Konsumenten
+* Nicht alle Konsumenten bekannt
+
+[NOTE.speaker]
+--
+* nicht vermeidbar: Abbau von Altlasten, Vereinfachungen, entfernen von Redundanzen
+* Konsumenten:
+** Integration eines Servies kann aufwendig sein mit
+** Verträgen können das Risiko reduziert werden, dass Konsument häufig integrieren muss
+** Verträge regeln, wie lange eine Version verfügbar sein muss (z.B. Schnittstelle SNCF: alle halbe Jahre migration notwendig)
+*  Unterschiedliche Lifecycle
+** Konsument und Service können nicht gleichzeitg aktualisiert werden
+** Beispiel Backendsysteme vom neuen Vertriebssystem und die vNext
+** Alte Version müssen unterstützt werden, weil Wechsel zu einem beliebigen Zeitpunkt erfolgen kann
+* Es sind nicht alle Konsumenten bekannt
+** Wenn nicht alle Konsumenten bekannt sind, können unterschiedliche Schnittstellenversionen von alten Konsumenten noch im Einsatz sein
+** Ich weiss nicht, ob ich immer alle erreichen kann
+--
+
+=== Was spricht gegen explizite Serviceversionierung?
+
+[%step]
+* Hauptgrund: Erhöht die Komplexität
+* Schnittstellenänderungen immer rückwärtskompatibel
+* Lebenszyklus Konsumenten und Service ist gleich
+* Ressourcenmangel
+* Konsumenten vom Service abhängig
+
+[NOTE.speaker]
+--
+* Abhängig
+** wenn ein Abhängigkeitsverhältnis von Konsumenten zum Service besteht, kann ich das nutzen und nur eine Version anbietem
+** nicht sehr nett
+* lebenszyklus gleich
+** gleicher Lebenszyklus, es gehen beide gleichzeitig in Produktion
+** in unteren Umgebungen Test ist es OK, wenn der Service eine definierte Zeit nicht angebunden ist
+* Resourcenmangel
+** Es fehlen die Ressourcen, um zwei Versionen eines Services zur Verfügung zu stellen
+* rückwärtrskompatibel
+** Wenn Änderungen immer rückwärtskompatibel durchgeführt werden können, dann ist es nicht nötig mehrere Versionen zu haben
+** Beispiel ein sehr einfacher Service
+* generell machen rückwaärtskopatible Serviceschnittststellen die Entwicklungs langsamer und führen zu einem verzögerten Rückbau von Features
+--
+
+=== Unsere Entscheidung
+
+[%step]
+* Explizite Versionierung unsere Serviceschnittstellen, weil
+* Mobile & Automaten anderen Lebenszyklus haben
+* Parallele Deployen von Services zu kostspielig ist
+
+=== ... aber
+
+[%step]
+* Wir haben nicht alle Serviceschnittstellen versioniert
+* Versionierung nur auf Aussen-Services
+* Versionierung nur auf Teamübergreifenden Services
+* Keine Versionierung auf Teaminternen Services
+
