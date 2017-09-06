@@ -69,8 +69,8 @@
 === Media Type Versioning (Vorteile)
 
 [%step]
+* nur ein Endpoint
 * passt zu REST Paradigma
-
 
 === Media Type Versioning (Nachteile)
 
@@ -102,9 +102,9 @@ image::separat_deploy_pattern.png[]
 
 [%step]
 * Funktioniert out of the box
-* verschiedene Businessimplementierungen möglich
-* Stürzt eine Instanz ab, bleibt die andere erreichbar
+* Verschiedene Businessimplementierungen möglich
 * Angebotene Serviceversionen behindern sich nicht gegenseitig
+* Stürzt eine Instanz ab, bleibt die andere erreichbar
 
 === Separates Deployment (Nachteile)
 
@@ -129,13 +129,14 @@ image::duplicate_service.png[]
 === Code duplizieren (Vorteile)
 
 [%step]
-* Bessere Skalierung
+* Skalierung
 * verschiedene Businessimplementierungen möglich
+* Angebotene Serviceversionen behindern sich nicht gegenseitig
 
 === Code duplizieren (Nachteile)
 
 [%step]
-* extrem viele Redundanzen
+* Redundanzen
 * Wartungskosten
 * Inkonsistenzen
 
@@ -145,17 +146,8 @@ image::adapter_pattern_overview.png[]
 
 [NOTE.speaker]
 --
-* Konvertieren auf internes Model
---
-
-=== !
-
-image::adapter_pattern_class_diagram.png[]
-
-[NOTE.speaker]
---
 * Konvertieren auf internes Model ODER neueste Serviceversion
-*  Adapterpattern zwischen Service Versionen
+* Adapterpattern zwischen Service Versionen
 * Internes Model besonders beim Löschen nützlich
 * Konvertierung einfacher
 --
@@ -163,6 +155,18 @@ image::adapter_pattern_class_diagram.png[]
 === !
 
 image::adapter_pattern_sequence_diagram.png[]
+
+=== Service Schnittstellen Versions Adapter (Vorteile)
+
+[%step]
+* Skalierung
+* Businessimplementierung nur einmal
+
+=== Service Schnittstellen Versions Adapter (Nachteile)
+
+[%step]
+* Angebotene Serviceversionen können sich gegenseitig beeinflussen
+* grössere Änderungen am implementierten Prozess sind schwierig
 
 === Service Schnittstellen Versions Adapter (Modelmapper)
 
@@ -173,7 +177,8 @@ image::adapter_pattern_sequence_diagram.png[]
 === Service Schnittstellen Versions Adapter (Modelmapper) Vorteile
 
 [%step]
-* OK für simple Schnittstellen, da schnell aufgesetzt
+* geeignet für einfache Schnittstellen
+* schnell aufgesetzt
 
 === Service Schnittstellen Versions Adapter (Modelmapper) Nachteile
 
