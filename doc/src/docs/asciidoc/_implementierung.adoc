@@ -135,13 +135,13 @@ image::duplicate_service.png[]
 === Code duplizieren (Nachteile)
 
 [%step]
-* extrem viele Redundanzen, Arbeit macht keinen Spass
+* extrem viele Redundanzen
 * Wartungskosten
 * Inkonsistenzen
 
 === Service Schnittstellen Versions Adapter
 
-image::adapter_pattern_overview_diagram.png[]
+image::adapter_pattern_overview.png[]
 
 [NOTE.speaker]
 --
@@ -253,6 +253,7 @@ image::adapter_pattern_sequence_diagram.png[]
 
 === Unser Entscheidung
 
+[%step]
 * Einsatz: Service Schnittstellen Versions Adapter mit Generator
 * Grund: haben wir die beste Kontrolle und wir haben einen Generator
 
