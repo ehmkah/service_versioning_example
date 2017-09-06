@@ -3,6 +3,7 @@ package de.ehmkah.projects.service_versioning_example.rest_service_media_type_ve
 import de.ehmkah.v2.Movie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -22,6 +23,13 @@ public class MoviesApiControllerV2 {
     ResponseEntity<List<Movie>> result = ResponseEntity.ok(movies);
 
     return result;
+  }
+
+  @RequestMapping(method = RequestMethod.POST,
+          produces = "application/vnd.ehmkah.app-2.0+json", consumes = "application/vnd.ehmkah.app-2.0+json")
+  public ResponseEntity put(@RequestBody Movie movie) {
+    System.out.println("aufgerufen");
+    return null;
   }
 
 }

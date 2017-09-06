@@ -11,24 +11,39 @@
 * wenn ich Techniken kenne, die verhindern, dass ich neue Version brauche. spare ich Zeit und Geld
 --
 
-=== Postels Law
+=== Folge Postel`s Law
 
 [quote, Jon Postel]
 Be conservative in what you send, be liberal in what you accept.
 
-=== Postels Law
+=== Folge Postels Law (Tolerant Reader)
 
 [%step]
-* Tolerant Reader
-* Manificient Writer
+* ServiceAnfragen werden vom Service gutmütig interpretiert
+* Liest nur die Daten, die er benötigt
+* Keine Schemavalidierung
+* Möglichst viele optionale Elemente https://martinfowler.com/bliki/TolerantReader.html[mehr]
+
 
 [NOTE.speaker]
 --
-* Magnificient Writer : Kurzform, ich schicke nichts, breakendes, und sichere das technisch ab
-* Tolerant Reader: Ignoreiren von unbekannten Elementen, keine Validierung des WSDLS
-* Wir machen das zum Beispiel, wenn wir unseren Vertriebsservice vnext zur Verfügung stellen
-* Die WSG validiert die Anfragen und Anfragen gegen kein Schema
-* Validierung gegen das WSDL ausschalten (erlaubt, dass ältere Versionen verwendet werden können
+* Ignoreiren von unbekannten Elementen,
+* keine Validierung des WSDLS
+* optional, weil erlaubt maximale Flexibilität
+--
+
+=== Folge Postels Law (Tolerant Reader)(Demo)
+
+
+=== Folge Postels Law (Magnanimous Writer)
+
+[%step]
+* ServiceAntworten halten sich an den Vertrag
+* keine nicht rückwärtskompatiblen Antworten http://tenderware.blogspot.ch/2011/05/magnanimous-writer.html[Mehr]
+
+[NOTE.speaker]
+--
+* Kurzform, ich schicke nichts, breakendes, und sichere das technisch ab
 --
 
 === Consumer Driven Contract Tests
