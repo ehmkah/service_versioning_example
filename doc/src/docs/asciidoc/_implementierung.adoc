@@ -75,7 +75,8 @@
 === Media Type Versioning (Nachteile)
 
 [%step]
-*
+* schwieriger im Browser zu testen
+
 
 === Media Type Versioning (DEMO)
 

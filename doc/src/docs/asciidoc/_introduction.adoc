@@ -19,7 +19,7 @@ image::apetizer.jpg[]
 * Begriffsdefinition
 * Benötige ich explizite Schnittstellenversionen?
 * Wie vermeide ich neue Schnittstellenversionen?
-* Wie implementiere ich explizite Schnittstellenversionen?
+* Wie realisiere ich explizite Schnittstellenversionen?
 * Was brauche ich neben der Implementierung noch?
 * Zusammenfassung
 
