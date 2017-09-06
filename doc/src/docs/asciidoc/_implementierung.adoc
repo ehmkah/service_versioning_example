@@ -5,8 +5,8 @@
 === URI Versioning
 
 [%step]
-* Beispiel http://www.ehmkah.de/v1/service
-* Beispiel http://www.ehmkah.de/v2/service
+* Beispiel http://www.sbb.ch/v1/service
+* Beispiel http://www.sbb.ch/v2/service
 
 [NOTE.speaker]
 --
