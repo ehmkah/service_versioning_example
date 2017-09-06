@@ -5,14 +5,21 @@ import com.ehmkah.services.gardening.*;
 import de.ehmkah.projects.service_example.soap_service.domain.NeigbhbourCheckService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+import javax.jws.WebService;
+import javax.jws.soap.SOAPBinding;
+import javax.xml.bind.annotation.XmlSeeAlso;
 
-@Endpoint
+
 @Component
+@WebService(name = "Wsgardening", targetNamespace = "http://ehmkah.com/services/gardening", serviceName = "Wsgardening")
+@SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
+@XmlSeeAlso({
+        de.ehmkah.projects.service_versioning_example.soap.v1.ObjectFactory.class
+})
 public class GardeningServiceImpl implements Wsgardening {
 
   @Autowired
