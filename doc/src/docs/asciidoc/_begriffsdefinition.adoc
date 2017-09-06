@@ -9,7 +9,7 @@ image::service.png[width=640,height=480]
 * ein Stück Software, das irgendwo läuft
 --
 
-=== Serviceschnittstelle
+=== Schnittstelle
 
 image::schnittstelle.png[width=640,height=480]
 

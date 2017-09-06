@@ -1,4 +1,4 @@
-== Benötige ich explizite Versionierung?
+== Benötige ich explizite Schnittstellenversionierung?
 
 === Was sind nicht rückwärtskompatible Änderungen?
 
@@ -235,7 +235,7 @@ enums: weil wenn ich neue Werte schicke, kann ein Client darauf nicht reagieren 
 ----
 
 
-=== Was spricht für explizite Serviceversionierung?
+=== Was spricht für explizite Schnittstellenversionierung?
 
 [%step]
 * Hauptgrund: Entkopplung zwischen Service und Konsument
@@ -260,7 +260,7 @@ enums: weil wenn ich neue Werte schicke, kann ein Client darauf nicht reagieren 
 ** Ich weiss nicht, ob ich immer alle erreichen kann
 --
 
-=== Was spricht gegen explizite Serviceversionierung?
+=== Was spricht gegen explizite Schnittstellenversionierung?
 
 [%step]
 * Hauptgrund: Erhöht die Komplexität
@@ -288,15 +288,15 @@ enums: weil wenn ich neue Werte schicke, kann ein Client darauf nicht reagieren 
 === Unsere Entscheidung
 
 [%step]
-* Explizite Versionierung unsere Serviceschnittstellen, weil
+* Explizite Versionierung unsere Schnittstellen, weil
 * Mobile & Automaten anderen Lebenszyklus haben
 * Parallele Deployen von Services zu kostspielig ist
 
 === ... aber
 
 [%step]
-* Wir haben nicht alle Serviceschnittstellen versioniert
-* Versionierung nur auf Aussen-Services
-* Versionierung nur auf Teamübergreifenden Services
-* Keine Versionierung auf Teaminternen Services
+* Wir haben nicht alle Schnittstellen versioniert
+* Versionierung nur auf Aussen-Schnittstellen
+* Versionierung nur auf Teamübergreifenden Schnittstellen
+* Keine Versionierung auf teaminternen Schnittstellen
 

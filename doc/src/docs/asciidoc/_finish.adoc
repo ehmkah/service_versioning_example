@@ -4,10 +4,9 @@
 
 [%step]
 * kleine Schnittstellen vereinfachen Versionierung
+* Konsumenten abholen
 * Nur Probleme lösen, die wirklich bestehen
-* nicht strenger mit sich sein, als nötig
 * Enums schwieriger als gedacht
-* Konsumenten abholen ist wichtig
 
 === Der Weg zur versionierten Serviceschnittstelle
 

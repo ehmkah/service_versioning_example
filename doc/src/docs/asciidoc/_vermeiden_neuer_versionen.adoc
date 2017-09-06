@@ -1,7 +1,7 @@
-== Wie vermeide ich neue Serviceversionen?
+== Wie vermeide ich neue Schnittstellenversionen?
 
 [%step]
-* Ziel: Vermeiden neuer Serviceversionen
+* Ziel: Vermeiden neuer Schnittstellenversionen
 * Grund: Kosten und Komplexität reduzieren
 
 [NOTE.speaker]
@@ -35,9 +35,9 @@ Be conservative in what you send, be liberal in what you accept.
 
 [%step]
 * Konsumenten definieren Erwartung in Tests
-* Tests laufen beim Serviceanbieter automatisiert mit
-* Tests validiert Struktur und Inhalt
-* Nach Änderung kein Test kaputt => keine neue Serviceversion
+* Tests laufen in Integrationsbuild beim Serviceanbieter automatisiert mit
+* Tests validieren Struktur und Inhalt
+* Nach Änderung kein Test kaputt => keine neue Schnittstellenversion
 
 [NOTE.speaker]
 --
@@ -87,7 +87,7 @@ image:consumer_driven_contract_service.png[]
 [%step]
 * PactBroker erlaubt die einfache Verwaltung der Pacts
 * Konsumenten können Ihre Pacts hochladen
-* es entsteht Beispiele für Servicenutzung
+* es entsteht Beispiele für Schnittstellennutzung
 * https://github.com/pact-foundation/pact_broker
 
 //=== Alternativen zu Pact

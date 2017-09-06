@@ -17,9 +17,9 @@ image::apetizer.jpg[]
 
 [%step]
 * Begriffsdefinition
-* Benötige ich explizite Serviceschnittstellenversionierung?
-* Wie vermeide ich neue Serviceschnittstellenversionen?
-* Wie implementiere ich explizite Serviceschnittstellenversionierung?
+* Benötige ich explizite Schnittstellenversionen?
+* Wie vermeide ich neue Schnittstellenversionen?
+* Wie implementiere ich explizite Schnittstellenversionen?
 * Was brauche ich neben der Implementierung noch?
 * Zusammenfassung
 

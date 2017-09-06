@@ -1,6 +1,6 @@
-== Welche Pattern kann ich für eine explizite Versionierung verwenden?
+== Wie implementiere ich explizite Schnittstellenversionen?
 
-=== Anbieten der Serviceschnittstelle
+=== Anbieten der Schnittstelle
 
 === URI Versioning
 
@@ -140,7 +140,7 @@ image::duplicate_service.png[]
 * Wartungskosten
 * Inkonsistenzen
 
-=== Service Schnittstellen Versions Adapter
+=== Schnittstellen Versions Adapter
 
 image::adapter_pattern_overview.png[]
 
@@ -156,31 +156,31 @@ image::adapter_pattern_overview.png[]
 
 image::adapter_pattern_sequence_diagram.png[]
 
-=== Service Schnittstellen Versions Adapter (Vorteile)
+=== Schnittstellen Versions Adapter (Vorteile)
 
 [%step]
 * Skalierung
 * Businessimplementierung nur einmal
 
-=== Service Schnittstellen Versions Adapter (Nachteile)
+=== Schnittstellen Versions Adapter (Nachteile)
 
 [%step]
 * Angebotene Serviceversionen können sich gegenseitig beeinflussen
 * grössere Änderungen am implementierten Prozess sind schwierig
 
-=== Service Schnittstellen Versions Adapter (Modelmapper)
+=== Schnittstellen Versions Adapter (Modelmapper)
 
 [%step]
 * Einsatz einer Bibliothek, die automatisch Klassen in einander konvertiert
 * Beispielbibliotheken: modelmapper, dozzer,
 
-=== Service Schnittstellen Versions Adapter (Modelmapper) Vorteile
+=== Schnittstellen Versions Adapter (Modelmapper) Vorteile
 
 [%step]
 * geeignet für einfache Schnittstellen
 * schnell aufgesetzt
 
-=== Service Schnittstellen Versions Adapter (Modelmapper) Nachteile
+=== Schnittstellen Versions Adapter (Modelmapper) Nachteile
 
 [%step]
 * Probleme bei Typhierachien
@@ -194,7 +194,7 @@ image::adapter_pattern_sequence_diagram.png[]
 * War unser erster Versuch (mit Modelmapper, dozer)
 --
 
-=== Service Schnittstellen Versions Adapter (Modelmapper) DEMO
+=== Schnittstellen Versions Adapter (Modelmapper) DEMO
 
 //.Converter.map
 //[source,java]
@@ -213,21 +213,21 @@ image::adapter_pattern_sequence_diagram.png[]
 //
 //video::adapter_modelmapper_pattern_demo.mp4[options=autoplay]
 
-=== Service Schnittstellen Versions Adapter (händisch)
+=== Schnittstellen Versions Adapter (händisch)
 
-=== Service Schnittstellen Versions Adapter (händisch) (Vorteile)
+=== Schnittstellen Versions Adapter (händisch) (Vorteile)
 
 [%step]
 * verständlich
 * flexibel
 
-=== Service Schnittstellen Versions Adapter (händisch) (Nachteile)
+=== Schnittstellen Versions Adapter (händisch) (Nachteile)
 
 [%step]
 * aufwending und fehleranfällig
 * mit Generator akzeptabel
 
-=== Service Schnittstellen Versions Adapter (händisch) (DEMO)
+=== Schnittstellen Versions Adapter (händisch) (DEMO)
 
 //
 //.Converter.map
@@ -259,7 +259,7 @@ image::adapter_pattern_sequence_diagram.png[]
 === Unser Entscheidung
 
 [%step]
-* Einsatz: Service Schnittstellen Versions Adapter mit Generator
+* Einsatz: Schnittstellen Versions Adapter mit Generator
 * Grund: haben wir die beste Kontrolle und wir haben einen Generator
 
 //=== Soap Message dispatcher?
