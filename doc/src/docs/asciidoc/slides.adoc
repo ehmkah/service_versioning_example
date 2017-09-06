@@ -10,13 +10,13 @@ ifndef::imagesdir[:imagesdir: images]
 ifndef::sourcedir[:sourcedir: ../../main/java]
 
 
-include::_introduction.adoc[]
+//include::_introduction.adoc[]
 
-include::_begriffsdefinition.adoc[]
+//include::_begriffsdefinition.adoc[]
 
-include::_versionierung_notwendig.adoc[]
+//include::_versionierung_notwendig.adoc[]
 
-include::_vermeiden_neuer_versionen.adoc[]
+//include::_vermeiden_neuer_versionen.adoc[]
 
 include::_implementierung.adoc[]
 

@@ -5,42 +5,54 @@
 === URI Versioning
 
 [%step]
-* Rest und SOAP
 * Beispiel http://www.ehmkah.de/v1/service
 * Beispiel http://www.ehmkah.de/v2/service
-* Vorteil: für SOAP fühlt sich natürlich an
-* Nachteil: Passt nicht zu REST Paradigma
 
 [NOTE.speaker]
 --
 * Nachteil: siehe http://www.baeldung.com/rest-versioning
 --
 
+=== URI Versioning (Vorteile)
+
+[%step]
+* für SOAP fühlt sich natürlich an
+* einfach zu verstehen
+
+=== URI Versioning (Nachteile)
+
+[%step]
+* Passt nicht zu REST Paradigma
+
 === URI Versioning (DEMO)
 
-[source, java]
-----
-@Bean("endpointServiceV1")
-  public Endpoint endpointServiceV1(SpringBus springBus) {
-    EndpointImpl result = new EndpointImpl(springBus, serviceV1);
-    result.setWsdlLocation("classpath:/wsdl/serviceDefinitionV1.wsdl");
-    result.publish("/v1/service");
+//[source, java]
+//----
+//@Bean("endpointServiceV1")
+//  public Endpoint endpointServiceV1(SpringBus springBus) {
+//    EndpointImpl result = new EndpointImpl(springBus, serviceV1);
+//    result.setWsdlLocation("classpath:/wsdl/serviceDefinitionV1.wsdl");
+//    result.publish("/v1/service");
+//
+//    return result;
+//  }
+//----
 
-    return result;
-  }
-----
 
-
-=== !
-
-video::uri_versioning_demo.mp4[options=autoplay]
+//=== !
+//
+//video::uri_versioning_demo.mp4[options=autoplay]
 
 
 === Media Type Versioning
 
-[%step]
-* nur REST
-* Beispiel: Header enthält individuellen Mediatype, "Accept": "application/vnd.ehmkah.app-1.0+json"
+* Beispiel: Header enthält individuellen Mediatype
+
+[source]
+----
+ "Accept": "application/vnd.ehmkah.app-1.0+json"
+----
+
 * Fehler, wenn es nicht passt 406 Not Acceptable
 
 //=== Media Type Versioning (DEMO)
@@ -54,9 +66,20 @@ video::uri_versioning_demo.mp4[options=autoplay]
 //  ...
 //----
 
-=== !
+=== Media Type Versioning (Vorteile)
 
-video::media_type_versioning_demo.mp4[options=autoplay]
+[%step]
+* passt zu REST Paradigma
+
+
+=== Media Type Versioning (Nachteile)
+
+[%step]
+*
+
+=== Media Type Versioning (DEMO)
+
+//video::media_type_versioning_demo.mp4[options=autoplay]
 
 === Unsere Entscheidung
 
@@ -66,37 +89,64 @@ video::media_type_versioning_demo.mp4[options=autoplay]
 
 === Implementieren des Services
 
+=== Separates Deployment
 
-=== Jede Serviceversion separat deployed
+image::separat_deploy_pattern.png[]
+
+[NOTE.speaker]
+--
+* Service wird mit jeder Serviceversion deployed
+--
+
+=== Separates Deployment (Vorteile)
 
 [%step]
-* Service wird mit jeder Serviceversion deployed
-* Vorteil: funktioniert out of the box
-* Vorteile: wenn eine Instanz (abstürzt bleibt die zweite bestehen)
-* Nachteil: Kosten und Skalierung des Services, Wartungskosten
+* Funktioniert out of the box
+* verschiedene Businessimplementierungen möglich
+* Stürzt eine Instanz ab, bleibt die andere erreichbar
+* Angebotene Serviceversionen behindern sich nicht gegenseitig
 
-=== !
+=== Separates Deployment (Nachteile)
 
-video::self_contained_deploying_pattern_demo.mp4[options=autoplay]
+[%step]
+* Kosten und Skalierung des Services
+* Wartungskosten
+
+=== Separates Deployment (DEMO)
+
+//video::self_contained_deploying_pattern_demo.mp4[options=autoplay]
 
 === Code duplizieren
 
-[%step]
+image::duplicate_service.png[]
+
+[NOTE.speaker]
+--
 * Businesscode wird vollständig kopiert
 * und einmal deployed
-* Vorteil:  Skalierung einfacher
-* Nachteil: extrem viele Redundanzen, Arbeit macht keinen Spass
+--
 
-
-=== Code duplizieren
-
-video::code_duplication_pattern_demo.mp4[options=autoplay]
-
-=== SSVA - Service Schnittstellen Versions Adapter
+=== Code duplizieren (Vorteile)
 
 [%step]
-* Konvertieren auf internes Model 
-* muss vollständig sein (vereinfacht die Unterstüzung verschiedener Version immens) können
+* Bessere Skalierung
+* verschiedene Businessimplementierungen möglich
+
+=== Code duplizieren (Nachteile)
+
+[%step]
+* extrem viele Redundanzen, Arbeit macht keinen Spass
+* Wartungskosten
+* Inkonsistenzen
+
+=== Service Schnittstellen Versions Adapter
+
+image::adapter_pattern_overview_diagram.png[]
+
+[NOTE.speaker]
+--
+* Konvertieren auf internes Model
+--
 
 === !
 
@@ -114,86 +164,97 @@ image::adapter_pattern_class_diagram.png[]
 
 image::adapter_pattern_sequence_diagram.png[]
 
-=== Adapterpattern zwischen Versionen eines Services (Modelmapper)
+=== Service Schnittstellen Versions Adapter (Modelmapper)
 
 [%step]
 * Einsatz einer Bibliothek, die automatisch Klassen in einander konvertiert
-* Beispiel: modelmapper, dozzer,
-* Vorteil: OK für simple Schnittstellen, da schnell aufgesetzt
+* Beispielbibliotheken: modelmapper, dozzer,
 
-
-=== Adapterpattern zwischen Versionen eines Services (Modelmapper)
+=== Service Schnittstellen Versions Adapter (Modelmapper) Vorteile
 
 [%step]
-* Nachteil: Probleme bei Typhierachien
-* Nachteil: Mappingmechanismus nicht durchschaubar
-* Nachteil: Manuelle Anpassungen am Mapping kompliziert
-* Nachteil: Teilweise Performanceprobleme
-* Nachteil: Konvertierung müsste getestet werden
+* OK für simple Schnittstellen, da schnell aufgesetzt
+
+=== Service Schnittstellen Versions Adapter (Modelmapper) Nachteile
+
+[%step]
+* Probleme bei Typhierachien
+* Mappingmechanismus nicht durchschaubar
+* Manuelle Anpassungen am Mapping kompliziert
+* Teilweise Performanceprobleme
+* Konvertierung müsste getestet werden
 
 [NOTE.speaker]
 --
 * War unser erster Versuch (mit Modelmapper, dozer)
 --
 
-=== Adapterpattern zwischen Versionen eines Services (Modelmapper)
+=== Service Schnittstellen Versions Adapter (Modelmapper) DEMO
 
-.Converter.map
-[source,java]
-----
-private ModelMapper modelMapper = new ModelMapper();
+//.Converter.map
+//[source,java]
+//----
+//private ModelMapper modelMapper = new ModelMapper();
+//
+//    public com.ehmkah.services.gardening.RequestType map(RequestType requestV1) {
+//      com.ehmkah.services.gardening.RequestType result =
+//      modelMapper.map(requestV1, com.ehmkah.services.gardening.RequestType.class);
+//
+//      return result;
+//    }
+//----
 
-    public com.ehmkah.services.gardening.RequestType map(RequestType requestV1) {
-      com.ehmkah.services.gardening.RequestType result =
-      modelMapper.map(requestV1, com.ehmkah.services.gardening.RequestType.class);
+//=== !
+//
+//video::adapter_modelmapper_pattern_demo.mp4[options=autoplay]
 
-      return result;
-    }
-----
+=== Service Schnittstellen Versions Adapter (händisch)
 
-=== !
-
-video::adapter_modelmapper_pattern_demo.mp4[options=autoplay]
-
-=== Adapterpattern zwischen Versionen eines Services (händisch)
+=== Service Schnittstellen Versions Adapter (händisch) (Vorteile)
 
 [%step]
-* Vorteil: verständlich
-* Nachteil: wenn selbst geschrieben aufwending und fehleranfällig
+* verständlich
+* flexibel
 
-=== Adapterpattern zwischen Versionen eines Services (händisch)
+=== Service Schnittstellen Versions Adapter (händisch) (Nachteile)
 
-.Converter.map
-[source,java]
-----
-public com.ehmkah.services.gardening.RequestType map(RequestType requestV1) {
-    com.ehmkah.services.gardening.RequestType result =
-    new com.ehmkah.services.gardening.RequestType();
-    result.setSpeciesOne(requestV1.getSpeciesOne());
-    result.setSpeciesTwo(requestV1.getSpeciesTwo());
+[%step]
+* aufwending und fehleranfällig
+* mit Generator akzeptabel
 
-    return result;
-  }
-----
+=== Service Schnittstellen Versions Adapter (händisch) (DEMO)
 
-=== !
+//
+//.Converter.map
+//[source,java]
+//----
+//public com.ehmkah.services.gardening.RequestType map(RequestType requestV1) {
+//    com.ehmkah.services.gardening.RequestType result =
+//    new com.ehmkah.services.gardening.RequestType();
+//    result.setSpeciesOne(requestV1.getSpeciesOne());
+//    result.setSpeciesTwo(requestV1.getSpeciesTwo());
+//
+//    return result;
+//  }
+//----
+//
+//=== !
+//
+//video::adapter_pattern_manual_demo.mp4[options=autoplay]
 
-video::adapter_pattern_manual_demo.mp4[options=autoplay]
-
-=== Adapterpattern zwischen Versionen eines Services (händisch)
-
-* Einsatz eines Generators (und manuelles nachziehen der Änderungen)
-[NOTE.speaker]
---
-* wir generieren den Mapper mit Javapoet und Java Reflektions
-* passen an, wenn generiertes Mapping nicht passt
---
+//=== Adapterpattern zwischen Versionen eines Services (händisch)
+//
+//* Einsatz eines Generators (und manuelles nachziehen der Änderungen)
+//[NOTE.speaker]
+//--
+//* wir generieren den Mapper mit Javapoet und Java Reflektions
+//* passen an, wenn generiertes Mapping nicht passt
+//--
 
 === Unser Entscheidung
 
-* händisch generieren
+* Einsatz: Service Schnittstellen Versions Adapter mit Generator
 * Grund: haben wir die beste Kontrolle und wir haben einen Generator
-
 
 //=== Soap Message dispatcher?
 //
