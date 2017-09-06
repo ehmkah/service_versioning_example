@@ -109,8 +109,17 @@ image::separat_deploy_pattern.png[]
 === Separates Deployment (Nachteile)
 
 [%step]
-* Kosten und Skalierung des Services
+* Kosten
+* Skalierung des Services
 * Wartungskosten
+
+[NOTE.speaker]
+--
+* Beispiel: Openshiftkosten 2016
+** 21 Anwendungen notwendig minimalkonfiguration => 19000 * 4 =>
+** 900 (800 CPU+100 je GB) * 21 Anwendungen * 4 Umgebungen (75.000)
+--
+
 
 === Separates Deployment (DEMO)
 
