@@ -28,6 +28,6 @@ image::apetizer.jpg[]
 * Welche Begriffe werden in der Presentation verwendet?
 * Benötige ich explizite Versionierung?
 * Wie vermeide ich neue Serviceversionen?
-* Mit welchen Pattern kann ich explizite Servicerversionierung umsetzen?
+* Mit welchen Pattern kann ich explizite Schnittstellenversionen umsetzen?
 * Welche nicht technischen Aufgaben muss ich mit der expliziten Serviceversionierung lösen?
 --

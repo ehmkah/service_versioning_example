@@ -11,7 +11,7 @@
 === Der Weg zur versionierten Serviceschnittstelle
 
 [%step]
-. Explizite Versionierung ist notwendig
+. Explizite Schnittstellenversionen ist notwendig
 . Einen einfachen Service auswählen
 . Pattern auswählen und implementieren
 . Ausprobieren

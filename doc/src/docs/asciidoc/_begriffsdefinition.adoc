@@ -27,7 +27,7 @@ image::konsument.png[width=640,height=480]
 * verwenden Serviceschnittstelle
 --
 
-=== explizite Versionierung
+=== explizite Versionen
 
 image::expliziteVersionierung.png[width=640,height=480]
 
