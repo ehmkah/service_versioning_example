@@ -164,6 +164,7 @@ image:grosseSchnittstelle03.png[]
 === Unsere Entscheidung
 
 [%step]
+* Postel` Law => nein, da Code generiert wird
 * Contract Tests => ja, aber noch nicht etabliert
 * Kleine Schnittstellen => ja in Arbeit
 * Extension points => nein, Typisierung für uns zu wichtig
