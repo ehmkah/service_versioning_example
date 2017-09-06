@@ -1,19 +1,21 @@
-== Was wir gerlernt haben
-//
+== Zusammenfassung
+
+=== Wir haben gelernt
+
 [%step]
 * kleine Schnittstellen vereinfachen Versionierung
 * Nur Probleme lösen, die wirklich bestehen
-* nicht strenge mit sich sein, als nötig
+* nicht strenger mit sich sein, als nötig
 * Enums schwieriger als gedacht
+* Konsumenten abholen ist wichtig
 
-== Zusammenfassung
+=== Der Weg zur versionierten Serviceschnittstelle
 
 [%step]
 . Explizite Versionierung ist notwendig
 . Einen einfachen Service auswählen
-. Ein Pattern auswählen und implementieren
+. Pattern auswählen und implementieren
 . Ausprobieren
-//. dem Hackergarten Bern beitreten
 
 == Vielen Dank
 

@@ -18,9 +18,9 @@ ifndef::sourcedir[:sourcedir: ../../main/java]
 
 //include::_vermeiden_neuer_versionen.adoc[]
 
-include::_implementierung.adoc[]
+//include::_implementierung.adoc[]
 
-include::_nicht_technik.adoc[]
+//include::_nicht_technik.adoc[]
 
 include::_finish.adoc[]
 

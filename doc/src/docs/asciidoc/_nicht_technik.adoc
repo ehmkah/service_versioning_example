@@ -1,22 +1,28 @@
 == An welche Dinge, muss ich bei der expliziten Versionierung noch denken?
 
-[%step]
-* gibt es eine Übersicht welche Version meines Services noch genutzt wird? => bei uns : ja (new relic
-* kann während eines Prozesses die Version gewechselt werden? => bei uns : ja (kurzlebig)
-* Servicelifecycle
+=== Serviceschnittstellenlifecycle
 
-=== Servicelifecycle
-
-* mit Konsumenten abstimmen, wie lange sie eine Serviceversion benötigen
-* image:servicelifecycle.png[background]
+image:servicelifecycle.png[background]
 
 [NOTE.speaker]
 --
+* mit Konsumenten abstimmen, wie lange sie eine Serviceversion benötigen
 * hat bei uns zum Beispiel dafür geführt, dass wir vier Versionen auf einem Service unterstützen müssen
 * google draw gutes Tool, um es vernünftig darzustellen
 --
 
+
+=== Übersicht genutze Serviceschnittstellen
+
+image::usedVersions.png[height=500px]
+
+[NOTE.speaker]
+--
+* gibt es eine Übersicht welche Version meines Services noch genutzt wird? => bei uns : ja (new relic
+--
+
 === Testingstrategie
 
-* wie sieht es mit Tests der verschiedenen angebotenen Versionen aus?
+[%step]
+* Wie werden die angebotenen Serviceschnittstellenversionen getestet?
 * bei uns => wir testen aktuell nur die currentVersion :-o

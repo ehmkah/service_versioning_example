@@ -5,49 +5,11 @@
         google.charts.load('current', {'packages': ['timeline']});
         google.charts.setOnLoadCallback(drawChart);
         function drawChart() {
-            draw1('eins');
-            draw2('zwei');
-            draw3('drei');
+            draw3('test');
+			drawTest('integration');
+			drawIntegration('produktion');
         }
 
-        function draw1(_environment) {
-            var container = document.getElementById(_environment);
-            var chart = new google.visualization.Timeline(container);
-            var dataTable = new google.visualization.DataTable();
-
-            dataTable.addColumn({type: 'string', id: 'release'});
-            dataTable.addColumn({type: 'string', id: 'available_versions'});
-            dataTable.addColumn({type: 'date', id: 'Start'});
-            dataTable.addColumn({type: 'date', id: 'End'});
-
-            dataTable.addRows([
-                ['77', '/, /v5', new Date("2017-01-01"), new Date("2017-01-31")],
-                ['78', '/v5, /v6', new Date("2017-02-01"), new Date("2017-02-28")],
-                ['79', '/v6, /v7', new Date("2017-03-01"), new Date("2017-03-31")],
-                ['80', '/v7, /v8', new Date("2017-04-01"), new Date("2017-04-30")]]);
-
-            chart.draw(dataTable);
-        }
-        function draw2(_environment) {
-            var container = document.getElementById(_environment);
-            var chart = new google.visualization.Timeline(container);
-            var dataTable = new google.visualization.DataTable();
-
-            dataTable.addColumn({type: 'string', id: 'release'});
-            dataTable.addColumn({type: 'string', id: 'available_versions'});
-            dataTable.addColumn({type: 'date', id: 'Start'});
-            dataTable.addColumn({type: 'date', id: 'End'});
-
-            dataTable.addRows([
-                ['/', '', new Date("2017-01-01"), new Date("2017-01-31")],
-                ['/v5', '', new Date("2017-01-01"), new Date("2017-02-28")],
-                ['/v6', '', new Date("2017-02-01"), new Date("2017-03-30")],
-                ['/v7', '', new Date("2017-03-01"), new Date("2017-04-31")],
-                ['/v8', '', new Date("2017-04-01"), new Date("2017-04-31")]
-            ]);
-
-            chart.draw(dataTable);
-        }
         function draw3(_environment) {
             var container = document.getElementById(_environment);
             var chart = new google.visualization.Timeline(container);
@@ -59,14 +21,41 @@
             dataTable.addColumn({type: 'date', id: 'End'});
 
             dataTable.addRows([
-                ['/', '77', new Date("2017-01-01"), new Date("2017-01-31T23:59:59")],
-                ['/v5', '77', new Date("2017-01-01"), new Date("2017-01-31T23:59:59")],
-                ['/v5', '78', new Date("2017-02-01"), new Date("2017-02-28T23:59:59")],
-                ['/v6', '78', new Date("2017-02-01"), new Date("2017-02-28T23:59:59")],
-                ['/v6', '79', new Date("2017-03-01"), new Date("2017-03-31T23:59:59")],
-                ['/v7', '79', new Date("2017-03-01"), new Date("2017-03-31T23:59:59")],
-                ['/v7', '80', new Date("2017-04-01"), new Date("2017-04-30T23:59:59")],
-                ['/v8', '80', new Date("2017-04-01"), new Date("2017-04-30T23:59:59")]
+                ['fill', 'xx', new Date("2017-06-21"), new Date("2017-06-22")],
+                ['/', '76', new Date("2017-06-22"), new Date("2017-07-13")],
+                ['/', '77', new Date("2017-07-13"), new Date("2017-08-03")],
+                ['/', '78', new Date("2017-08-03"), new Date("2017-08-24")],
+				['/', '79', new Date("2017-08-24"), new Date("2017-09-14")],
+
+                ['/v5', '76', new Date("2017-06-22"), new Date("2017-07-13")],
+                ['/v5', '77', new Date("2017-07-13"), new Date("2017-08-03")],
+                ['/v5', '78', new Date("2017-08-03"), new Date("2017-08-24")],
+				['/v5', '79', new Date("2017-08-24"), new Date("2017-09-14")],
+                ['/v5', '80', new Date("2017-09-14"), new Date("2017-10-05")],
+                ['/v5', '81', new Date("2017-10-05"), new Date("2017-10-26")],
+
+                ['/v6', '79.1', new Date("2017-08-24"), new Date("2017-08-31")],
+                ['/v6', '79.2', new Date("2017-08-31"), new Date("2017-09-06")],
+                ['/v6', '79.3', new Date("2017-09-06"), new Date("2017-09-14")],
+                ['/v6', '80', new Date("2017-09-14"), new Date("2017-10-05")],
+                ['/v6', '81', new Date("2017-10-05"), new Date("2017-10-26")],
+                ['/v6', '82', new Date("2017-10-26"), new Date("2017-11-16")],
+
+                ['/v7', '80.1', new Date("2017-09-14"), new Date("2017-09-21")],
+                ['/v7', '80.2', new Date("2017-09-21"), new Date("2017-09-27")],
+                ['/v7', '80.3', new Date("2017-09-27"), new Date("2017-10-05")],
+                ['/v7', '81', new Date("2017-10-05"), new Date("2017-10-26")],
+                ['/v7', '82', new Date("2017-10-26"), new Date("2017-11-16")],
+                ['/v7', '83', new Date("2017-11-16"), new Date("2017-12-07")],
+
+				['/v8', '81.1', new Date("2017-10-05"), new Date("2017-10-12")],
+                ['/v8', '81.2', new Date("2017-10-12"), new Date("2017-10-19")],
+                ['/v8', '81.3', new Date("2017-10-19"), new Date("2017-10-26")],
+                ['/v8', '82', new Date("2017-10-26"), new Date("2017-11-16")],
+                ['/v8', '83', new Date("2017-11-16"), new Date("2017-12-07")],
+                ['/v8', '84', new Date("2017-12-07"), new Date("2017-12-28")],
+
+				['fill', 'xx', new Date("2017-12-28"), new Date("2017-12-31")]
             ]);
 
             var options = {
@@ -76,7 +65,158 @@
 
             chart.draw(dataTable, options);
         }
+		
+		function drawTest(_environment) {
+            var container = document.getElementById(_environment);
+            var chart = new google.visualization.Timeline(container);
+            var dataTable = new google.visualization.DataTable();
+
+            dataTable.addColumn({type: 'string', id: 'release'});
+            dataTable.addColumn({type: 'string', id: 'available_versions'});
+            dataTable.addColumn({type: 'date', id: 'Start'});
+            dataTable.addColumn({type: 'date', id: 'End'});
+
+            dataTable.addRows([
+			    ['fill', 'xx', new Date("2017-06-21"), new Date("2017-06-23")],
+                ['/', '76', new Date("2017-06-23"), new Date("2017-07-14")],
+                ['/', '77', new Date("2017-07-14"), new Date("2017-08-04")],
+                ['/', '78', new Date("2017-08-04"), new Date("2017-08-25")],
+				['/', '79', new Date("2017-08-25"), new Date("2017-09-15")],
+
+                ['/v5', '76.1', new Date("2017-06-23"), new Date("2017-06-30")],
+                ['/v5', '76.2', new Date("2017-06-30"), new Date("2017-07-06")],
+                ['/v5', '76.3', new Date("2017-07-06"), new Date("2017-07-14")],
+				['/v5', '77', new Date("2017-07-14"), new Date("2017-08-04")],
+                ['/v5', '78', new Date("2017-08-04"), new Date("2017-08-25")],
+                ['/v5', '79', new Date("2017-08-25"), new Date("2017-09-15")],
+                ['/v5', '80', new Date("2017-09-15"), new Date("2017-10-05")],
+                ['/v5', '81', new Date("2017-10-05"), new Date("2017-10-26")],
+
+                ['/v6', '79.1', new Date("2017-08-25"), new Date("2017-09-01")],
+                ['/v6', '79.2', new Date("2017-09-01"), new Date("2017-09-07")],
+                ['/v6', '79.3', new Date("2017-09-07"), new Date("2017-09-15")],
+                ['/v6', '80', new Date("2017-09-15"), new Date("2017-10-05")],
+                ['/v6', '81', new Date("2017-10-05"), new Date("2017-10-26")],
+                ['/v6', '82', new Date("2017-10-26"), new Date("2017-11-16")],
+
+				['/v7', '80.1', new Date("2017-09-15"), new Date("2017-09-22")],
+                ['/v7', '80.2', new Date("2017-09-22"), new Date("2017-09-29")],
+                ['/v7', '80.3', new Date("2017-09-29"), new Date("2017-10-05")],
+                ['/v7', '81', new Date("2017-10-05"), new Date("2017-10-26")],
+                ['/v7', '82', new Date("2017-10-26"), new Date("2017-11-16")],
+                ['/v7', '83', new Date("2017-11-16"), new Date("2017-12-07")],
+
+                ['/v8', '81.1', new Date("2017-10-05"), new Date("2017-10-12")],
+                ['/v8', '81.2', new Date("2017-10-12"), new Date("2017-10-19")],
+                ['/v8', '81.3', new Date("2017-10-19"), new Date("2017-10-26")],
+                ['/v8', '82', new Date("2017-10-26"), new Date("2017-11-16")],
+                ['/v8', '83', new Date("2017-11-16"), new Date("2017-12-07")],
+
+				['fill', 'xx', new Date("2017-12-07"), new Date("2017-12-31")]
+				
+            ]);
+
+            var options = {
+                timeline: {rowLabelStyle: {fontName: 'Helvetica'}},
+                avoidOverlappingGridLines: false
+            };
+
+            chart.draw(dataTable, options);
+        }
+		
+		function drawIntegration(_environment) {
+            var container = document.getElementById(_environment);
+            var chart = new google.visualization.Timeline(container);
+            var dataTable = new google.visualization.DataTable();
+
+            dataTable.addColumn({type: 'string', id: 'release'});
+            dataTable.addColumn({type: 'string', id: 'available_versions'});
+            dataTable.addColumn({type: 'date', id: 'Start'});
+            dataTable.addColumn({type: 'date', id: 'End'});
+
+            dataTable.addRows([
+                ['fill', 'xx', new Date("2017-06-22"), new Date("2017-07-13")],
+                ['/', '76', new Date("2017-07-13"), new Date("2017-08-03")],
+                ['/', '77', new Date("2017-08-03"), new Date("2017-08-24")],
+                ['/', '78', new Date("2017-08-24"), new Date("2017-09-14")],
+				['/', '79', new Date("2017-09-14"), new Date("2017-10-05")],
+
+                ['/v5', '76', new Date("2017-07-13"), new Date("2017-08-03")],
+                ['/v5', '77', new Date("2017-08-03"), new Date("2017-08-24")],
+                ['/v5', '78', new Date("2017-08-24"), new Date("2017-09-14")],
+                ['/v5', '79', new Date("2017-09-14"), new Date("2017-10-05")],
+                ['/v5', '80', new Date("2017-10-05"), new Date("2017-10-26")],
+                ['/v5', '81', new Date("2017-10-26"), new Date("2017-11-16")],
+
+                ['/v6', '79', new Date("2017-09-14"), new Date("2017-10-05")],
+                ['/v6', '80', new Date("2017-10-05"), new Date("2017-10-26")],
+                ['/v6', '81', new Date("2017-10-26"), new Date("2017-11-16")],
+                ['/v6', '82', new Date("2017-11-16"), new Date("2017-11-30")],
+
+				['/v7', '80', new Date("2017-10-05"), new Date("2017-10-26")],
+                ['/v7', '81', new Date("2017-10-26"), new Date("2017-11-16")],
+                ['/v7', '82', new Date("2017-11-16"), new Date("2017-11-30")],
+
+                ['/v8', '81', new Date("2017-10-26"), new Date("2017-11-16")],
+                ['/v8', '82', new Date("2017-11-16"), new Date("2017-12-07")],
+				            
+				['fill', 'xx', new Date("2017-12-07"), new Date("2017-12-31")]
+            ]);
+
+            var options = {
+                timeline: {rowLabelStyle: {fontName: 'Helvetica'}},
+                avoidOverlappingGridLines: false
+            };
+
+            chart.draw(dataTable, options);
+        }
+		
+		function drawProd(_environment) {
+            var container = document.getElementById(_environment);
+            var chart = new google.visualization.Timeline(container);
+            var dataTable = new google.visualization.DataTable();
+
+            dataTable.addColumn({type: 'string', id: 'release'});
+            dataTable.addColumn({type: 'string', id: 'available_versions'});
+            dataTable.addColumn({type: 'date', id: 'Start'});
+            dataTable.addColumn({type: 'date', id: 'End'});
+
+            dataTable.addRows([
+                ['fill', 'xx', new Date("2017-06-22"), new Date("2017-08-08")],
+                ['/', '76', new Date("2017-08-08"), new Date("2017-08-29")],
+                ['/', '77', new Date("2017-08-29"), new Date("2017-09-19")],
+                ['/', '78', new Date("2017-09-19"), new Date("2017-10-10")],
+				['/', '79', new Date("2017-10-10"), new Date("2017-10-31")],
+
+                ['/v5', '76', new Date("2017-08-08"), new Date("2017-08-29")],
+				['/v5', '77', new Date("2017-08-29"), new Date("2017-09-19")],
+                ['/v5', '78', new Date("2017-09-19"), new Date("2017-10-10")],
+                ['/v5', '79', new Date("2017-10-10"), new Date("2017-10-31")],
+                ['/v5', '80', new Date("2017-10-31"), new Date("2017-11-21")],
+                ['/v5', '81', new Date("2017-11-21"), new Date("2017-11-30")],
+
+				['/v6', '79', new Date("2017-10-10"), new Date("2017-10-31")],
+                ['/v6', '80', new Date("2017-10-31"), new Date("2017-11-21")],
+                ['/v6', '81', new Date("2017-11-21"), new Date("2017-11-30")],
+
+                ['/v7', '80', new Date("2017-10-31"), new Date("2017-11-21")],
+                ['/v7', '81', new Date("2017-11-21"), new Date("2017-11-30")],
+
+            ]);
+
+            var options = {
+                timeline: {rowLabelStyle: {fontName: 'Helvetica'}},
+                avoidOverlappingGridLines: false
+            };
+
+            chart.draw(dataTable, options);
+        }
+		
     </script>
+	
+	
+	
+	
 </head>
 <body>
 <h1>Visualize availability of service interfaces</h1>
@@ -84,21 +224,11 @@
     Page shows some examples how to visualize when a specific version of you API is available.
     Sometimes it is interesting to know in which software-release it will be shipped.
 </p>
-
-<div>
-    Shows when a specific software-release goes live and which service version it brings.
-</div>
-<div id="eins" style="height: 290px;"></div>
-<div>
-    Shows how long a specific service version is available.
-    Hides the information to which software-release it belongs.
-</div>
-<div id="zwei" style="height: 290px;"></div>
-<div>
-    Shows how long a specific service version is available.
-    Shows the information to which software-release it belongs.
-    It is my favorit example because this diagram can be used for different stackholders.
-</div>
-<div id="drei" style="height: 290px;"></div>
+<div>Test</div>
+<div id="test" style="height: 290px;"></div>
+<div>Integration</div>
+<div id="integration" style="height: 290px;"></div>
+<div>Produktion</div>
+<div id="produktion" style="height: 290px;"></div>
 </body>
 </html>
