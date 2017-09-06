@@ -9,20 +9,6 @@ Michael Krausse m@m-krausse.de, Developer Day 2017, Bern
 ifndef::imagesdir[:imagesdir: images]
 ifndef::sourcedir[:sourcedir: ../../main/java]
 
-== Werbung
-
-image::hackergartenLogo.jpeg[height=400px]
-//* Contributing to OpenSource Projekte
-//* jeden zweiten Dienstag alle zwei Monate in der SBB Effigerstrasse
-https://www.meetup.com/Hackergarten-Bern/
-
-//== !
-//
-//image::preview.jpg[background]
-
-== !
-
-image::apetizer.jpg[]
 
 include::_introduction.adoc[]
 

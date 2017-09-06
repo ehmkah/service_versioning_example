@@ -1,3 +1,18 @@
+== Werbung
+
+image::hackergartenLogo.jpeg[height=400px]
+//* Contributing to OpenSource Projekte
+//* jeden zweiten Dienstag alle zwei Monate in der SBB Effigerstrasse
+https://www.meetup.com/Hackergarten-Bern/
+
+//== !
+//
+//image::preview.jpg[background]
+
+== !
+
+image::apetizer.jpg[]
+
 == Agenda
 
 [%step]

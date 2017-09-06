@@ -36,8 +36,8 @@ Be conservative in what you send, be liberal in what you accept.
 [%step]
 * Konsumenten definieren Erwartung in Tests
 * Tests laufen beim Serviceanbieter automatisiert mit
-* Tests validierung Struktur und Inhalts
-* Nach Änderung kein Test kaputt => keine neue Servieversion
+* Tests validiert Struktur und Inhalt
+* Nach Änderung kein Test kaputt => keine neue Serviceversion
 
 [NOTE.speaker]
 --
@@ -69,9 +69,8 @@ image:consumer_driven_contract_service.png[]
 * Service führt die Pact Datei aus
 --
 
-=== Consumer Driven Contract Tests (PACT)
+=== Consumer Driven Contract Tests (DEMO)
 
-video::consumer_driven_contract_tests_demo.mp4[options=autoplay]
 
 [NOTE.speaker]
 --
@@ -149,6 +148,6 @@ image:grosseSchnittstelle03.png[]
 === Unsere Entscheidung
 
 [%step]
-* Conttract Tests => ja, aber noch nicht etabliert
+* Contract Tests => ja, aber noch nicht etabliert
 * Kleine Schnittstellen => ja in Arbeit aber aufwendig hinzubauen
 * Extension points => nein, Typisierung für uns zu wichtig
